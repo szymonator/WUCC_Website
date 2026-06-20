@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<!URL /about/exec/>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title> Meet the Exec | Warwick University Climbing Club </title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/wucc_logo_white.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Header Area Start -->
+    <?php $path = $_SERVER['DOCUMENT_ROOT'];
+		$path .= "/navbar.php";
+		include $path; ?>
+    <!-- Header Area End -->
+
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/img/bg-img/Exec_Pic.JPG);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">Meet the Exec</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/"><i class="icon_house_alt"></i> Home</a></li>
+                                <li class="breadcrumb-item" style="color:white">About</li>
+                                <li class="breadcrumb-item active" aria-current="page">Meet the Exec</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+
+    <!-- Main Meet The Exec Start -->
+    <section class="about-us-area bg-gray section-padding-80-0 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                        <h2>2024/25 Exec</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- President -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Naomi_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Naomi Richardson</h3>
+                                <h6>She/Her</h6>
+                                <h4>President</h4>
+                                <p>
+                                    <b>Course: </b>3rd year History<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>2023 Siurana Tour<br>
+                                    <b>Years climbing: </b>12 Years<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- President -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Luke_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Luke Burgess</h3>
+                                <h6>He/Him</h6>
+                                <h4>President</h4>
+                                <p>
+                                    <b>Course: </b>4th year Maths<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Bouldering<br>
+                                    <b>Favourite WUCC Memory: </b>Sports Ball'23<br>
+                                    <b>Years climbing: </b>7 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vice-President -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Edie_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Edie Patey</h3>
+                                <h6>She/Her</h6>
+                                <h4>Vice-President</h4>
+                                <p>
+                                    <b>Course: </b>3rd year GSD<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Tour<br>
+                                    <b>Years climbing: </b>3 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secretary And Merch-->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Sarah_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Sarah Bailey</h3>
+                                <h6>She/Her</h6>
+                                <h4>Secretary And Merch</h4>
+                                <p>
+                                    <b>Course: </b>4th year Maths<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Bouldering<br>
+                                    <b>Favourite WUCC Memory: </b>Picking up the crag cats in El Chorro and Sicily<br>
+                                    <b>Years climbing: </b>6 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treasurer -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Alfie_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Alfie Lee</h3>
+                                <h6>He/HIM</h6>
+                                <h4>Treasurer</h4>
+                                <p>
+                                    <b>Course: </b>4th year Mathematics <br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Bouldering<br>
+                                    <b>Favourite WUCC Memory: </b>Doing my first multipitch on tour<br>
+                                    <b>Years climbing: </b>3 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welfare and Diversity Officer -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Lauren_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Lauren Baxter</h3>
+                                <h6>She/Her</h6>
+                                <h4>Welfare and Diversity Officer</h4>
+                                <p>
+                                    <b>Course: </b>2nd year BENG Systems Engineering<br>
+                                    <b>Favourite Type of Climbing: </b>Multipitch<br>
+                                    <b>Favourite WUCC Memory: </b>Climbing a 250m multipitchin El Chorro<br>
+                                    <b>Years climbing: </b>8 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social And Welfare Secretary-->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/lucas_dodgson.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Lucas Dodgson</h3>
+                                <h6>He/Him</h6>
+                                <h4>Social And Welfare Secretary</h4>
+                                <p>
+                                    <b>Course: </b>3rd year Mathematics<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Everyone getting pushed into the pool on tour '24<br>
+                                    <b>Years climbing: </b>6 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Secretary -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Sophie_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Sophie Savage</h3>
+                                <h6>She/Her</h6>
+                                <h4>Social Secretary</h4>
+                                <p>
+                                    <b>Course: </b>2nd year History<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Discovering I had a seafood allergy on tour :D <br>
+                                    <b>Years climbing: </b>4 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Secretary -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/IsaacPilling.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Isaac Pilling</h3>
+                                <h6>He/Him</h6>
+                                <h4>Social Secretary</h4>
+                                <p>
+                                    <b>Course: </b>3rd Year Maths And Philosophy<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Top Rope<br>
+                                    <b>Favourite WUCC Memory: </b>Tour BBQ, for sure my best birthday<br>
+                                    <b>Years climbing: </b>1.5 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Male Captain -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Stan_Exce_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Stan Bradley Scott</h3>
+                                <h6>He/Him</h6>
+                                <h4>Male Captain</h4>
+                                <p>
+                                    <b>Course: </b>2nd year Mathematics<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Bouldering<br>
+                                    <b>Favourite WUCC Memory: </b>Freezing to death in the pool in the pitch black on tour<br>
+                                    <b>Years climbing: </b>6 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Female Captain -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Gabrielle_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Gabrielle Welch</h3>
+                                <h6>She/Her</h6>
+                                <h4>Female Captain</h4>
+                                <p>
+                                    <b>Course: </b>2nd year Media And Creative Industries<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Bouldering<br>
+                                    <b>Favourite WUCC Memory: </b>Freshers Trip Sock Wrestling<br>
+                                    <b>Years climbing: </b>5 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitions Officer -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Zach_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Zach Welch</h3>
+                                <h6>He/Him</h6>
+                                <h4>Competitions Officer</h4>
+                                <p>
+                                    <b>Course: </b>3rd Year Maths<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Learning to multipitch on tour<br>
+                                    <b>Years climbing: </b>2 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Competitions Officer -->
+                        <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Cleo_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Cleo Ashworth</h3>
+                                <h6>She/Them</h6>
+                                <h4>Competitions Officer</h4>
+                                <p>
+                                    <b>Course: </b>2nd Year Mechanical Engineering<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Sending a 6c outdoors on tour<br>
+                                    <b>Years climbing: </b>3 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Media and Fundraising Officer -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/georgina_redfern.jpeg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Georgina Redfern</h3>
+                                <h6>She/Her</h6>
+                                <h4>Media and Fundraising Officer</h4>
+                                <p>
+                                    <b>Course: </b>2nd Year Biochemistry<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Boulder<br>
+                                    <b>Favourite WUCC Memory: </b>El Chorro Tour<br>
+                                    <b>Years climbing: </b>12 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tour Secretary -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/James_Wallace_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>James Wallace</h3>
+                                <h6>He/Him</h6>
+                                <h4>Tour Secretary</h4>
+                                <p>
+                                    <b>Course: </b>2nd year PhD Biomedical Engineering<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Runners up Bevathalon 2024<br>
+                                    <b>Years climbing: </b>8 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tour Secretary -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Albane_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Albane Colin-Salingue</h3>
+                                <h6>She/Her</h6>
+                                <h4>Tour Secretary</h4>
+                                <p>
+                                    <b>Course: </b>2nd year Maths<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Boulder<br>
+                                    <b>Favourite WUCC Memory: </b>Winning the female freshers comp last year, and all the circles!<br>
+                                    <b>Years climbing: </b>1 Year
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gear Secretary -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Ella_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Ella Foley</h3>
+                                <h6>She/Her</h6>
+                                <h4>Gear Secretary</h4>
+                                <p>
+                                    <b>Course: </b>2nd Year Physics<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Top Rope<br>
+                                    <b>Favourite WUCC Memory: </b>Circling on freshers Trip<br>
+                                    <b>Years climbing: </b>2 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety and Training -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Annalise_Exec _Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Annalise Smith</h3>
+                                <h6>She/Her</h6>
+                                <h4>Safety and Training</h4>
+                                <p>
+                                    <b>Course: </b>3rd Year History<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Top Rope<br>
+                                    <b>Favourite WUCC Memory: </b>Lead Lesson<br>
+                                    <b>Years climbing: </b>2 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety and Training -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Aaliya_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Aaliya Elias</h3>
+                                <h6>She/Her</h6>
+                                <h4>Safety and Training</h4>
+                                <p>
+                                    <b>Course: </b>3rd year Management<br>
+                                    <b>Favourite Type of Climbing: </b>Indoor Lead<br>
+                                    <b>Favourite WUCC Memory: </b>Learning how to lead climb<br>
+                                    <b>Years climbing: </b>1 Year
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outdoor Officer -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Lorenzo_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Lorenzo Kai-Rui Anzolin</h3>
+                                <h6>He/Him</h6>
+                                <h4>Outdoor Officer</h4>
+                                <p>
+                                    <b>Course: </b>4th Year Management<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Boulder<br>
+                                    <b>Favourite WUCC Memory: </b>Getting stopped by bomb squad trying to get to forest rock<br>
+                                    <b>Years climbing: </b>6 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outdoor Officer -->
+            <div class="highlight-box-neutral w-100 wow fadeInUp" data-wow-delay="200ms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="exec-image mt-3">
+                                <img src="/img/exec/Lads_Exec_Pic.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="exec-info w-100">
+                                <h3>Ladislas Walewski</h3>
+                                <h6>He/Him</h6>
+                                <h4>Outdoor Officer</h4>
+                                <p>
+                                    <b>Course: </b>4th Year Maths And Physics<br>
+                                    <b>Favourite Type of Climbing: </b>Outdoor Boulder<br>
+                                    <b>Favourite WUCC Memory: </b>Tour'2024<br>
+                                    <b>Years climbing: </b>8 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="height:125px;"></div>
+    </section>
+    <!-- Main Meet The Exec Area End -->
+
+    <!-- Footer Area Start -->
+    <?php $path = $_SERVER['DOCUMENT_ROOT'];
+		$path .= "/footer.php";
+		include $path; ?>
+    <!-- Footer Area End -->
+
+</body>
+
+</html>

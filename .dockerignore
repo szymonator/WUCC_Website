@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+.dockerignore
+Dockerfile
+README.md
+.env
+.env.local
+.DS_Store
+*.log
+gulpfile.js
+package.json
+package-lock.json

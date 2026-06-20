@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  climbing-soc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "80"
+    environment:
+      - VIRTUAL_HOST=wucc.containers.uwcs.co.uk
