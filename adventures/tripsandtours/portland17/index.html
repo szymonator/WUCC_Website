@@ -15,6 +15,9 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/style.css?v=2">
+    <link rel="stylesheet" href="/css/main_layout.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/page_decorations.css">
 
 </head>
 
@@ -25,100 +28,76 @@
     </div>
     <!-- /Preloader -->
 
-    <!-- Header Area Start -->
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWGHGG4SHV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Header Area Start -->
+    <header class="site-header">
+      <div class="header-container">
+        <!-- Branding logo -->
+        <a href="/" class="header-logo">
+          <img src="/img/core-img/header_logo.png" alt="Warwick University Climbing Club Logo">
+        </a>
 
-  gtag('config', 'G-EWGHGG4SHV');
-</script>
+        <!-- Mobile menu toggle button -->
+        <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
 
-<!-- Header Area Start -->
-<header class="header-area">
-	<!-- Main Header Start -->
-	<div class="main-header-area">
-		<div class="classy-nav-container breakpoint-off">
-			<div class="container">
-				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between" id="alimeNav">
-
-					<!-- Logo -->
-					<a class="nav-brand" href="/"><img src="/img/core-img/header_logo.png" alt="" style="width:290px; height:60px;"></a>
-
-					<!-- Navbar Toggler -->
-					<div class="classy-navbar-toggler">
-						<span class="navbarToggler"><span></span><span></span><span></span></span>
-					</div>
-
-					<!-- Menu -->
-					<div class="classy-menu">
-						<!-- Menu Close Button -->
-						<div class="classycloseIcon">
-							<div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-						</div>
-						<!-- Nav Start -->
-						<div class="classynav">
-							<ul id="nav">
-								<li><a href="/">Home</a></li>
-								<li><a href="#">About</a>
-									<ul class="dropdown">
-										<li><a href="/about/abouttheclub/">About the Club</a></li>
-										<li><a href="/about/whyjoin/">Why join?</a></li>
-										<li><a href="/about/exec/">Meet The Exec</a></li>
-										<li><a href="/about/training/">Training</a></li>
-									</ul>
-								</li>
-								<li><a href="#">What's On</a>
-									<ul class="dropdown">
-										<!-- <li><a href="/events/">Events</a></li> -->
-										<li><a href="/events/climboftheweek/">Climb Of The Week</a></li>
-										<li><a href="/events/clubhours/">Club Hours</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Adventure Log</a>
-									<ul class="dropdown">
-										<li><a href="/adventures/comps/">Competitions</a></li>
-										<li><a href="/adventures/tripsandtours/">Trips and Tours</a></li>
-										<!--<li><a href="/socials/">Socials</a></li> -->
-									</ul>
-								</li>
-								<li><a href="/newclimbers/">New Climbers</a></li>
-								<li><a href="/welfare/">Welfare</a></li>
-							</ul>
-						</div>
-						<!-- Nav End -->
-					</div>
-				</nav>
-			</div>
-		</div>
-	</div>
-	<!-- Main Header End -->
-</header>
-<!-- Header Area End -->
+        <!-- Main Navigation Menu -->
+        <nav class="site-navigation" id="siteNavigation">
+          <button class="mobile-nav-close" aria-label="Close navigation menu">&times;</button>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">About</a>
+              <ul class="nav-dropdown">
+                <li><a href="/about/abouttheclub/">About the Club</a></li>
+                <li><a href="/about/whyjoin/">Why join?</a></li>
+                <li><a href="/about/exec/">Meet The Exec</a></li>
+                <li><a href="/about/training/">Training</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">What's On</a>
+              <ul class="nav-dropdown">
+                <li><a href="/events/climboftheweek/">Climb Of The Week</a></li>
+                <li><a href="/events/clubhours/">Club Hours</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Adventure Log</a>
+              <ul class="nav-dropdown">
+                <li><a href="/adventures/comps/">Competitions</a></li>
+                <li><a href="/adventures/tripsandtours/">Trips and Tours</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item"><a href="/newclimbers/" class="nav-link">New Climbers</a></li>
+            <li class="nav-item"><a href="/welfare/" class="nav-link">Welfare</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header Area End -->
     <!-- Header Area End -->
 
-    <!-- Breadcrumb Area Start -->
-    <section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/img/trips/portland_17/cover.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">Portland Lead Climbing Trip<br>2017</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="/"><i class="icon_house_alt"></i> Home</a></li>
-                                <li class="breadcrumb-item" style="color:white">Adventure Log</li>
-                                <li class="breadcrumb-item" style="color:white"><a href="/adventures/tripsandtours/" class="post-title">Trips and Tours</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Portland Lead Climbing Trip - 2017</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+        <!-- Breadcrumb Area Start -->
+    <section class="page-banner" style="background-image: url(/img/trips/portland_17/cover.jpg);">
+      <div class="page-banner-overlay"></div>
+      <div class="container">
+        <div class="page-banner-content">
+          <h1 class="page-banner-title">Portland Lead Climbing Trip<br>2017</h1>
+          <ul class="breadcrumbs">
+            <li ><a href="/"> Home</a></li>
+                                <li  style="color:white">Adventure Log</li>
+                                <li  style="color:white"><a href="/adventures/tripsandtours/" class="post-title">Trips and Tours</a></li>
+                                <li class="active">Portland Lead Climbing Trip - 2017</li>
+          </ul>
         </div>
+      </div>
     </section>
     <!-- Breadcrumb Area End -->
 
@@ -139,140 +118,140 @@
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-6 single_gallery_item mt-80 mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/1.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/1.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/1.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/2.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/2.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/2.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/3.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/3.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/3.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/4.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/4.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/4.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-2 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/5.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/5.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/5.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-2 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/6.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/6.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/6.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-2 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/7.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/7.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/7.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-2 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/8.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/8.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/8.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-2 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/9.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/9.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/9.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-2 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/10.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/10.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/10.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-3 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/11.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/11.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/11.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-3 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/12.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/12.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/12.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-3 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/13.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/13.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/13.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Single Gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-3 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="single-portfolio-content">
+                    <div class="gallery-card">
                         <img src="/img/trips/portland_17/14.jpg" alt="">
-                        <div class="hover-content">
-                            <a href="/img/trips/portland_17/14.jpg" class="portfolio-img">+</a>
+                        <div class="gallery-overlay">
+                            <a href="/img/trips/portland_17/14.jpg" class="gallery-zoom-btn">+</a>
                         </div>
                     </div>
                 </div>
@@ -290,42 +269,34 @@
     <div style="height:100px;"></div>
     <!-- About Us Area End -->
 
-    <!-- Footer Area Start -->
-    <!-- Footer Area Start -->
-<footer class="footer-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="footer-content d-flex align-items-center justify-content-between">
+        <!-- Footer Area Start -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-container">
+          <!-- Social Info -->
+          <div class="footer-social">
+            <a href="https://www.facebook.com/groups/warwickuniversityclimbingclub/" target="_blank" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/w_u_c_c/?hl=en" target="_blank" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/user/warwickclimbing" target="_blank" aria-label="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+          </div>
 
-                    <!-- Social Info -->
-                    <div class="social-info">
-                        <a href="https://www.facebook.com/groups/warwickuniversityclimbingclub/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="https://www.instagram.com/w_u_c_c/?hl=en" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://www.youtube.com/user/warwickclimbing" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                    </div>
+          <div class="footer-author">
+            <p>Website by Vickie Snow</p>
+          </div>
 
-                    <div class="copywrite-text">
-                        <p>Website by Vickie Snow</p>
-                    </div>
-
-                    <!-- Copywrite Text -->
-                    <div class="copywrite-text">
-                        <p>
-                            Copyright &copy; <script>
-                                document.write(new Date().getFullYear());
-                            </script> Warwick University Climbing Club. All rights reserved.
-                        </p>
-                    </div>
-                </div>
-            </div>
+          <!-- Copywrite Text -->
+          <div class="footer-copywrite">
+            <p>Copyright &copy; <span id="currentYear"></span> Warwick University Climbing Club. All rights reserved.</p>
+          </div>
         </div>
-    </div>
-</footer>
-<!-- Footer Area End -->
+      </div>
+    </footer>
+    <!-- Footer Area End -->
 
 <!-- **** Custom JS File ***** -->
-<script src="/js/main.js?v=2"></script>
+
+<script src="/js/navigation.js"></script>
+<script src="/js/lightbox.js"></script>
 
     <!-- Footer Area End -->
 

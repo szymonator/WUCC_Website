@@ -1,0 +1,253 @@
+/* ==========================================================================
+   Custom Navigation System Stylesheet (with brand-specific colors)
+   ========================================================================== */
+
+:root {
+  --primary-color: #FF5A4B;       /* Team Warwick Red */
+  --text-dark: #000000;           /* Warwick Black */
+  --text-white: #FFFFFF;          /* Warwick White */
+  --text-light: #636363;          /* Standard body text gray */
+  --bg-white: #ffffff;
+  --bg-dark: #0f0f0f;
+  --bg-gray: #f7f7f7;
+  --border-color: #ebebeb;
+  --header-height: 80px;
+  --header-height-sticky: 70px;
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --box-shadow-dropdown: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Header Container */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: var(--transition-smooth);
+}
+
+.site-header.is-sticky {
+  background-color: var(--text-dark);
+  height: var(--header-height-sticky);
+  box-shadow: var(--box-shadow-light);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Mobile Toggle Buttons */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-nav-toggle .hamburger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-white);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+.mobile-nav-close {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  font-size: 36px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Desktop Navigation Link List */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: var(--text-white);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 24px 16px;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-item.is-active .nav-link {
+  color: var(--primary-color);
+}
+
+/* Dropdown Sub-menus (Desktop hover trigger) */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 220px;
+  background-color: var(--text-dark);
+  border-radius: 6px;
+  box-shadow: var(--box-shadow-dropdown);
+  padding: 10px 0;
+  margin: 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: var(--transition-smooth);
+  z-index: 999;
+}
+
+.nav-dropdown li a {
+  color: var(--primary-color);
+  background-color: var(--text-dark);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+/* Accessibility contrast override: where red leads visually, use black text on red */
+.nav-dropdown li a:hover {
+  background-color: var(--primary-color);
+  color: var(--text-dark) !important; /* Ensure black text on red background */
+  padding-left: 24px;
+}
+
+/* Desktop Hover States */
+@media (min-width: 992px) {
+  .nav-item:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Mobile Responsive Navigation (max-width: 991px)
+   ========================================================================== */
+
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    display: flex;
+  }
+  
+  .mobile-nav-close {
+    display: block;
+  }
+
+  .site-navigation {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--bg-white);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    padding: 60px 20px;
+    overflow-y: auto;
+    transition: var(--transition-smooth);
+  }
+
+  .site-navigation.is-active {
+    right: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    color: var(--text-dark);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Reset layout for dropdown inside drawer mobile navigation */
+  .nav-dropdown {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--text-dark) !important;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .nav-dropdown.is-expanded {
+    max-height: 500px; /* Expands smoothly using JS */
+  }
+
+  .nav-dropdown li a {
+    color: var(--primary-color) !important;
+    background-color: var(--text-dark) !important;
+    padding: 12px 20px;
+  }
+
+  .nav-dropdown li a:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--text-dark) !important;
+  }
+}
