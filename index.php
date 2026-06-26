@@ -11,10 +11,10 @@
     <title>Warwick University Climbing Club</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/wucc_logo_white.png">
+    <link rel="icon" href="/img/core-img/wucc_logo_white.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css?v=2">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -44,7 +44,7 @@
         <div class="welcome-slides owl-carousel">
 
             <!-- Single Slide -->
-            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-img/cover_home5_sm.jpg);">
+            <div class="single-welcome-slide bg-img bg-overlay active" style="background-image: url(/img/bg-img/cover_home5_sm.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-lg-8 col-xl-6">
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Single Slide -->
-            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-img/cover_home4_sm.jpg);">
+            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/img/bg-img/cover_home4_sm.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-lg-8 col-xl-6">
@@ -72,7 +72,7 @@
             </div>
 
             <!-- Single Slide -->
-            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-img/cover_home3.jpg);">
+            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/img/bg-img/cover_home3.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-lg-8 col-xl-6">
@@ -98,7 +98,7 @@
                         <h3 class="wow fadeInUp" data-wow-delay="100ms">Welcome to Warwick University Climbing Club</h3>
                         <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
                         <p class="wow fadeInUp" data-wow-delay="300ms" style="margin-right:50px;">Welcome to the Warwick University Climbing Club website. We welcome everyone from complete novices to extreme pros. Watch our San Vito Lo Capo 2022 Tour video and others on our <a href="https://youtube.com/user/warwickclimbing">YouTube channel</a> to get a taste of what we get up to on campus and outdoors, then have a browse to find out what else the club has to offer!</p>
-                        <a class="btn alime-btn btn-2 mt-10 wow fadeInUp" data-wow-delay="500ms" href="./about/abouttheclub/">Find Out More ></a>
+                        <a class="btn alime-btn btn-2 mt-10 wow fadeInUp" data-wow-delay="500ms" href="/about/abouttheclub/">Find Out More ></a>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">

@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     platform: linux/amd64
     ports:
-      - "80"
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
     environment:
       - VIRTUAL_HOST=wucc.containers.uwcs.co.uk

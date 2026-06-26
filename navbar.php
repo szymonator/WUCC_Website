@@ -1,3 +1,13 @@
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWGHGG4SHV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EWGHGG4SHV');
+</script>
+
 <!-- Header Area Start -->
 <header class="header-area">
 	<!-- Main Header Start -->

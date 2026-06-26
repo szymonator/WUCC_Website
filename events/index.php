@@ -15,7 +15,7 @@
         <link rel="icon" href="/img/core-img/wucc_logo_white.png">
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/style.css?v=2">
 
     </head>
 
@@ -134,7 +134,7 @@
                     html += '</div></div></div>'
                 }
 
-                $('#google-calendar').html(html);
+                document.getElementById('google-calendar').innerHTML = html;
             }
 
             function processEvents(events) {

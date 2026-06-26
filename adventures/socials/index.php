@@ -11,10 +11,10 @@
     <title>Socials | Warwick University Climbing Club</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="../img/core-img/wucc_logo_white.png">
+    <link rel="icon" href="/img/core-img/wucc_logo_white.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css?v=2">
 
 </head>
 
@@ -26,7 +26,8 @@
     <!-- /Preloader -->
 
     <!-- Header Area Start -->
-    <?php include '../navbar.php'; ?>
+    <?php $path = $_SERVER['DOCUMENT_ROOT'] ?: dirname(__DIR__, 2);
+    include $path . "/navbar.php"; ?>
     <!-- Header Area End -->
 
     <!-- Breadcrumb Area Start -->
@@ -38,7 +39,7 @@
                         <h2 class="page-title">Socials</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="../"><i class="icon_house_alt"></i> Home</a></li>
+                                <li class="breadcrumb-item"><a href="/"><i class="icon_house_alt"></i> Home</a></li>
                                 <li class="breadcrumb-item" style="color:white">Adventure Log</li>
                                 <li class="breadcrumb-item active" aria-current="page">Socials</li>
                             </ol>
@@ -63,7 +64,8 @@
     <!-- Blog Area End -->
 
     <!-- Footer Area Start -->
-    <?php include '../footer.php' ?>
+    <?php $path = $_SERVER['DOCUMENT_ROOT'] ?: dirname(__DIR__, 2);
+    include $path . "/footer.php"; ?>
     <!-- Footer Area End -->
 
 </body>
