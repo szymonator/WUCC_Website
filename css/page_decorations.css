@@ -12,9 +12,8 @@
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  padding-top: 80px; /* Offset the 80px fixed header */
+  margin-top: 80px; /* Pushed below the 80px fixed header */
   box-sizing: border-box;
-  margin-top: 0; /* Aligned below sticky/fixed header */
 }
 
 .page-banner-overlay {
@@ -91,14 +90,23 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 2px; /* Minimal space between photos */
+  width: 100%;
+}
+
+.gallery-grid > div {
+  padding: 0 !important; /* Reset Bootstrap grid padding */
+  margin: 0 !important; /* Reset Bootstrap spacing (mb-30) */
+  width: auto !important; /* Let CSS Grid dictate width */
+  max-width: none !important;
+  flex: none !important;
 }
 
 .gallery-card {
   position: relative;
-  border-radius: 8px;
+  border-radius: 0; /* Remove rounded corners for continuous patchwork */
   overflow: hidden;
-  box-shadow: var(--box-shadow-light);
+  box-shadow: none; /* Remove shadows */
   aspect-ratio: 4 / 3;
   background-color: var(--text-dark);
 }
@@ -248,4 +256,269 @@
   color: var(--text-dark) !important; /* Accessibility: Black text on Warwick Red */
 }
 
+/* Meet the Exec Grid & Card Layouts */
+.exec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
 
+@media (min-width: 992px) {
+  .exec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.exec-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-light);
+  padding: 24px;
+  gap: 24px;
+  height: 220px; /* Set height on desktop */
+  box-sizing: border-box;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.exec-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.exec-card-image {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.exec-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exec-card-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.exec-card-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 4px 0;
+}
+
+.exec-pronouns {
+  font-size: 12px;
+  color: var(--text-body);
+  opacity: 0.8;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.exec-role {
+  background-color: var(--primary-color);
+  color: var(--text-dark) !important; /* Accessibility: Black text on Warwick Red background */
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.exec-card-info p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-body);
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Clamp to exactly 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+.exec-card-info p b {
+  color: var(--text-dark);
+}
+
+/* Tablet responsive height adjustment for Exec Card */
+@media (max-width: 991px) and (min-width: 577px) {
+  .exec-card {
+    height: 200px;
+  }
+}
+
+/* Mobile responsive card details */
+@media (max-width: 576px) {
+  .exec-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    height: auto; /* Let it wrap naturally on small screens */
+  }
+  
+  .exec-card-info {
+    align-items: center;
+  }
+  
+  .exec-card-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .exec-card-info p {
+    -webkit-line-clamp: none; /* No clamping on mobile auto height */
+  }
+}
+
+/* Adventure Log Grid & Card Layouts */
+.adventure-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+@media (min-width: 992px) {
+  .adventure-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.adventure-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-light);
+  padding: 24px;
+  gap: 24px;
+  height: 180px; /* Set height on desktop */
+  box-sizing: border-box;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.adventure-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.adventure-card-image {
+  flex-shrink: 0;
+  width: 180px;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: -24px 0 -24px -24px; /* Align image flush to card edges */
+}
+
+.adventure-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adventure-card-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.adventure-meta {
+  font-size: 12px;
+  color: var(--text-body);
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 15px;
+}
+
+.adventure-date {
+  font-weight: 500;
+}
+
+.adventure-author {
+  font-style: italic;
+}
+
+.adventure-card-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Clamp long titles to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.adventure-card-info h3 a {
+  color: var(--text-dark);
+  transition: var(--transition-smooth);
+}
+
+.adventure-card-info h3 a:hover {
+  color: var(--primary-color);
+}
+
+/* Tablet responsive card layout */
+@media (max-width: 991px) and (min-width: 481px) {
+  .adventure-card {
+    height: 160px;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .adventure-card-image {
+    width: 140px;
+    margin: -16px 0 -16px -16px;
+  }
+  
+  .adventure-card-info h3 {
+    font-size: 16px;
+  }
+}
+
+/* Mobile responsive card layout */
+@media (max-width: 480px) {
+  .adventure-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto; /* Let it wrap naturally on mobile */
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .adventure-card-image {
+    width: 100%;
+    height: 160px;
+    margin: -20px -20px 0 -20px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .adventure-card-info {
+    align-items: center;
+  }
+}

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!filterMenu) return;
 
   const buttons = filterMenu.querySelectorAll('button');
-  const galleryItems = document.querySelectorAll('.gallery-grid > div');
+  const galleryItems = document.querySelectorAll('.gallery-grid > div, .adventure-grid > div');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {

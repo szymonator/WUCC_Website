@@ -20,6 +20,10 @@ body {
   color: var(--text-body);
   background-color: var(--bg-white);
   line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -139,10 +143,11 @@ a:hover {
 
 /* Footer Styling */
 .site-footer {
-  background-color: var(--bg-gray);
-  border-top: 1px solid var(--border-color);
+  background-color: var(--text-dark); /* Solid Black */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px 0;
-  margin-top: auto; /* Helps with sticky footer behaviors if needed */
+  margin-top: auto; /* Pushes footer to bottom */
+  color: var(--primary-color); /* Warwick Red */
 }
 
 .footer-container {
@@ -154,7 +159,7 @@ a:hover {
 }
 
 .footer-social a {
-  color: var(--text-dark);
+  color: var(--primary-color);
   font-size: 18px;
   margin-right: 25px;
   display: inline-block;
@@ -162,7 +167,7 @@ a:hover {
 }
 
 .footer-social a:hover {
-  color: var(--primary-color);
+  color: var(--text-white);
 }
 
 .footer-author p,
