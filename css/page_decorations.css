@@ -291,7 +291,8 @@
   box-shadow: var(--box-shadow-light);
   padding: 24px;
   gap: 24px;
-  height: 220px; /* Set height on desktop */
+  min-height: 220px; /* Consistent baseline height, can grow if needed */
+  height: auto;
   box-sizing: border-box;
   transition: var(--transition-smooth);
   overflow: hidden;
@@ -305,15 +306,15 @@
 .exec-card-image {
   flex-shrink: 0;
   width: 140px;
-  height: 140px;
   border-radius: 8px;
   overflow: hidden;
+  align-self: flex-start; /* Align image with the top of the text info */
 }
 
 .exec-card-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
 
 .exec-card-info {
@@ -357,10 +358,6 @@
   line-height: 1.5;
   color: var(--text-body);
   margin: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Clamp to exactly 3 lines */
-  -webkit-box-orient: vertical;
 }
 
 .exec-card-info p b {
@@ -370,7 +367,8 @@
 /* Tablet responsive height adjustment for Exec Card */
 @media (max-width: 991px) and (min-width: 577px) {
   .exec-card {
-    height: 200px;
+    min-height: 200px;
+    height: auto;
   }
 }
 
@@ -390,7 +388,7 @@
   
   .exec-card-image {
     width: 150px;
-    height: 150px;
+    height: auto;
   }
   
   .exec-card-info p {

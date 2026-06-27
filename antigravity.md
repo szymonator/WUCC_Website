@@ -1,53 +1,44 @@
 # PROJECT STATE & CONTEXT SUMMARY (CONDENSED SYSTEM PROMPT)
 
 ## 1. ENVIRONMENT & STACK CONSTRAINTS
-- **Local Dev Server**: Nginx running inside Docker container on `http://localhost:8080` (volume-mounted to `/Users/szymonator1625/Programming/climbing_soc_old`).
-- **Framework Rules**: 100% custom HTML5 / Vanilla CSS3 / Vanilla JS. No licenses/libraries allowed.
+- **Local Dev Server**: Nginx running inside a Docker container on `http://localhost:8080` (volume-mounted to `/Users/szymonator1625/Programming/climbing_soc_old`).
+- **Framework & Libraries**: Rebuilt using standard HTML5, CSS3, and modern Vanilla JS where custom logic is needed. Standard open-source libraries (Bootstrap 4, jQuery, Popper, FontAwesome) are loaded dynamically, with source-code attribution and licenses documented in README.md.
 - **Brand Colors**:
   - Primary: Team Warwick Red (`#FF5A4B`)
   - Secondary: Warwick Black (`#000000`), Warwick White (`#FFFFFF`)
-- **Contrast Guidelines**:
-  - If background is Team Warwick Red (`#FF5A4B`), overlay text MUST be solid black (`#000000`).
-  - Do NOT use red text on dark backgrounds for main body text. Keep navigation hover states and active buttons high contrast.
+- **Hover & Interaction Behaviors**:
+  - Header navigation links are Warwick Red (`#FF5A4B`) by default, and scale smoothly on hover while turning White (`#FFFFFF`).
+  - Dropdowns open via mouse hover on desktop (blocked click toggle for better desktop UX) and remain standard collapse elements on mobile.
+  - FAQ collapsible triggers use Warwick Red (`#FF5A4B`) and match the text styling of the joining step blocks.
 
 ---
 
 ## 2. DOM STRUCTURES
-### Global Header & Navigation
+### Global Header & Navigation (Bootstrap 4 Collapse & Dropdown)
 ```
-[header] .site-header
-  └── [div] .header-container
-        ├── [a] .header-logo -> [img] (Logo)
-        ├── [button] .mobile-nav-toggle -> 3x .hamburger-bar
-        └── [nav] .site-navigation#siteNavigation
-              ├── [button] .mobile-nav-close (x)
-              └── [ul] .nav-list
+[header] .site-header.navbar.navbar-expand-lg.navbar-dark.bg-black.sticky-top
+  └── [div] .container
+        ├── [a] .navbar-brand -> [img] (Header Logo)
+        ├── [button] .navbar-toggler -> [span] .navbar-toggler-icon
+        └── [div] .collapse.navbar-collapse#siteNavigation
+              └── [ul] .navbar-nav.ml-auto
                     ├── [li] .nav-item -> [a] .nav-link
-                    └── [li] .nav-item.has-dropdown
+                    └── [li] .nav-item.dropdown
                           ├── [a] .nav-link.dropdown-toggle
-                          └── [ul] .nav-dropdown -> [li] -> [a]
+                          └── [div] .dropdown-menu
+                                └── [a] .dropdown-item
 ```
 
 ### Executive Committee Roster (`/about/exec/`)
 ```
 [div] .exec-grid
   └── [div] .exec-card
-        ├── [div] .exec-card-image -> [img] (Exec photo)
+        ├── [div] .exec-card-image -> [img] (Exec photo, aspect-ratio preserved, height auto)
         └── [div] .exec-card-info
               ├── [h3] (Name)
-              ├── [span] .exec-pronouns (e.g. He/Him)
-              ├── [span] .exec-role (e.g. President)
-              └── [p] (Course, Favourite climb, Memory, years climbing)
-```
-
-### Adventure Logs (`adventures/comps/` and `adventures/tripsandtours/`)
-```
-[div] .adventure-grid
-  └── [div] .adventure-card
-        ├── [div] .adventure-card-image -> [img] (Preview)
-        └── [div] .adventure-card-info
-              ├── [div] .adventure-meta -> .adventure-date + .adventure-author
-              └── [h3] -> [a] (Article Link)
+              ├── [span] .exec-pronouns (She/Her, He/Him)
+              ├── [span] .exec-role (Role, Warwick Red tag)
+              └── [p] (Course details, years climbing, and favorite memory)
 ```
 
 ### Photo Galleries (subpage photo grids)
@@ -55,51 +46,40 @@
 [div] .row.align-items-center
   └── [div] .col-12.col-sm-6.col-lg-3.single_gallery_item (filter tags as classes, e.g. "video", "human")
         └── [div] .gallery-card
-              ├── [img] (Photo)
+              ├── [img] (Photo, loading="lazy")
               └── [div] .gallery-overlay
                     └── [a] .gallery-zoom-btn (+)
 ```
 
-### Global Footer
+### Global Footer (Bootstrap Grid Layout)
 ```
-[footer] .site-footer
+[footer] .site-footer.bg-black.py-4
   └── [div] .container
-        └── [div] .footer-container
-              ├── [div] .footer-social -> [a] -> (Social Icon SVG)
-              ├── [div] .footer-author -> [p] (Website by Vickie Snow)
-              └── [div] .footer-copywrite -> [p] -> span#currentYear
+        └── [div] .row.align-items-center.text-center
+              ├── [div] .col-md-4 -> [div] .footer-social -> [a] -> [i] (fa-facebook, etc.)
+              ├── [div] .col-md-4 -> [p] (Website by Vickie Snow)
+              └── [div] .col-md-4 -> [p] -> span#currentYear
 ```
 
 ---
 
 ## 3. COMPLETED TASKS
-1. **Decoupled from ColorLib Template**: Replaced dynamic template assets with custom local CSS (`main_layout.css`, `navigation.css`, `hero.css`, `page_decorations.css`) and modular vanilla JS (`navigation.js`, `hero.js`, `lightbox.js`, `gallery_filter.js`).
-2. **Subpage Header & Offset Fix**: Offset all subpage banners downwards (`margin-top: 80px`) so they align properly below the fixed black navigation header.
-3. **Preloader Spinner Fix**: Resolved load race conditions by fading preloader immediately if `document.readyState === 'complete'`.
-4. **Layout Updates**: Rebuilt Exec list and Adventure logs into 2-column uniform height cards (with text-clamp) collapsing to 1-column on mobile.
-5. **Continuous Photo Galleries**: Styled `.gallery-grid` / `.gallery-card` to display as continuous patchwork mosaic grids with `2px` spacing, removing all legacy borders and shadows.
-6. **Dark Box overrides**: Styled `.highlight-box-dark` and `.a-collapsible` accordion wrappers in `style.css` to use solid black backgrounds and Warwick Red text.
-7. **Sticky Footer**: Pinned footer to bottom of viewport using viewport flexbox layout.
-8. **Licence Scanning**: Coded `find_licensed_files.py` to identify all files containing third-party copyright/license information.
+1. **Proprietary Footprint Purge**: Completely removed all Colorlib proprietary files (SCSS source files, classy-nav script and styles, legacy main.js / active.js).
+2. **Library Attribution**: Created README.md attributing all open-source libraries (Bootstrap 4, jQuery, Popper, FontAwesome).
+3. **HTML DOM Restructuring**: Migrated headers and footers across all 38+ HTML files to clean Bootstrap 4 structures.
+4. **Desktop Navigation Hover Dropdowns**: Standardized navigation to open dropdowns on mouse hover for desktop sizes (with click toggles disabled on viewport width >= 992px) while preserving touch responsiveness on mobile.
+5. **Page Banner Spacer**: Restored `.page-banner` top margin to `80px` (avoiding image obstructions) while adding a solid black absolute pseudo-element (`::before`) spacer to cover viewport edge gaps during high-velocity scrolling.
+6. **FAQ Text Adjustments**: Restyled FAQ accordion triggers in newclimbers/index.html from `h5` to `<p>` tags, matching the size, font, and alignment of the steps sections.
+7. **High-Performance Image Compression**: Recursively compressed **586 images** in the `img/` folder to a maximum dimension of 1600px and JPEG quality of 82. Saved **1.28 GB** of storage space, drastically reducing page weights (e.g. compressing 37MB phone camera files to ~200KB).
+8. **Double-Loading Fix**: Eliminated duplicate stylesheet background images on `/about/abouttheclub/` image tags, resolving multiple 7MB redundant fetches.
+9. **Native Lazy Loading**: Injected native `loading="lazy"` on all `<img>` tags except the header logo to defer loading off-screen gallery items.
+10. **Directory Cleanup**: Deleted 20+ unused legacy assets, scripts, stylesheets, and fonts (Magnific Popup, Owl Carousel, Isotope, WOW, ElegantIcons, and the Gulp builder).
+11. **Exec Profile Refactoring**: Removed 3-line text clamps and set card heights to dynamic `height: auto` with `min-height` baselines. Allowed image wrappers to scale dynamically (`height: auto`), retaining the original aspect ratio of the photos without cropping.
+12. **Stylesheet Refactoring**: Purged unused template blocks (welcome-slides, breadcrumbs, lightbox modal, and legacy footer) from root `style.css`.
 
 ---
 
-## 4. PENDING OBJECTIVES & COPYRIGHT PURGE MIGRATION
-- **Goal**: Entirely purge all licensed / third-party files containing copyright/licensing notices.
-- **Identified Files to Remove**:
-  - `css/bootstrap.min.css` & `js/bootstrap.min.js` (Twitter MIT)
-  - `css/font-awesome.min.css` & FontAwesome files in `fonts/` (FontAwesome SIL OFL/MIT)
-  - `css/owl.carousel.min.css` & `js/owl.carousel.min.js` (MIT)
-  - `js/alime.bundle.js` (Contains concatenated third-party files)
-  - `js/jquery.min.js` (MIT)
-  - `js/jquery.magnific-popup.min.js` (MIT)
-  - `js/isotope.pkgd.min.js` (GPL/Proprietary)
-  - All other vendor scripts in `js/` (popper, wow, waypoints, imagesloaded, scrollup, countdown, counterup).
-  - The root `licence` file (referencing CC BY 3.0 template credit).
-- **Migration & Rebuild Steps**:
-  1. **Replace FontAwesome icons**: Remove imports and replace the active icon elements with inline/custom SVGs:
-     - Socials: Facebook, Instagram, YouTube (in all footer instances).
-     - Accordion: Plus (`+`) and Minus (`-`) icons on the `/newclimbers/index.html` page.
-  2. **Grid / Spacing Mapping**: Implement a custom lightweight CSS grid (defining `.row`, `.col-12`, `.col-sm-*`, `.col-md-*`, `.col-lg-*`, flex alignment utilities, and bootstrap spacing helpers like `.mb-30`) inside `css/main_layout.css` to allow deleting `css/bootstrap.min.css` without breaking the grid architecture on subpages.
-  3. **Purge Remote CDN Links**: Remove the cdnjs FontAwesome stylesheet link from `index.html`.
-  4. **Delete Third-Party Files**: Clean up the workspace by running `git rm` or `rm` on the 20 identified legacy vendor files.
+## 4. FUTURE MAINTENANCE DIRECTIVES
+- Keep files compact. Maintain separate JS files for different layouts (e.g., `js/hero.js` for home slider, `js/lightbox.js` for photo viewports).
+- Ensure all new image files uploaded are compressed to a max of 1600px width/height and quality 80-85% before committing.
+- Do not bundle or concatenate JS scripts; keep them modular to maintain the de-spaghettified state.

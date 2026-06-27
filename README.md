@@ -25,33 +25,6 @@ For future maintainers, the following open-source third-party libraries are inte
     *   *License*: MIT License
     *   *Attribution*: Copyright (c) 2016-present Federico Zivolo and contributors
     *   *Usage*: Tooltip and dropdown positioning.
-*   **Owl Carousel v2.x**
-    *   *License*: MIT License
-    *   *Usage*: Responsive carousel slider widgets.
-*   **Magnific Popup**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) 2012-2016 Dmitry Semigradsky
-    *   *Usage*: Responsive lightbox popup dialogs.
-*   **Isotope**
-    *   *License*: MIT License / GPL License
-    *   *Attribution*: Copyright (c) Metafizzy
-    *   *Usage*: Filterable and responsive gallery layouts.
-*   **Jarallax**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) nK
-    *   *Usage*: Parallax background scrolling effects.
-*   **Animate.css**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) 2018 Daniel Eden
-    *   *Usage*: Cross-browser CSS animations.
-*   **WOW.js**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) 2015 Thomas Grainger
-    *   *Usage*: CSS animation triggers on scroll.
-*   **Waypoints**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) 2011-2014 Caleb Troughton
-    *   *Usage*: Scroll event hooks.
 
 ## Development and Deployment
 
