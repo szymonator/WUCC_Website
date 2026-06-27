@@ -143,47 +143,214 @@ a:hover {
 
 /* Footer Styling */
 .site-footer {
-  background-color: var(--text-dark); /* Solid Black */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 30px 0;
+  background-color: #000000 !important;
+  border-top: 1px solid var(--primary-color);
+  padding: 40px 0;
   margin-top: auto; /* Pushes footer to bottom */
-  color: var(--primary-color); /* Warwick Red */
 }
 
+/* Explicit red text overrides for all elements inside the footer */
+.site-footer,
+.site-footer p,
+.site-footer span,
+.site-footer a,
+.site-footer div,
+.site-footer .footer-copyright,
+.site-footer .footer-disclaimer,
+.site-footer .footer-contact,
+.site-footer .footer-link {
+  color: var(--primary-color) !important;
+}
+
+.site-footer a:hover {
+  color: var(--text-white) !important;
+}
+
+/* Main Flex Container based on specifications */
 .footer-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  height: 160px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 50px; /* Increased horizontal padding for side spacing */
   width: 100%;
 }
 
-.footer-social a {
-  color: var(--primary-color);
-  font-size: 18px;
-  margin-right: 25px;
-  display: inline-block;
+/* Sections */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section 1: Logo wrapper (no circles) */
+.section-logo {
+  flex: 0 0 auto;
+}
+
+.circle-logo-container,
+.circle-crest-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+/* Enlarge Club Logo and add hover effect */
+.footer-wucc-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   transition: var(--transition-smooth);
 }
 
-.footer-social a:hover {
-  color: var(--text-white);
+.footer-wucc-logo:hover {
+  transform: scale(1.05);
 }
 
-.footer-author p,
-.footer-copywrite p {
+/* Section 2: Copyright & Links */
+.section-links {
+  flex: 0 1 auto;
+  align-items: flex-start;
+  padding: 0 10px;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 8px 20px;
+}
+
+.footer-link {
+  font-size: 12px;
+  text-decoration: underline;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Section 3: Affiliation info */
+.section-info {
+  flex: 1 1 auto;
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+  padding: 0 15px;
+}
+
+.footer-disclaimer {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 8px 0;
+}
+
+.footer-contact {
+  font-size: 12px;
+  font-weight: 600;
   margin: 0;
-  font-size: 14px;
 }
 
-@media (max-width: 768px) {
+.footer-email {
+  text-decoration: underline;
+}
+
+/* Section 4: Social Logos & SU Logo */
+.section-logos {
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Warwick SU logo style (Red Filtered) */
+.footer-su-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2973%) hue-rotate(336deg) brightness(101%) contrast(101%) !important;
+}
+
+.su-logo-link:hover .footer-su-logo {
+  transform: scale(1.1); /* SU Logo grows on hover and does NOT change color */
+}
+
+/* Social logos style */
+.social-logo-link img,
+.social-logo-link svg {
+  height: 28px;
+  width: auto;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.social-logo-link:hover img,
+.social-logo-link:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+/* Section 5: Crest wrapper (no circles) */
+.section-crest {
+  flex: 0 0 auto;
+}
+
+/* Enlarge Crest and add hover effect */
+.footer-ws-crest {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.footer-ws-crest:hover {
+  transform: scale(1.05);
+}
+
+/* Desktop overrides to shift WUCC logo slightly right to balance visual margins */
+@media (min-width: 992px) {
+  .section-logo {
+    margin-left: 25px;
+  }
+}
+
+/* Responsive breakpoint styling */
+@media (max-width: 991px) {
   .footer-container {
     flex-direction: column;
-    gap: 15px;
-    text-align: center;
+    height: auto;
+    padding: 40px 20px;
+    gap: 30px;
   }
   
-  .footer-social a {
-    margin: 0 12px;
+  .footer-section {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .section-links {
+    align-items: center;
+  }
+  
+  .footer-links-grid {
+    justify-content: center;
+  }
+  
+  /* Scale down logos slightly on mobile when stacked */
+  .footer-wucc-logo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .footer-ws-crest {
+    height: 90px;
   }
 }

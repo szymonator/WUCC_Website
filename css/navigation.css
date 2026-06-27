@@ -73,8 +73,21 @@
   border-radius: 6px;
   box-shadow: var(--box-shadow-dropdown);
   padding: 10px 0;
-  margin-top: 5px;
+  margin-top: 0; /* Close the gap */
   transition: var(--transition-smooth);
+}
+
+/* Hover bridge to keep dropdown open over any visual gaps on desktop */
+@media (min-width: 992px) {
+  .site-header .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background-color: transparent;
+  }
 }
 
 /* Show dropdown on hover on desktop (min-width: 992px) */
@@ -116,6 +129,34 @@
 
 /* Responsive Overrides */
 @media (max-width: 991px) {
+  .navbar-brand {
+    order: 1;
+  }
+  
+  .navbar-toggler {
+    order: 2;
+    margin-left: auto; /* Push toggler next to crest */
+  }
+
+  .header-crest {
+    order: 3;
+    margin-left: 15px;
+  }
+
+  .header-crest img {
+    height: 40px;
+  }
+
+  .site-header.is-sticky .header-crest img {
+    height: 35px;
+  }
+
+  /* Safe padding for mobile viewports to prevent touching screen edges */
+  .site-header .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
   .site-header {
     padding: 10px 0;
   }
@@ -133,6 +174,7 @@
   }
 
   .site-header .navbar-collapse {
+    order: 4; /* Wrap below header bar elements */
     background-color: var(--bg-dark);
     padding: 15px 20px;
     margin-top: 10px;
@@ -159,7 +201,7 @@
 
   .site-header .dropdown-item {
     background-color: transparent !important;
-    color: var(--text-white) !important;
+    color: var(--primary-color) !important;
     padding: 8px 15px;
   }
 
@@ -168,4 +210,40 @@
     background-color: transparent !important;
     padding-left: 20px;
   }
+}
+
+/* Desktop overrides to center navigation list between logo and crest for equal spacing */
+@media (min-width: 992px) {
+  .site-header .navbar-nav {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Crest Logo (Default/Desktop) */
+.header-crest {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.header-crest a {
+  display: flex;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.header-crest a:hover {
+  transform: scale(1.08); /* Grows in size slightly upon hover */
+}
+
+.header-crest img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.site-header.is-sticky .header-crest img {
+  height: 40px;
 }
