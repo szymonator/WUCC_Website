@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
-  const navToggle = document.querySelector('.mobile-nav-toggle');
-  const navClose = document.querySelector('.mobile-nav-close');
-  const navigation = document.getElementById('siteNavigation');
-  const dropdownToggles = document.querySelectorAll('.nav-item.has-dropdown > .dropdown-toggle');
 
   // Preloader fadeout
   const preloader = document.getElementById('preloader');
@@ -29,83 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
     yearSpan.textContent = new Date().getFullYear();
   }
 
-  // 1. Sticky Header scroll handling
+  // Sticky Header scroll handling
   const handleScroll = () => {
-    if (window.scrollY > 0) {
-      header.classList.add('is-sticky');
-    } else {
-      header.classList.remove('is-sticky');
+    if (header) {
+      if (window.scrollY > 0) {
+        header.classList.add('is-sticky');
+      } else {
+        header.classList.remove('is-sticky');
+      }
     }
   };
   window.addEventListener('scroll', handleScroll);
   handleScroll(); // Initial check on load
 
-  // 2. Mobile Nav Drawer open/close
-  if (navToggle && navigation) {
-    navToggle.addEventListener('click', () => {
-      navigation.classList.add('is-active');
-      navToggle.setAttribute('aria-expanded', 'true');
-    });
-  }
-
-  if (navClose && navigation) {
-    navClose.addEventListener('click', () => {
-      navigation.classList.remove('is-active');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  // Close menu drawer when clicking outside on mobile
-  document.addEventListener('click', (e) => {
-    if (navigation && navigation.classList.contains('is-active')) {
-      if (!navigation.contains(e.target) && !navToggle.contains(e.target)) {
-        navigation.classList.remove('is-active');
-        navToggle.setAttribute('aria-expanded', 'false');
+  // Set active nav item based on current URL path
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.site-header .nav-link, .site-header .dropdown-item');
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href) {
+      const isMatch = (href === '/' && currentPath === '/') || 
+                      (href !== '/' && currentPath.startsWith(href));
+      if (isMatch) {
+        link.classList.add('active');
+        if (link.classList.contains('dropdown-item')) {
+          const parentDropdown = link.closest('.dropdown');
+          if (parentDropdown) {
+            parentDropdown.querySelector('.nav-link')?.classList.add('active');
+          }
+        }
       }
     }
   });
 
-  // 3. Mobile Dropdown toggle on link click (only under 992px width)
+  // Prevent dropdown toggle click action on desktop (min-width: 992px)
+  // to avoid click toggles while allowing hover navigation.
+  const dropdownToggles = document.querySelectorAll('.site-header .dropdown-toggle');
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
-      if (window.innerWidth < 992) {
-        e.preventDefault(); // Prevent navigating to href="#"
-        const dropdown = toggle.nextElementSibling;
-        const isExpanded = dropdown.classList.contains('is-expanded');
-
-        // Close all dropdowns first
-        document.querySelectorAll('.nav-dropdown').forEach(d => {
-          d.classList.remove('is-expanded');
-        });
-        document.querySelectorAll('.dropdown-toggle').forEach(t => {
-          t.setAttribute('aria-expanded', 'false');
-        });
-
-        // Toggle selected dropdown
-        if (!isExpanded) {
-          dropdown.classList.add('is-expanded');
-          toggle.setAttribute('aria-expanded', 'true');
-        }
-      }
-    });
-  });
-
-  // 4. Accordion / Collapse toggler
-  const collapseToggles = document.querySelectorAll('[data-toggle="collapse"]');
-  collapseToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetSelector = toggle.getAttribute('href') || toggle.getAttribute('data-target');
-      const targetElement = document.querySelector(targetSelector);
-      if (targetElement) {
-        const isShown = targetElement.classList.contains('show');
-        if (isShown) {
-          targetElement.classList.remove('show');
-          toggle.setAttribute('aria-expanded', 'false');
-        } else {
-          targetElement.classList.add('show');
-          toggle.setAttribute('aria-expanded', 'true');
-        }
+      if (window.innerWidth >= 992) {
+        e.preventDefault();
+        e.stopPropagation();
       }
     });
   });

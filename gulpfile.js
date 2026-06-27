@@ -45,7 +45,7 @@ gulp.task('scripts', function() {
             './src/js/default-assets/jquery.scrollup.min.js',
             'node_modules/jquery-countdown/dist/jquery.countdown.min.js'
         ])
-        .pipe(concat('alime.bundle.js'))
+        .pipe(concat('main.bundle.js'))
         .pipe(gulp.dest('./src/js/'))
 });
 

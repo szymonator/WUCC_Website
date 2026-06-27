@@ -15,10 +15,10 @@
     <link rel="icon" href="/img/core-img/wucc_logo_white.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/style.css?v=2">
+    <link rel="stylesheet" href="/style.css?v=5">
     <link rel="stylesheet" href="/css/main_layout.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/page_decorations.css">
+    <link rel="stylesheet" href="/css/navigation.css?v=4">
+    <link rel="stylesheet" href="/css/page_decorations.css?v=2">
 
 </head>
 
@@ -29,60 +29,56 @@
     </div>
     <!-- /Preloader -->
 
-        <!-- Header Area Start -->
-    <header class="site-header">
-      <div class="header-container">
+            <!-- Header Area Start -->
+    <header class="site-header navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+      <div class="container">
         <!-- Branding logo -->
-        <a href="/" class="header-logo">
+        <a href="/" class="navbar-brand">
           <img src="/img/core-img/header_logo.png" alt="Warwick University Climbing Club Logo">
         </a>
 
         <!-- Mobile menu toggle button -->
-        <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Main Navigation Menu -->
-        <nav class="site-navigation" id="siteNavigation">
-          <button class="mobile-nav-close" aria-label="Close navigation menu">&times;</button>
-          <ul class="nav-list">
+        <div class="collapse navbar-collapse" id="siteNavigation">
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             
-            <li class="nav-item has-dropdown">
-              <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">About</a>
-              <ul class="nav-dropdown">
-                <li><a href="/about/abouttheclub/">About the Club</a></li>
-                <li><a href="/about/whyjoin/">Why join?</a></li>
-                <li><a href="/about/exec/">Meet The Exec</a></li>
-                <li><a href="/about/training/">Training</a></li>
-              </ul>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="aboutDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+              <div class="dropdown-menu" aria-labelledby="aboutDropdown">
+                <a class="dropdown-item" href="/about/abouttheclub/">About the Club</a>
+                <a class="dropdown-item" href="/about/whyjoin/">Why join?</a>
+                <a class="dropdown-item" href="/about/exec/">Meet The Exec</a>
+                <a class="dropdown-item" href="/about/training/">Training</a>
+              </div>
             </li>
             
-            <li class="nav-item has-dropdown">
-              <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">What's On</a>
-              <ul class="nav-dropdown">
-                <li><a href="/events/climboftheweek/">Climb Of The Week</a></li>
-                <li><a href="/events/clubhours/">Club Hours</a></li>
-              </ul>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="eventsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">What's On</a>
+              <div class="dropdown-menu" aria-labelledby="eventsDropdown">
+                <a class="dropdown-item" href="/events/climboftheweek/">Climb Of The Week</a>
+                <a class="dropdown-item" href="/events/clubhours/">Club Hours</a>
+              </div>
             </li>
             
-            <li class="nav-item has-dropdown">
-              <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Adventure Log</a>
-              <ul class="nav-dropdown">
-                <li><a href="/adventures/comps/">Competitions</a></li>
-                <li><a href="/adventures/tripsandtours/">Trips and Tours</a></li>
-              </ul>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="adventureDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Adventure Log</a>
+              <div class="dropdown-menu" aria-labelledby="adventureDropdown">
+                <a class="dropdown-item" href="/adventures/comps/">Competitions</a>
+                <a class="dropdown-item" href="/adventures/tripsandtours/">Trips and Tours</a>
+              </div>
             </li>
             
             <li class="nav-item"><a href="/newclimbers/" class="nav-link">New Climbers</a></li>
             <li class="nav-item"><a href="/welfare/" class="nav-link">Welfare</a></li>
           </ul>
-        </nav>
+        </div>
       </div>
     </header>
-    <!-- Header Area End -->
     <!-- Header Area End -->
 
             <!-- Breadcrumb Area Start -->
@@ -112,7 +108,7 @@
             <!-- President -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Naomi_Exec_Pic.jpg" alt="Naomi Richardson">
+                    <img loading="lazy" src="/img/exec/Naomi_Exec_Pic.jpg" alt="Naomi Richardson">
                 </div>
                 <div class="exec-card-info">
                     <h3>Naomi Richardson</h3>
@@ -127,7 +123,7 @@
             <!-- President -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Luke_Exec_Pic.jpg" alt="Luke Burgess">
+                    <img loading="lazy" src="/img/exec/Luke_Exec_Pic.jpg" alt="Luke Burgess">
                 </div>
                 <div class="exec-card-info">
                     <h3>Luke Burgess</h3>
@@ -142,7 +138,7 @@
             <!-- Vice-President -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Edie_Exec_Pic.jpg" alt="Edie Patey">
+                    <img loading="lazy" src="/img/exec/Edie_Exec_Pic.jpg" alt="Edie Patey">
                 </div>
                 <div class="exec-card-info">
                     <h3>Edie Patey</h3>
@@ -157,7 +153,7 @@
             <!-- Secretary And Merch -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Sarah_Exec_Pic.jpg" alt="Sarah Bailey">
+                    <img loading="lazy" src="/img/exec/Sarah_Exec_Pic.jpg" alt="Sarah Bailey">
                 </div>
                 <div class="exec-card-info">
                     <h3>Sarah Bailey</h3>
@@ -172,7 +168,7 @@
             <!-- Treasurer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Alfie_Exec_Pic.jpg" alt="Alfie Lee">
+                    <img loading="lazy" src="/img/exec/Alfie_Exec_Pic.jpg" alt="Alfie Lee">
                 </div>
                 <div class="exec-card-info">
                     <h3>Alfie Lee</h3>
@@ -187,7 +183,7 @@
             <!-- Welfare and Diversity Officer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Lauren_Exec_Pic.jpg" alt="Lauren Baxter">
+                    <img loading="lazy" src="/img/exec/Lauren_Exec_Pic.jpg" alt="Lauren Baxter">
                 </div>
                 <div class="exec-card-info">
                     <h3>Lauren Baxter</h3>
@@ -202,7 +198,7 @@
             <!-- Social And Welfare Secretary -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/lucas_dodgson.jpg" alt="Lucas Dodgson">
+                    <img loading="lazy" src="/img/exec/lucas_dodgson.jpg" alt="Lucas Dodgson">
                 </div>
                 <div class="exec-card-info">
                     <h3>Lucas Dodgson</h3>
@@ -217,7 +213,7 @@
             <!-- Social Secretary -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Sophie_Exec_Pic.jpg" alt="Sophie Savage">
+                    <img loading="lazy" src="/img/exec/Sophie_Exec_Pic.jpg" alt="Sophie Savage">
                 </div>
                 <div class="exec-card-info">
                     <h3>Sophie Savage</h3>
@@ -232,7 +228,7 @@
             <!-- Social Secretary -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/IsaacPilling.jpg" alt="Isaac Pilling">
+                    <img loading="lazy" src="/img/exec/IsaacPilling.jpg" alt="Isaac Pilling">
                 </div>
                 <div class="exec-card-info">
                     <h3>Isaac Pilling</h3>
@@ -247,7 +243,7 @@
             <!-- Male Captain -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Stan_Exce_Pic.jpg" alt="Stan Bradley Scott">
+                    <img loading="lazy" src="/img/exec/Stan_Exce_Pic.jpg" alt="Stan Bradley Scott">
                 </div>
                 <div class="exec-card-info">
                     <h3>Stan Bradley Scott</h3>
@@ -262,7 +258,7 @@
             <!-- Female Captain -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Gabrielle_Exec_Pic.jpg" alt="Gabrielle Welch">
+                    <img loading="lazy" src="/img/exec/Gabrielle_Exec_Pic.jpg" alt="Gabrielle Welch">
                 </div>
                 <div class="exec-card-info">
                     <h3>Gabrielle Welch</h3>
@@ -277,7 +273,7 @@
             <!-- Competitions Officer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Zach_Exec_Pic.jpg" alt="Zach Welch">
+                    <img loading="lazy" src="/img/exec/Zach_Exec_Pic.jpg" alt="Zach Welch">
                 </div>
                 <div class="exec-card-info">
                     <h3>Zach Welch</h3>
@@ -292,7 +288,7 @@
             <!-- Competitions Officer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Cleo_Exec_Pic.jpg" alt="Cleo Ashworth">
+                    <img loading="lazy" src="/img/exec/Cleo_Exec_Pic.jpg" alt="Cleo Ashworth">
                 </div>
                 <div class="exec-card-info">
                     <h3>Cleo Ashworth</h3>
@@ -307,7 +303,7 @@
             <!-- Media and Fundraising Officer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/georgina_redfern.jpeg" alt="Georgina Redfern">
+                    <img loading="lazy" src="/img/exec/georgina_redfern.jpeg" alt="Georgina Redfern">
                 </div>
                 <div class="exec-card-info">
                     <h3>Georgina Redfern</h3>
@@ -322,7 +318,7 @@
             <!-- Tour Secretary -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/James_Wallace_Exec_Pic.jpg" alt="James Wallace">
+                    <img loading="lazy" src="/img/exec/James_Wallace_Exec_Pic.jpg" alt="James Wallace">
                 </div>
                 <div class="exec-card-info">
                     <h3>James Wallace</h3>
@@ -337,7 +333,7 @@
             <!-- Tour Secretary -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Albane_Exec_Pic.jpg" alt="Albane Colin-Salingue">
+                    <img loading="lazy" src="/img/exec/Albane_Exec_Pic.jpg" alt="Albane Colin-Salingue">
                 </div>
                 <div class="exec-card-info">
                     <h3>Albane Colin-Salingue</h3>
@@ -352,7 +348,7 @@
             <!-- Gear Secretary -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Ella_Exec_Pic.jpg" alt="Ella Foley">
+                    <img loading="lazy" src="/img/exec/Ella_Exec_Pic.jpg" alt="Ella Foley">
                 </div>
                 <div class="exec-card-info">
                     <h3>Ella Foley</h3>
@@ -367,7 +363,7 @@
             <!-- Safety and Training -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Annalise_Exec _Pic.jpg" alt="Annalise Smith">
+                    <img loading="lazy" src="/img/exec/Annalise_Exec _Pic.jpg" alt="Annalise Smith">
                 </div>
                 <div class="exec-card-info">
                     <h3>Annalise Smith</h3>
@@ -382,7 +378,7 @@
             <!-- Safety and Training -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Aaliya_Exec_Pic.jpg" alt="Aaliya Elias">
+                    <img loading="lazy" src="/img/exec/Aaliya_Exec_Pic.jpg" alt="Aaliya Elias">
                 </div>
                 <div class="exec-card-info">
                     <h3>Aaliya Elias</h3>
@@ -397,7 +393,7 @@
             <!-- Outdoor Officer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Lorenzo_Exec_Pic.jpg" alt="Lorenzo Kai-Rui Anzolin">
+                    <img loading="lazy" src="/img/exec/Lorenzo_Exec_Pic.jpg" alt="Lorenzo Kai-Rui Anzolin">
                 </div>
                 <div class="exec-card-info">
                     <h3>Lorenzo Kai-Rui Anzolin</h3>
@@ -412,7 +408,7 @@
             <!-- Outdoor Officer -->
             <div class="exec-card">
                 <div class="exec-card-image">
-                    <img src="/img/exec/Lads_Exec_Pic.jpg" alt="Ladislas Walewski">
+                    <img loading="lazy" src="/img/exec/Lads_Exec_Pic.jpg" alt="Ladislas Walewski">
                 </div>
                 <div class="exec-card-info">
                     <h3>Ladislas Walewski</h3>
@@ -430,24 +426,22 @@
     </section>
     <!-- Main Meet The Exec Area End -->
 
-        <!-- Footer Area Start -->
-    <footer class="site-footer">
+            <!-- Footer Area Start -->
+    <footer class="site-footer bg-black py-4">
       <div class="container">
-        <div class="footer-container">
-          <!-- Social Info -->
-          <div class="footer-social">
-            <a href="https://www.facebook.com/groups/warwickuniversityclimbingclub/" target="_blank" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://www.instagram.com/w_u_c_c/?hl=en" target="_blank" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="https://www.youtube.com/user/warwickclimbing" target="_blank" aria-label="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+        <div class="row align-items-center text-center">
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="footer-social">
+              <a href="https://www.facebook.com/groups/warwickuniversityclimbingclub/" target="_blank" class="text-white mx-2" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/w_u_c_c/?hl=en" target="_blank" class="text-white mx-2" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/user/warwickclimbing" target="_blank" class="text-white mx-2" aria-label="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            </div>
           </div>
-
-          <div class="footer-author">
-            <p>Website by Vickie Snow</p>
+          <div class="col-md-4 mb-3 mb-md-0">
+            <p class="text-white mb-0">Website by Vickie Snow</p>
           </div>
-
-          <!-- Copywrite Text -->
-          <div class="footer-copywrite">
-            <p>Copyright &copy; <span id="currentYear"></span> Warwick University Climbing Club. All rights reserved.</p>
+          <div class="col-md-4">
+            <p class="text-white mb-0">Copyright &copy; <span id="currentYear"></span> Warwick University Climbing Club. All rights reserved.</p>
           </div>
         </div>
       </div>
@@ -456,7 +450,10 @@
 
 <!-- **** Custom JS File ***** -->
 
-<script src="/js/navigation.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/navigation.js?v=2"></script>
 <script src="/js/lightbox.js"></script>
 
     <!-- Footer Area End -->
