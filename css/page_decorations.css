@@ -532,3 +532,205 @@
     align-items: center;
   }
 }
+
+/* FAQ Accordion Grid & Card Styling */
+.faq-cell {
+  background-color: #000000;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.faq-cell:hover {
+  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.2);
+}
+
+/* Trigger styling */
+.faq-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+}
+
+.faq-trigger:hover {
+  background-color: #0d0d0d;
+}
+
+.faq-trigger .faq-question {
+  color: var(--primary-color) !important;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.faq-trigger .faq-icons {
+  color: var(--primary-color) !important;
+  font-size: 14px;
+}
+
+/* Toggle icons on expanded/collapsed state */
+.faq-trigger[aria-expanded="true"] .fa-plus { display: none; }
+.faq-trigger[aria-expanded="false"] .fa-minus { display: none; }
+
+/* Expanded text area styling */
+.faq-cell .collapse {
+  transition: height 0.35s ease;
+}
+
+.faq-content {
+  padding: 0 25px 25px 25px;
+  background-color: transparent;
+}
+
+.faq-content p {
+  color: var(--primary-color) !important;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.faq-content p:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+/* Joining Steps Accordion Styling */
+.step-cell {
+  background-color: #000000;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.step-cell:hover {
+  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.2);
+}
+
+/* Trigger styling */
+.step-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+}
+
+.step-trigger:hover {
+  background-color: #0d0d0d;
+}
+
+.step-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.step-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color) !important;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color) !important;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.step-icons {
+  color: var(--primary-color) !important;
+  font-size: 14px;
+}
+
+/* Toggle icons on expanded/collapsed state */
+.step-trigger[aria-expanded="true"] .fa-plus { display: none; }
+.step-trigger[aria-expanded="false"] .fa-minus { display: none; }
+
+/* Expanded content area styling */
+.step-cell .collapse {
+  transition: height 0.35s ease;
+}
+
+.step-content {
+  padding: 0 25px 25px 25px;
+  background-color: transparent;
+}
+
+/* Force all texts, links, headers, and lists to be red and inherit correctly */
+.step-cell,
+.step-cell p,
+.step-cell h4,
+.step-cell h5,
+.step-cell li,
+.step-cell ol,
+.step-cell a {
+  color: var(--primary-color) !important;
+}
+
+.step-cell a {
+  text-decoration: underline;
+}
+
+.step-cell a:hover {
+  color: var(--text-white) !important;
+}
+
+/* Override default bootstrap .collapse > .container-fluid block style */
+.step-cell .collapse > .container-fluid {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Scoped styling for inner boxes to ensure black backgrounds, red borders, and red texts */
+.step-cell .highlight-box-neutral,
+.step-cell .highlight-box-dark,
+.step-cell .highlight-box-yellow {
+  background-color: #0d0d0d !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  margin-bottom: 15px !important;
+}
+
+/* Alignment corrections for inner elements */
+.step-cell img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px 0 0 0;
+}
+
+.step-cell ol {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.step-cell li {
+  margin-bottom: 5px;
+}
+
+.step-cell h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}

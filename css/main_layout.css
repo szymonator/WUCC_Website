@@ -269,17 +269,17 @@ a:hover {
   gap: 20px;
 }
 
-/* Warwick SU logo style (Red Filtered) */
+/* Warwick SU logo style (White Filtered) */
 .footer-su-logo {
   height: 28px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
-  filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2973%) hue-rotate(336deg) brightness(101%) contrast(101%) !important;
+  filter: brightness(0) invert(1) !important; /* Turns SU logo white */
 }
 
 .su-logo-link:hover .footer-su-logo {
-  transform: scale(1.1); /* SU Logo grows on hover and does NOT change color */
+  transform: scale(1.1); /* SU Logo grows on hover and stays white */
 }
 
 /* Social logos style */
