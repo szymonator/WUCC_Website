@@ -69,4 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Dynamically load Google Analytics manager
+  const analyticsScript = document.createElement('script');
+  analyticsScript.src = '/js/analytics.js';
+  analyticsScript.defer = true;
+  document.head.appendChild(analyticsScript);
 });

@@ -24,7 +24,7 @@
   left: 0;
   width: 100%;
   height: 80px;
-  background-color: #000000;
+  background-color: var(--primary-color); /* Changed to red to match the header */
   z-index: 0;
 }
 
@@ -286,9 +286,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--bg-white);
+  background-color: #000000 !important; /* Back to black bg */
+  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
   border-radius: 12px;
-  box-shadow: var(--box-shadow-light);
   padding: 24px;
   gap: 24px;
   min-height: 220px; /* Consistent baseline height, can grow if needed */
@@ -300,7 +300,7 @@
 
 .exec-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(255, 90, 75, 0.25); /* Warm red glow on hover */
 }
 
 .exec-card-image {
@@ -328,21 +328,21 @@
 .exec-card-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #ffffff !important; /* White name text */
   margin: 0 0 4px 0;
 }
 
 .exec-pronouns {
   font-size: 12px;
-  color: var(--text-body);
+  color: #ffffff !important; /* White pronouns text */
   opacity: 0.8;
   font-style: italic;
   margin-bottom: 8px;
 }
 
 .exec-role {
-  background-color: var(--primary-color);
-  color: var(--text-dark) !important; /* Accessibility: Black text on Warwick Red background */
+  background-color: var(--primary-color) !important; /* Warwick Red background tag */
+  color: #000000 !important; /* Black text for high readability */
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -356,12 +356,12 @@
 .exec-card-info p {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--text-body);
+  color: #ffffff !important; /* White course details */
   margin: 0;
 }
 
 .exec-card-info p b {
-  color: var(--text-dark);
+  color: #ffffff !important; /* White bold label text */
 }
 
 /* Tablet responsive height adjustment for Exec Card */
@@ -414,9 +414,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--bg-white);
+  background-color: var(--primary-color) !important; /* Cards are now Warwick Red */
   border-radius: 12px;
-  box-shadow: var(--box-shadow-light);
   padding: 24px;
   gap: 24px;
   height: 180px; /* Set height on desktop */
@@ -427,7 +426,7 @@
 
 .adventure-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(255, 90, 75, 0.25); /* Subtle red glow on black bg */
 }
 
 .adventure-card-image {
@@ -436,7 +435,7 @@
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
-  margin: -24px 0 -24px -24px; /* Align image flush to card edges */
+  margin: 0; /* Removed negative margins to give image padding inside cell */
 }
 
 .adventure-card-image img {
@@ -456,8 +455,8 @@
 
 .adventure-meta {
   font-size: 12px;
-  color: var(--text-body);
-  opacity: 0.8;
+  color: #000000 !important; /* Black text on red bg */
+  opacity: 0.75;
   margin-bottom: 8px;
   display: flex;
   gap: 15px;
@@ -474,7 +473,7 @@
 .adventure-card-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #000000 !important; /* Black text on red bg */
   margin: 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -484,12 +483,12 @@
 }
 
 .adventure-card-info h3 a {
-  color: var(--text-dark);
+  color: #000000 !important; /* Black text on red bg */
   transition: var(--transition-smooth);
 }
 
 .adventure-card-info h3 a:hover {
-  color: var(--primary-color);
+  color: #ffffff !important; /* White link hover on red card */
 }
 
 /* Tablet responsive card layout */
@@ -535,15 +534,15 @@
 
 /* FAQ Accordion Grid & Card Styling */
 .faq-cell {
-  background-color: #000000;
-  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color) !important; /* Cells are now Warwick Red */
+  border: 1px solid #000000 !important; /* Contrast border */
   border-radius: 10px;
   overflow: hidden;
   transition: all var(--transition-smooth);
 }
 
 .faq-cell:hover {
-  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.2);
+  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
 }
 
 /* Trigger styling */
@@ -552,7 +551,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black text on red bg */
   text-decoration: none !important;
   font-weight: 600;
   font-size: 16px;
@@ -561,17 +560,17 @@
 }
 
 .faq-trigger:hover {
-  background-color: #0d0d0d;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .faq-trigger .faq-question {
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black question text */
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
 .faq-trigger .faq-icons {
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black icons */
   font-size: 14px;
 }
 
@@ -590,7 +589,7 @@
 }
 
 .faq-content p {
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black answer text */
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
@@ -602,15 +601,15 @@
 
 /* Joining Steps Accordion Styling */
 .step-cell {
-  background-color: #000000;
-  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color) !important; /* Cells are now Warwick Red */
+  border: 1px solid #000000 !important; /* Contrast border */
   border-radius: 10px;
   overflow: hidden;
   transition: all var(--transition-smooth);
 }
 
 .step-cell:hover {
-  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.2);
+  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
 }
 
 /* Trigger styling */
@@ -619,14 +618,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black text */
   text-decoration: none !important;
   background-color: transparent;
   transition: var(--transition-smooth);
 }
 
 .step-trigger:hover {
-  background-color: #0d0d0d;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .step-trigger-left {
@@ -638,7 +637,7 @@
 .step-number {
   font-size: 20px;
   font-weight: 700;
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black step number text */
   margin: 0;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
@@ -647,14 +646,14 @@
 .step-title {
   font-size: 16px;
   font-weight: 600;
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black step title text */
   margin: 0;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
 }
 
 .step-icons {
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Black step icons */
   font-size: 14px;
 }
 
@@ -672,7 +671,7 @@
   background-color: transparent;
 }
 
-/* Force all texts, links, headers, and lists to be red and inherit correctly */
+/* Force all texts, links, headers, and lists to be black and inherit correctly */
 .step-cell,
 .step-cell p,
 .step-cell h4,
@@ -680,7 +679,7 @@
 .step-cell li,
 .step-cell ol,
 .step-cell a {
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Force black text */
 }
 
 .step-cell a {
@@ -688,7 +687,7 @@
 }
 
 .step-cell a:hover {
-  color: var(--text-white) !important;
+  color: #ffffff !important; /* White link hover on red card */
 }
 
 /* Override default bootstrap .collapse > .container-fluid block style */
@@ -699,16 +698,22 @@
   margin-bottom: 0 !important;
 }
 
-/* Scoped styling for inner boxes to ensure black backgrounds, red borders, and red texts */
+/* Scoped styling for inner boxes to ensure black backgrounds, red borders, and white texts */
 .step-cell .highlight-box-neutral,
 .step-cell .highlight-box-dark,
 .step-cell .highlight-box-yellow {
-  background-color: #0d0d0d !important;
+  background-color: #000000 !important;
   border: 1px solid var(--primary-color) !important;
-  color: var(--primary-color) !important;
+  color: #ffffff !important;
   padding: 20px !important;
   border-radius: 8px !important;
   margin-bottom: 15px !important;
+}
+
+.step-cell .highlight-box-neutral *,
+.step-cell .highlight-box-dark *,
+.step-cell .highlight-box-yellow * {
+  color: #ffffff !important;
 }
 
 /* Alignment corrections for inner elements */

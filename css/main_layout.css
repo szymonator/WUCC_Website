@@ -4,14 +4,14 @@
 
 :root {
   --primary-color: #FF5A4B;       /* Team Warwick Red */
-  --text-dark: #000000;           /* Warwick Black */
-  --text-white: #FFFFFF;          /* Warwick White */
-  --text-body: #444444;           /* Body Text Color */
-  --bg-white: #ffffff;
-  --bg-gray: #f7f7f7;
-  --border-color: #ebebeb;
+  --text-dark: #ffffff;           /* Changed to white for dark mode headings */
+  --text-white: #ffffff;
+  --text-body: #ffffff;           /* Changed to white for body text */
+  --bg-white: #000000;            /* Changed to black for background */
+  --bg-gray: #0d0d0d;             /* Changed to dark charcoal for cards */
+  --border-color: #222222;        /* Changed to dark gray for borders */
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --box-shadow-light: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
 /* Page Reset & Base Styles */
@@ -132,24 +132,26 @@ a:hover {
   background-color: #000;
 }
 
-.video-wrapper iframe {
+.video-wrapper iframe,
+.video-wrapper img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border: 0;
 }
 
-/* Footer Styling */
 .site-footer {
-  background-color: #000000 !important;
-  border-top: 1px solid var(--primary-color);
+  background-color: var(--primary-color) !important; /* Footer is now Warwick Red */
+  border-top: 100px solid #000000 !important;       /* 100px black spacer bar between content and footer */
+  background-clip: padding-box !important;          /* Keeps background red restricted to the padding box */
   padding: 40px 0;
   margin-top: auto; /* Pushes footer to bottom */
 }
 
-/* Explicit red text overrides for all elements inside the footer */
+/* Explicit black text overrides for all elements inside the red footer */
 .site-footer,
 .site-footer p,
 .site-footer span,
@@ -159,11 +161,11 @@ a:hover {
 .site-footer .footer-disclaimer,
 .site-footer .footer-contact,
 .site-footer .footer-link {
-  color: var(--primary-color) !important;
+  color: #000000 !important;
 }
 
 .site-footer a:hover {
-  color: var(--text-white) !important;
+  color: #ffffff !important;
 }
 
 /* Main Flex Container based on specifications */
@@ -199,10 +201,11 @@ a:hover {
 
 /* Enlarge Club Logo and add hover effect */
 .footer-wucc-logo {
-  width: 120px;
-  height: 120px;
+  width: 135px; /* Enlarged from 120px */
+  height: 135px; /* Enlarged from 120px */
   object-fit: contain;
   transition: var(--transition-smooth);
+  filter: brightness(0) !important; /* Turns logo black on red background */
 }
 
 .footer-wucc-logo:hover {
@@ -217,7 +220,7 @@ a:hover {
 }
 
 .footer-copyright {
-  font-size: 13px;
+  font-size: 15px; /* Increased from 13px */
   font-weight: 600;
   margin: 0 0 8px 0;
 }
@@ -229,7 +232,7 @@ a:hover {
 }
 
 .footer-link {
-  font-size: 12px;
+  font-size: 14px; /* Increased from 12px */
   text-decoration: underline;
   font-weight: 500;
   white-space: nowrap;
@@ -245,13 +248,13 @@ a:hover {
 }
 
 .footer-disclaimer {
-  font-size: 12px;
+  font-size: 14px; /* Increased from 12px */
   line-height: 1.5;
   margin: 0 0 8px 0;
 }
 
 .footer-contact {
-  font-size: 12px;
+  font-size: 14px; /* Increased from 12px */
   font-weight: 600;
   margin: 0;
 }
@@ -269,32 +272,33 @@ a:hover {
   gap: 20px;
 }
 
-/* Warwick SU logo style (White Filtered) */
+/* Warwick SU logo style (Black Filtered) */
 .footer-su-logo {
-  height: 28px;
+  height: 35px; /* Enlarged from 28px */
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
-  filter: brightness(0) invert(1) !important; /* Turns SU logo white */
+  filter: brightness(0) !important; /* Turns SU logo black */
 }
 
 .su-logo-link:hover .footer-su-logo {
-  transform: scale(1.1); /* SU Logo grows on hover and stays white */
+  transform: scale(1.1); /* SU Logo grows on hover and stays black */
 }
 
 /* Social logos style */
 .social-logo-link img,
 .social-logo-link svg {
-  height: 28px;
+  height: 35px; /* Enlarged from 28px */
   width: auto;
   display: block;
   transition: var(--transition-smooth);
+  filter: brightness(0) !important; /* Turns social logos black by default */
 }
 
 .social-logo-link:hover img,
 .social-logo-link:hover svg {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  filter: brightness(0) drop-shadow(0 0 5px rgba(0, 0, 0, 0.4)) !important;
 }
 
 /* Section 5: Crest wrapper (no circles) */
@@ -304,10 +308,11 @@ a:hover {
 
 /* Enlarge Crest and add hover effect */
 .footer-ws-crest {
-  height: 120px;
+  height: 135px; /* Enlarged from 120px */
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
+  filter: brightness(0) !important; /* Turns crest black on red background */
 }
 
 .footer-ws-crest:hover {

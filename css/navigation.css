@@ -5,11 +5,11 @@
 
 :root {
   --primary-color: #FF5A4B;       /* Team Warwick Red */
-  --text-dark: #000000;           /* Warwick Black */
+  --text-dark: #ffffff;           /* Changed to white for dark mode content */
   --text-white: #FFFFFF;          /* Warwick White */
   --bg-dark: #000000;
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow-light: 0 4px 12px rgba(255, 255, 255, 0.05);
   --box-shadow-dropdown: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -20,7 +20,7 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--bg-dark) !important;
+  background-color: var(--primary-color) !important; /* Header is now Warwick Red */
   transition: var(--transition-smooth);
   padding: 15px 0;
 }
@@ -36,19 +36,20 @@
 }
 
 .site-header .navbar-brand img {
-  height: 50px;
+  height: 65px; /* Increased from 50px */
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
+  filter: brightness(0) !important; /* Turns logo black on red bg */
 }
 
 .site-header.is-sticky .navbar-brand img {
-  height: 40px;
+  height: 50px; /* Increased from 40px */
 }
 
 /* Nav Link Items */
 .site-header .navbar-nav .nav-link {
-  color: var(--primary-color) !important;
+  color: #000000 !important; /* Text is black on red background */
   font-size: 15px;
   font-weight: 500;
   padding: 15px 18px !important;
@@ -59,16 +60,16 @@
 
 .site-header .navbar-nav .nav-link:hover {
   transform: scale(1.08);
-  color: var(--primary-color) !important;
+  color: #000000 !important;
 }
 
 .site-header .navbar-nav .nav-item.active > .nav-link {
-  color: var(--primary-color) !important;
+  color: #000000 !important;
 }
 
 /* Dropdown Menu styling (Desktop) */
 .site-header .dropdown-menu {
-  background-color: var(--bg-dark) !important;
+  background-color: var(--primary-color) !important; /* Dropdowns are now Warwick Red */
   border: none;
   border-radius: 6px;
   box-shadow: var(--box-shadow-dropdown);
@@ -98,18 +99,18 @@
 }
 
 .site-header .dropdown-item {
-  color: var(--primary-color) !important;
-  background-color: var(--bg-dark) !important;
+  color: #000000 !important; /* Text is black on red dropdown menu */
+  background-color: transparent !important;
   font-size: 14px;
   font-weight: 500;
   padding: 10px 20px;
   transition: var(--transition-smooth);
 }
 
-/* Accessibility contrast rule: black text on Warwick Red background when hovered */
+/* Accessibility contrast rule: white text on black background when dropdown item hovered */
 .site-header .dropdown-item:hover {
-  background-color: var(--primary-color) !important;
-  color: var(--text-dark) !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
   padding-left: 24px;
 }
 
@@ -124,7 +125,7 @@
 }
 
 .site-header .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23FF5A4B' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* Stroke changed to black */
 }
 
 /* Responsive Overrides */
@@ -166,16 +167,16 @@
   }
   
   .site-header .navbar-brand img {
-    height: 40px;
+    height: 50px; /* Increased from 40px */
   }
   
   .site-header.is-sticky .navbar-brand img {
-    height: 35px;
+    height: 45px; /* Increased from 35px */
   }
 
   .site-header .navbar-collapse {
     order: 4; /* Wrap below header bar elements */
-    background-color: var(--bg-dark);
+    background-color: var(--primary-color) !important; /* Mobile menu is red */
     padding: 15px 20px;
     margin-top: 10px;
     border-radius: 8px;
@@ -184,7 +185,7 @@
 
   .site-header .navbar-nav .nav-link {
     padding: 12px 0 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15); /* Black separator line */
   }
 
   /* Remove bottom border on the last item */
@@ -193,7 +194,7 @@
   }
 
   .site-header .dropdown-menu {
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: rgba(0, 0, 0, 0.05) !important; /* Slightly dark shade on red menu */
     box-shadow: none;
     padding: 5px 0;
     margin: 5px 0 10px 0;
@@ -201,12 +202,12 @@
 
   .site-header .dropdown-item {
     background-color: transparent !important;
-    color: var(--primary-color) !important;
+    color: #000000 !important; /* Black text for dropdown in mobile */
     padding: 8px 15px;
   }
 
   .site-header .dropdown-item:hover {
-    color: var(--primary-color) !important;
+    color: #000000 !important;
     background-color: transparent !important;
     padding-left: 20px;
   }
@@ -242,6 +243,7 @@
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
+  filter: brightness(0) !important; /* Turns crest black on red bg */
 }
 
 .site-header.is-sticky .header-crest img {

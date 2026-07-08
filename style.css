@@ -9,15 +9,15 @@
 
 /* === 2. Reboot & Base Styles === */
 :root {
-    --primary: #fc6060;
-    --hover: #fc6060;
-    --heading: #252525;
-    --text: #636363;
-    --white: #ffffff;
-    --dark: #000000;
-    --bg-gray: #f7f7f7;
-    --border: #ebebeb;
-    --shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
+    --primary: #FF5A4B;             /* Standard Team Warwick Red */
+    --hover: #FF5A4B;
+    --heading: #ffffff;             /* Headings are now White */
+    --text: #ffffff;                /* Body text is now White */
+    --white: #000000;               /* White bg variable is now Black */
+    --dark: #ffffff;                /* Dark text variable is now White */
+    --bg-gray: #0d0d0d;             /* Gray bg variable is now Dark gray */
+    --border: #222222;              /* Border is dark gray */
+    --shadow: 0 2px 40px 8px rgba(255, 255, 255, 0.05);
     --transition: all 400ms ease-in-out;
 }
 
@@ -28,7 +28,7 @@
 }
 
 html {
-    background-color: #000000;
+    background-color: #FF5A4B !important; /* Warwick Red buffer for elastic scroll bounce */
 }
 
 body {
@@ -202,33 +202,61 @@ ul {
 
 /* === 9. Meet the Exec & Roster Highlight Boxes === */
 .highlight-box-neutral {
-    background-color: #f2f4f8;
+    background-color: #0d0d0d;
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 25px;
-    border-left: 4px solid var(--secondary);
+    border: 1px solid #222222;
+    border-left: 4px solid var(--primary);
+    color: #ffffff !important;
+}
+
+.highlight-box-neutral h4,
+.highlight-box-neutral h5,
+.highlight-box-neutral h6,
+.highlight-box-neutral p,
+.highlight-box-neutral span,
+.highlight-box-neutral a {
+    color: #ffffff !important;
 }
 
 .highlight-box-light {
-    background-color: #e8f9f8;
+    background-color: var(--primary) !important; /* Red background */
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 25px;
-    border-left: 4px solid #a8edea;
+    border: 1px solid #000000 !important;
+    border-left: 4px solid #000000 !important;
+    color: #000000 !important;
+}
+
+.highlight-box-light h4,
+.highlight-box-light h5,
+.highlight-box-light h6,
+.highlight-box-light p,
+.highlight-box-light span,
+.highlight-box-light a {
+    color: #000000 !important; /* Black text */
+}
+
+.highlight-box-light a:hover {
+    color: #ffffff !important; /* White hover */
 }
 
 .highlight-box-dark {
-    background-color: #000000;
+    background-color: var(--primary) !important; /* Red background */
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 25px;
-    color: #FF5A4B;
-    border-left: 4px solid #FF5A4B;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+    border-left: 4px solid #000000 !important;
     transition: var(--transition);
 }
 
 .highlight-box-dark:hover {
-    background-color: #000000;
+    background-color: var(--primary) !important;
+    box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
 }
 
 .highlight-box-dark h4,
@@ -237,7 +265,7 @@ ul {
 .highlight-box-dark p,
 .highlight-box-dark ul,
 .highlight-box-dark a {
-    color: #FF5A4B !important;
+    color: #000000 !important; /* Black text */
 }
 
 .highlight-box-dark p {
@@ -245,15 +273,27 @@ ul {
 }
 
 .highlight-box-dark a:hover {
-    color: #ffffff !important;
+    color: #ffffff !important; /* White hover */
     text-decoration: underline;
 }
 
 .highlight-box-yellow {
-    background-color: #fff3cd;
+    background-color: #1a1608;
     border-radius: 10px;
     padding: 20px;
+    border: 1px solid #ffc107;
     border-left: 4px solid #ffc107;
+    color: #ffc107 !important;
+}
+
+.highlight-box-yellow h4,
+.highlight-box-yellow h5,
+.highlight-box-yellow h6,
+.highlight-box-yellow p,
+.highlight-box-yellow span,
+.highlight-box-yellow li,
+.highlight-box-yellow b {
+    color: #ffc107 !important;
 }
 
 
@@ -297,8 +337,8 @@ ul {
 
 /* Accordion text formatting */
 .collapse > .container-fluid {
-    background-color: #f8f9fa;
-    border: 1px solid #ebebeb;
+    background-color: #0d0d0d;
+    border: 1px solid #222222;
     border-top: none;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -308,7 +348,7 @@ ul {
 
 .collapse > .container-fluid p,
 .collapse > .container-fluid li {
-    color: var(--text);
+    color: #ffffff;
 }
 
 /* Handle icon changes for expanded states */
