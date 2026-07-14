@@ -5,8 +5,8 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 600px;
+  height: 80vh; /* Show content below the fold to encourage scrolling */
+  min-height: 500px;
   overflow: hidden;
   background-color: var(--bg-dark);
 }

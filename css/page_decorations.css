@@ -12,20 +12,14 @@
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  margin-top: 80px; /* Pushed below the 80px fixed header */
+  margin-top: 0; /* Align with top of screen under transparent header */
+  padding-top: 80px; /* Account for the fixed header height */
   box-sizing: border-box;
 }
 
-/* Background spacer to prevent page background from peeking through fixed header */
+/* Background spacer is removed since the header is transparent */
 .page-banner::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-color: var(--primary-color); /* Changed to red to match the header */
-  z-index: 0;
+  display: none;
 }
 
 .page-banner-overlay {
@@ -414,7 +408,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--primary-color) !important; /* Cards are now Warwick Red */
+  background-color: #000000 !important; /* Black bg */
+  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
   border-radius: 12px;
   padding: 24px;
   gap: 24px;
@@ -455,7 +450,7 @@
 
 .adventure-meta {
   font-size: 12px;
-  color: #000000 !important; /* Black text on red bg */
+  color: #ffffff !important; /* White text */
   opacity: 0.75;
   margin-bottom: 8px;
   display: flex;
@@ -473,7 +468,7 @@
 .adventure-card-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #000000 !important; /* Black text on red bg */
+  color: #ffffff !important; /* White title text */
   margin: 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -483,12 +478,12 @@
 }
 
 .adventure-card-info h3 a {
-  color: #000000 !important; /* Black text on red bg */
+  color: #ffffff !important; /* White link text */
   transition: var(--transition-smooth);
 }
 
 .adventure-card-info h3 a:hover {
-  color: #ffffff !important; /* White link hover on red card */
+  color: var(--primary-color) !important; /* Red hover on white link */
 }
 
 /* Tablet responsive card layout */
@@ -534,8 +529,8 @@
 
 /* FAQ Accordion Grid & Card Styling */
 .faq-cell {
-  background-color: var(--primary-color) !important; /* Cells are now Warwick Red */
-  border: 1px solid #000000 !important; /* Contrast border */
+  background-color: #000000 !important; /* Black bg */
+  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
   border-radius: 10px;
   overflow: hidden;
   transition: all var(--transition-smooth);
@@ -551,7 +546,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  color: #000000 !important; /* Black text on red bg */
+  color: #ffffff !important; /* White text */
   text-decoration: none !important;
   font-weight: 600;
   font-size: 16px;
@@ -560,17 +555,17 @@
 }
 
 .faq-trigger:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .faq-trigger .faq-question {
-  color: #000000 !important; /* Black question text */
+  color: #ffffff !important; /* White question text */
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
 .faq-trigger .faq-icons {
-  color: #000000 !important; /* Black icons */
+  color: #ffffff !important; /* White icons */
   font-size: 14px;
 }
 
@@ -589,7 +584,7 @@
 }
 
 .faq-content p {
-  color: #000000 !important; /* Black answer text */
+  color: #ffffff !important; /* White answer text */
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
@@ -601,8 +596,8 @@
 
 /* Joining Steps Accordion Styling */
 .step-cell {
-  background-color: var(--primary-color) !important; /* Cells are now Warwick Red */
-  border: 1px solid #000000 !important; /* Contrast border */
+  background-color: #000000 !important; /* Black bg */
+  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
   border-radius: 10px;
   overflow: hidden;
   transition: all var(--transition-smooth);
@@ -618,14 +613,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  color: #000000 !important; /* Black text */
+  color: #ffffff !important; /* White text */
   text-decoration: none !important;
   background-color: transparent;
   transition: var(--transition-smooth);
 }
 
 .step-trigger:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .step-trigger-left {
@@ -637,7 +632,7 @@
 .step-number {
   font-size: 20px;
   font-weight: 700;
-  color: #000000 !important; /* Black step number text */
+  color: #ffffff !important; /* White step number text */
   margin: 0;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
@@ -646,14 +641,14 @@
 .step-title {
   font-size: 16px;
   font-weight: 600;
-  color: #000000 !important; /* Black step title text */
+  color: #ffffff !important; /* White step title text */
   margin: 0;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
 }
 
 .step-icons {
-  color: #000000 !important; /* Black step icons */
+  color: #ffffff !important; /* White step icons */
   font-size: 14px;
 }
 
@@ -671,7 +666,7 @@
   background-color: transparent;
 }
 
-/* Force all texts, links, headers, and lists to be black and inherit correctly */
+/* Force all texts, links, headers, and lists to be white and inherit correctly */
 .step-cell,
 .step-cell p,
 .step-cell h4,
@@ -679,7 +674,7 @@
 .step-cell li,
 .step-cell ol,
 .step-cell a {
-  color: #000000 !important; /* Force black text */
+  color: #ffffff !important; /* Force white text */
 }
 
 .step-cell a {
@@ -687,7 +682,7 @@
 }
 
 .step-cell a:hover {
-  color: #ffffff !important; /* White link hover on red card */
+  color: var(--primary-color) !important; /* Red link hover on outline card */
 }
 
 /* Override default bootstrap .collapse > .container-fluid block style */

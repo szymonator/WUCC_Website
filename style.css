@@ -28,7 +28,7 @@
 }
 
 html {
-    background-color: #FF5A4B !important; /* Warwick Red buffer for elastic scroll bounce */
+    background-color: #000000 !important; /* Black buffer for elastic scroll bounce */
 }
 
 body {
@@ -221,13 +221,17 @@ ul {
 }
 
 .highlight-box-light {
-    background-color: var(--primary) !important; /* Red background */
+    background-color: #000000 !important; /* Black background */
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 25px;
-    border: 1px solid #000000 !important;
-    border-left: 4px solid #000000 !important;
-    color: #000000 !important;
+    border: 1px solid var(--primary) !important; /* Warwick Red border outline */
+    color: #ffffff !important;
+    transition: var(--transition);
+}
+
+.highlight-box-light:hover {
+    box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
 }
 
 .highlight-box-light h4,
@@ -236,26 +240,24 @@ ul {
 .highlight-box-light p,
 .highlight-box-light span,
 .highlight-box-light a {
-    color: #000000 !important; /* Black text */
+    color: #ffffff !important; /* White text */
 }
 
 .highlight-box-light a:hover {
-    color: #ffffff !important; /* White hover */
+    color: var(--primary) !important; /* Red hover */
 }
 
 .highlight-box-dark {
-    background-color: var(--primary) !important; /* Red background */
+    background-color: #000000 !important; /* Black background */
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 25px;
-    color: #000000 !important;
-    border: 1px solid #000000 !important;
-    border-left: 4px solid #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid var(--primary) !important; /* Warwick Red border outline */
     transition: var(--transition);
 }
 
 .highlight-box-dark:hover {
-    background-color: var(--primary) !important;
     box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
 }
 
@@ -265,7 +267,7 @@ ul {
 .highlight-box-dark p,
 .highlight-box-dark ul,
 .highlight-box-dark a {
-    color: #000000 !important; /* Black text */
+    color: #ffffff !important; /* White text */
 }
 
 .highlight-box-dark p {
@@ -273,7 +275,7 @@ ul {
 }
 
 .highlight-box-dark a:hover {
-    color: #ffffff !important; /* White hover */
+    color: var(--primary) !important; /* Red hover */
     text-decoration: underline;
 }
 
