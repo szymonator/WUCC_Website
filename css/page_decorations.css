@@ -424,6 +424,10 @@
   box-shadow: 0 10px 25px rgba(255, 90, 75, 0.25); /* Subtle red glow on black bg */
 }
 
+.adventure-card:hover .adventure-card-info h3 a {
+  color: var(--primary-color) !important; /* Glow link text red when card is hovered */
+}
+
 .adventure-card-image {
   flex-shrink: 0;
   width: 180px;

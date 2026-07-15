@@ -75,4 +75,34 @@ document.addEventListener('DOMContentLoaded', () => {
   analyticsScript.src = '/js/analytics.js';
   analyticsScript.defer = true;
   document.head.appendChild(analyticsScript);
+
+  // Close mobile menu when clicking outside of it
+  document.addEventListener('click', (event) => {
+    const siteNavigation = document.getElementById('siteNavigation');
+    const toggler = document.querySelector('.navbar-toggler');
+    if (siteNavigation && toggler) {
+      const isOpen = siteNavigation.classList.contains('show');
+      if (isOpen && !siteNavigation.contains(event.target) && !toggler.contains(event.target)) {
+        toggler.click();
+      }
+    }
+  });
+
+  // Make the entire adventure card clickable
+  const adventureCards = document.querySelectorAll('.adventure-card');
+  adventureCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      // Check if click was not on the link itself (to let the browser handle natural hrefs)
+      if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+        const link = card.querySelector('a');
+        if (link) {
+          const href = link.getAttribute('href');
+          if (href) {
+            window.location.href = href;
+          }
+        }
+      }
+    });
+  });
 });

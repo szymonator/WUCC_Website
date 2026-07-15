@@ -359,3 +359,51 @@ a:hover {
     height: 90px;
   }
 }
+
+/* Mobile spacing optimizations & red separators */
+.mobile-separator {
+  display: none;
+}
+
+.footer-spacer {
+  height: 125px;
+}
+
+@media (max-width: 767px) {
+  .mobile-separator {
+    display: block;
+    width: 100%; /* Changed from 70px to full width */
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  .highlight-box-dark,
+  .highlight-box-light {
+    padding: 15px !important; /* Reduced padding on mobile to optimize space */
+  }
+
+  .section-padding {
+    padding: 35px 0 !important;
+  }
+
+  /* Style.css class overrides for padding */
+  .section-padding-80-80 {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+  }
+
+  .section-padding-80-0 {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .footer-spacer {
+    height: 40px;
+  }
+
+  .site-footer {
+    border-top: 35px solid #000000 !important;
+  }
+}
