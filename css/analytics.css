@@ -76,7 +76,26 @@
 .wucc-cookie-buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
+}
+
+.wucc-cookie-link-decline {
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  padding: 8px 12px;
+  transition: color 0.25s ease;
+  outline: none;
+}
+
+.wucc-cookie-link-decline:hover {
+  color: #ffffff;
 }
 
 .wucc-cookie-btn {

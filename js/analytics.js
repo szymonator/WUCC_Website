@@ -114,13 +114,13 @@
     banner.innerHTML = `
       <div class="wucc-cookie-header">
         <i class="fa fa-info-circle" aria-hidden="true"></i>
-        <h4 class="wucc-cookie-title">Cookie Consent & Analytics</h4>
+        <h4 class="wucc-cookie-title">Help Us Plan Better Events!</h4>
       </div>
       <p class="wucc-cookie-text">
-        We use cookies and Google Analytics to help us analyse website traffic and optimize your user experience. Learn more in our <a href="/privacy/">Privacy Policy</a>.
+        We use anonymous Google Analytics to see which resources, blogs, and events are most popular so we can plan for the best member experience. We anonymise all data and <strong>never</strong> sell it to third parties. Learn more in our <a href="/privacy/">Privacy Policy</a>.
       </p>
       <div class="wucc-cookie-buttons">
-        <button class="wucc-cookie-btn wucc-cookie-btn-decline" id="wuccCookieDecline">Decline</button>
+        <button class="wucc-cookie-link-decline" id="wuccCookieDecline">Decline</button>
         <button class="wucc-cookie-btn wucc-cookie-btn-accept" id="wuccCookieAccept">Accept</button>
       </div>
     `;

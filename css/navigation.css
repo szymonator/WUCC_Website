@@ -38,6 +38,10 @@
   padding: 0;
 }
 
+.site-header .navbar-brand:hover img {
+  transform: scale(1.04); /* Grows in size slightly upon hover */
+}
+
 .site-header .navbar-brand img {
   height: 65px; /* Increased from 50px */
   width: auto;
@@ -222,6 +226,7 @@
   .site-header .navbar-nav {
     margin-left: auto !important;
     margin-right: auto !important;
+    transform: translateX(-40px); /* Visual shift to the left to compensate for text width disparity */
   }
 }
 
