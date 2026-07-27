@@ -2,45 +2,7 @@
    Core Layout, Typography & Utility CSS
    ========================================================================== */
 
-:root {
-  --primary-color: #FF5A4B;       /* Team Warwick Red */
-  --text-dark: #ffffff;           /* Changed to white for dark mode headings */
-  --text-white: #ffffff;
-  --text-body: #ffffff;           /* Changed to white for body text */
-  --bg-white: #000000;            /* Changed to black for background */
-  --bg-gray: #0d0d0d;             /* Changed to dark charcoal for cards */
-  --border-color: #222222;        /* Changed to dark gray for borders */
-  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --box-shadow-light: 0 4px 15px rgba(255, 255, 255, 0.05);
-}
-
-/* Page Reset & Base Styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-body);
-  background-color: var(--bg-white);
-  line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-dark);
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: var(--transition-smooth);
-}
-
-a:hover {
-  color: var(--text-dark);
-}
+/* Variables are defined in global.css */
 
 /* Layout Grid System */
 .container {
@@ -87,7 +49,7 @@ a:hover {
 .section-title {
   font-size: 32px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--text-primary);
   margin-bottom: 12px;
   position: relative;
 }
@@ -95,7 +57,7 @@ a:hover {
 .title-underline {
   width: 70px;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: var(--color-accent);
   margin-top: 10px;
   border-radius: 2px;
 }
@@ -103,21 +65,21 @@ a:hover {
 /* Buttons */
 .btn-wucc {
   display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--text-dark) !important; /* Accessibility: black text on Warwick Red */
+  background-color: var(--color-accent);
+  color: var(--text-primary) !important; /* Accessibility: black text on Warwick Red */
   font-weight: 600;
   text-transform: uppercase;
   font-size: 14px;
   padding: 12px 28px;
   border-radius: 4px;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--color-accent);
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .btn-wucc:hover {
   background-color: transparent;
-  color: var(--primary-color) !important;
+  color: var(--color-accent) !important;
   text-decoration: none;
 }
 
@@ -165,7 +127,7 @@ a:hover {
 }
 
 .site-footer a:hover {
-  color: var(--primary-color) !important; /* Glow Warwick Red on hover */
+  color: var(--color-accent) !important; /* Glow Warwick Red on hover */
 }
 
 /* Main Flex Container based on specifications */
@@ -298,7 +260,7 @@ a:hover {
 .social-logo-link:hover img,
 .social-logo-link:hover svg {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 5px var(--primary-color)) !important; /* Red glow on hover */
+  filter: drop-shadow(0 0 5px var(--color-accent)) !important; /* Red glow on hover */
 }
 
 /* Section 5: Crest wrapper (no circles) */
@@ -374,7 +336,7 @@ a:hover {
     display: block;
     width: 80%; /* 80% width as requested */
     height: 6px; /* Slightly thicker */
-    background-color: var(--primary-color);
+    background-color: var(--color-accent);
     margin: 20px auto; /* Even vertical spacing */
     border-radius: 3px; /* More rounded caps */
   }

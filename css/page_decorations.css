@@ -35,14 +35,14 @@
 .page-banner-content {
   position: relative;
   z-index: 2;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin-top: 0; /* Centered cleanly using container */
 }
 
 .page-banner-title {
   font-size: 40px;
   font-weight: 700;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin-bottom: 12px;
 }
 
@@ -81,11 +81,11 @@
 }
 
 .breadcrumbs a:hover {
-  color: var(--primary-color);
+  color: var(--color-accent);
 }
 
 .breadcrumbs li.active {
-  color: var(--text-white);
+  color: var(--text-primary);
 }
 
 /* Custom Responsive Image Gallery */
@@ -101,11 +101,10 @@
 }
 
 .gallery-grid > div {
-  padding: 0 !important; /* Reset Bootstrap grid padding */
-  margin: 0 !important; /* Reset Bootstrap spacing (mb-30) */
-  width: auto !important; /* Let CSS Grid dictate width */
+  padding: 0 !important; /* Override Bootstrap column padding */
+  margin: 0 !important; /* Override Bootstrap spacing utilities */
+  width: auto !important; /* Let CSS Grid control sizing */
   max-width: none !important;
-  flex: none !important;
 }
 
 .gallery-card {
@@ -114,7 +113,7 @@
   overflow: hidden;
   box-shadow: none; /* Remove shadows */
   aspect-ratio: 4 / 3;
-  background-color: var(--text-dark);
+  background-color: var(--text-primary);
 }
 
 .gallery-card img {
@@ -149,26 +148,24 @@
 }
 
 .gallery-zoom-btn {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: var(--text-dark) !important; /* Accessibility: Black text on Warwick Red background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background-color: transparent;
+  color: transparent !important;
+  display: block;
+  font-size: 0;
   border: none;
   cursor: pointer;
-  transform: scale(0.7);
-  transition: var(--transition-smooth);
-  box-shadow: 0 4px 15px rgba(255, 90, 75, 0.4);
+  z-index: 3;
 }
 
 .gallery-zoom-btn:hover {
-  background-color: var(--text-white);
-  color: var(--text-dark) !important;
-  transform: scale(1.1);
+  background-color: transparent;
+  color: transparent !important;
 }
 
 /* Lightbox Overlay */
@@ -222,7 +219,7 @@
   right: 30px;
   background: none;
   border: none;
-  color: var(--text-white);
+  color: var(--text-primary);
   font-size: 45px;
   font-weight: 300;
   cursor: pointer;
@@ -230,7 +227,7 @@
 }
 
 .lightbox-close:hover {
-  color: var(--primary-color);
+  color: var(--color-accent);
 }
 
 /* Filter Buttons */
@@ -246,7 +243,7 @@
 .filter-menu .btn {
   background: none;
   border: 1px solid var(--border-color);
-  color: var(--text-body);
+  color: var(--text-primary);
   padding: 8px 20px;
   font-size: 14px;
   font-weight: 500;
@@ -257,9 +254,9 @@
 
 .filter-menu .btn:hover,
 .filter-menu .btn.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--text-dark) !important; /* Accessibility: Black text on Warwick Red */
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--text-primary) !important; /* Accessibility: Black text on Warwick Red */
 }
 
 /* Meet the Exec Grid & Card Layouts */
@@ -281,7 +278,7 @@
   flex-direction: row;
   align-items: center;
   background-color: #000000 !important; /* Back to black bg */
-  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
+  border: 1px solid var(--color-accent) !important; /* Warwick Red outline border */
   border-radius: 12px;
   padding: 24px;
   gap: 24px;
@@ -335,7 +332,7 @@
 }
 
 .exec-role {
-  background-color: var(--primary-color) !important; /* Warwick Red background tag */
+  background-color: var(--color-accent) !important; /* Warwick Red background tag */
   color: #000000 !important; /* Black text for high readability */
   font-size: 12px;
   font-weight: 700;
@@ -409,7 +406,7 @@
   flex-direction: row;
   align-items: center;
   background-color: #000000 !important; /* Black bg */
-  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
+  border: 1px solid var(--color-accent) !important; /* Warwick Red outline border */
   border-radius: 12px;
   padding: 24px;
   gap: 24px;
@@ -425,7 +422,7 @@
 }
 
 .adventure-card:hover .adventure-card-info h3 a {
-  color: var(--primary-color) !important; /* Glow link text red when card is hovered */
+  color: var(--color-accent) !important; /* Glow link text red when card is hovered */
 }
 
 .adventure-card-image {
@@ -487,7 +484,7 @@
 }
 
 .adventure-card-info h3 a:hover {
-  color: var(--primary-color) !important; /* Red hover on white link */
+  color: var(--color-accent) !important; /* Red hover on white link */
 }
 
 /* Tablet responsive card layout */
@@ -535,7 +532,7 @@
 /* FAQ Accordion Grid & Card Styling */
 .faq-cell {
   background-color: #000000 !important; /* Black bg */
-  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
+  border: 1px solid var(--color-accent) !important; /* Warwick Red outline border */
   border-radius: 10px;
   overflow: hidden;
   transition: all var(--transition-smooth);
@@ -602,7 +599,7 @@
 /* Joining Steps Accordion Styling */
 .step-cell {
   background-color: #000000 !important; /* Black bg */
-  border: 1px solid var(--primary-color) !important; /* Warwick Red outline border */
+  border: 1px solid var(--color-accent) !important; /* Warwick Red outline border */
   border-radius: 10px;
   overflow: hidden;
   transition: all var(--transition-smooth);
@@ -687,7 +684,7 @@
 }
 
 .step-cell a:hover {
-  color: var(--primary-color) !important; /* Red link hover on outline card */
+  color: var(--color-accent) !important; /* Red link hover on outline card */
 }
 
 /* Override default bootstrap .collapse > .container-fluid block style */
@@ -703,7 +700,7 @@
 .step-cell .highlight-box-dark,
 .step-cell .highlight-box-yellow {
   background-color: #000000 !important;
-  border: 1px solid var(--primary-color) !important;
+  border: 1px solid var(--color-accent) !important;
   color: #ffffff !important;
   padding: 20px !important;
   border-radius: 8px !important;

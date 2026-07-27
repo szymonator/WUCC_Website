@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const zoomButtons = document.querySelectorAll('.gallery-zoom-btn, .portfolio-img');
-  
-  if (zoomButtons.length === 0) return;
-
-  // Create lightbox markup and append to body
+  // Create lightbox overlay and append to body
   const lightboxOverlay = document.createElement('div');
   lightboxOverlay.className = 'lightbox-overlay';
   lightboxOverlay.setAttribute('aria-hidden', 'true');
@@ -34,14 +30,39 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxImage.src = '';
   };
 
-  // Add click listeners to all gallery buttons
-  zoomButtons.forEach(btn => {
-    // If it's a link, target the href; if it's not, check parent
-    const targetLink = btn.closest('a');
-    if (targetLink) {
-      targetLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLightbox(targetLink.getAttribute('href'));
+  // Find all images on the page and make them clickable if they are content images
+  const allImages = document.querySelectorAll('img');
+  allImages.forEach(img => {
+    // Skip header, footer, navigation images
+    if (img.closest('header') || img.closest('footer') || img.closest('.site-footer') || img.closest('.circle-logo-container') || img.closest('.nav-brand') || img.closest('.footer-section')) {
+      return;
+    }
+    
+    // Skip logos/icons/crests by checking src or classes
+    const src = img.getAttribute('src') || '';
+    if (src.includes('/core-img/') || img.classList.contains('logo') || img.classList.contains('icon') || img.classList.contains('social-icon')) {
+      return;
+    }
+    
+    // Check if the image is inside an <a> tag
+    const parentLink = img.closest('a');
+    if (parentLink) {
+      const href = parentLink.getAttribute('href') || '';
+      // If the link points to an image, intercept click and open lightbox
+      const isImgHref = /\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i.test(href);
+      if (isImgHref || parentLink.classList.contains('portfolio-img') || parentLink.classList.contains('gallery-zoom-btn') || parentLink.classList.contains('exec-image-link')) {
+        parentLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLightbox(href || src);
+        });
+        parentLink.style.cursor = 'pointer';
+      }
+      // If the link points to a page (e.g. another page like a trip subpage), do nothing and let it navigate normally!
+    } else {
+      // It's a static content image not wrapped in a link. Make it clickable!
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        openLightbox(src);
       });
     }
   });

@@ -45,36 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   handleScroll(); // Initial check on load
 
-  // Set active nav item based on current URL path
-  const currentPath = window.location.pathname;
+  // Set active nav item based on current URL path (segment-boundary matching)
+  const normalizePath = (p) => p.endsWith('/') ? p : p + '/';
+  const currentPath = normalizePath(window.location.pathname);
   const navLinks = document.querySelectorAll('.site-header .nav-link, .site-header .dropdown-item');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href) {
-      const isMatch = (href === '/' && currentPath === '/') || 
-                      (href !== '/' && currentPath.startsWith(href));
-      if (isMatch) {
-        link.classList.add('active');
-        if (link.classList.contains('dropdown-item')) {
-          const parentDropdown = link.closest('.dropdown');
-          if (parentDropdown) {
-            parentDropdown.querySelector('.nav-link')?.classList.add('active');
-          }
+    if (!href || href === '#') return;
+    const normalizedHref = normalizePath(href);
+    const isMatch = (normalizedHref === '/' && currentPath === '/') || 
+                    (normalizedHref !== '/' && currentPath.startsWith(normalizedHref));
+    if (isMatch) {
+      link.classList.add('active');
+      if (link.classList.contains('dropdown-item')) {
+        const parentDropdown = link.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.querySelector('.nav-link')?.classList.add('active');
         }
       }
     }
-  });
-
-  // Prevent dropdown toggle click action on desktop (min-width: 992px)
-  // to avoid click toggles while allowing hover navigation.
-  const dropdownToggles = document.querySelectorAll('.site-header .dropdown-toggle');
-  dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-      if (window.innerWidth >= 992) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    });
   });
 
 

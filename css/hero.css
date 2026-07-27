@@ -8,7 +8,7 @@
   height: 80vh; /* Show content below the fold to encourage scrolling */
   min-height: 500px;
   overflow: hidden;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-base);
 }
 
 .hero-slides {
@@ -28,9 +28,18 @@
   visibility: hidden;
   z-index: 1;
   transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+/* Slide background image (replaces CSS background-image for better LCP) */
+.hero-slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
 .hero-slide.is-active {
@@ -68,7 +77,7 @@
 
 .hero-text {
   max-width: 600px;
-  color: var(--text-white);
+  color: var(--text-primary);
 }
 
 /* Slide Entry Animations */
@@ -77,7 +86,7 @@
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 20px;
-  color: var(--text-white);
+  color: var(--text-primary);
   transform: translateY(30px);
   opacity: 0;
   transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s,
@@ -109,7 +118,7 @@
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-white);
+  color: var(--text-primary);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -122,9 +131,9 @@
 }
 
 .hero-control-btn:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--text-dark); /* Contrast compliance: black on red */
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--text-primary); /* Contrast compliance: black on red */
 }
 
 .hero-btn-prev {
@@ -159,7 +168,7 @@
 
 .hero-dot:hover,
 .hero-dot.is-active {
-  background-color: var(--primary-color);
+  background-color: var(--color-accent);
   transform: scale(1.2);
 }
 
