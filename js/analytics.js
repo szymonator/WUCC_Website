@@ -7,14 +7,15 @@
   const CONSENT_KEY = 'wucc_cookie_consent';
   const GA_MEASUREMENT_ID = 'G-EWGHGG4SHV';
 
-  // 1. Inject the analytics stylesheet dynamically
-  function injectStylesheet() {
-    if (document.querySelector('link[href="/css/analytics.css"]')) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/css/analytics.css';
-    document.head.appendChild(link);
+  // Safe localStorage wrapper — prevents errors in strict privacy modes
+  function storageGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
   }
+  function storageSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* silently fail */ }
+  }
+
+
 
   // Helper to log a custom GA event
   function trackEvent(eventName, params = {}) {
@@ -104,7 +105,7 @@
   // 3. Inject cookie banner modal
   function showCookieBanner() {
     // If banner already exists or preference is already set, do not show it
-    if (document.getElementById('wuccCookieBanner') || localStorage.getItem(CONSENT_KEY)) {
+    if (document.getElementById('wuccCookieBanner') || storageGet(CONSENT_KEY)) {
       return;
     }
 
@@ -137,14 +138,14 @@
     const btnDecline = document.getElementById('wuccCookieDecline');
 
     btnAccept.addEventListener('click', function () {
-      localStorage.setItem(CONSENT_KEY, 'accepted');
+      storageSet(CONSENT_KEY, 'accepted');
       initGoogleAnalytics();
       dismissBanner();
       updatePrivacyPageDashboard();
     });
 
     btnDecline.addEventListener('click', function () {
-      localStorage.setItem(CONSENT_KEY, 'declined');
+      storageSet(CONSENT_KEY, 'declined');
       dismissBanner();
       updatePrivacyPageDashboard();
     });
@@ -163,7 +164,7 @@
     const container = document.getElementById('cookie-consent-settings');
     if (!container) return;
 
-    const currentConsent = localStorage.getItem(CONSENT_KEY);
+    const currentConsent = storageGet(CONSENT_KEY);
     let statusClass = 'status-unset';
     let statusText = 'Not Selected Yet (Undecided)';
     let statusDescription = 'Please choose whether you want to enable or disable Google Analytics tracking on your browser below.';
@@ -199,13 +200,13 @@
 
     // Add event listeners to dashboard buttons
     document.getElementById('wuccDashboardOptIn').addEventListener('click', function () {
-      localStorage.setItem(CONSENT_KEY, 'accepted');
+      storageSet(CONSENT_KEY, 'accepted');
       initGoogleAnalytics();
       updatePrivacyPageDashboard();
     });
 
     document.getElementById('wuccDashboardOptOut').addEventListener('click', function () {
-      localStorage.setItem(CONSENT_KEY, 'declined');
+      storageSet(CONSENT_KEY, 'declined');
       updatePrivacyPageDashboard();
       alert('Your preference has been set to declined. You may need to reload the page to clear any existing active third-party cookies.');
     });
@@ -213,9 +214,7 @@
 
   // 5. Main Execution Flow
   function initialize() {
-    injectStylesheet();
-
-    const consent = localStorage.getItem(CONSENT_KEY);
+    const consent = storageGet(CONSENT_KEY);
 
     if (consent === 'accepted') {
       initGoogleAnalytics();

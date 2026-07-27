@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     yearSpan.textContent = new Date().getFullYear();
   }
 
-  // Sticky Header scroll handling
+  // Sticky Header scroll handling (throttled via rAF)
+  let scrollTicking = false;
   const handleScroll = () => {
     if (header) {
       if (window.scrollY > 0) {
@@ -34,8 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.remove('is-sticky');
       }
     }
+    scrollTicking = false;
   };
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(handleScroll);
+      scrollTicking = true;
+    }
+  });
   handleScroll(); // Initial check on load
 
   // Set active nav item based on current URL path
@@ -70,11 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Dynamically load Google Analytics manager
-  const analyticsScript = document.createElement('script');
-  analyticsScript.src = '/js/analytics.js';
-  analyticsScript.defer = true;
-  document.head.appendChild(analyticsScript);
+
 
   // Close mobile menu when clicking outside of it
   document.addEventListener('click', (event) => {

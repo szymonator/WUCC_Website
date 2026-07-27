@@ -10,5 +10,6 @@ services:
       - "8080:80"
     volumes:
       - .:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     environment:
       - VIRTUAL_HOST=wucc.containers.uwcs.co.uk

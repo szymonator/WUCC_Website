@@ -73,6 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.addEventListener('mouseleave', startAutoSlide);
   }
 
+  // Pause slideshow when tab is not visible (saves CPU/battery)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoSlide();
+    } else {
+      startAutoSlide();
+    }
+  });
+
   // Initialize first slide and start auto-sliding
   showSlide(0);
   startAutoSlide();

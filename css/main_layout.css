@@ -372,11 +372,11 @@ a:hover {
 @media (max-width: 767px) {
   .mobile-separator {
     display: block;
-    width: 100%; /* Changed from 70px to full width */
-    height: 3px;
+    width: 80%; /* 80% width as requested */
+    height: 6px; /* Slightly thicker */
     background-color: var(--primary-color);
-    margin: 0 auto;
-    border-radius: 2px;
+    margin: 20px auto; /* Even vertical spacing */
+    border-radius: 3px; /* More rounded caps */
   }
 
   .highlight-box-dark,

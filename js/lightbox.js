@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lightboxOverlay.innerHTML = `
     <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
     <div class="lightbox-content">
-      <img class="lightbox-image" src="" alt="Gallery Image Expanded">
+      <img class="lightbox-image" alt="Gallery Image Expanded">
     </div>
   `;
   

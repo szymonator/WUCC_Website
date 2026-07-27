@@ -500,6 +500,7 @@
   
   .adventure-card-image {
     width: 140px;
+    height: 160px; /* Explicit height matching parent */
     margin: -16px 0 -16px -16px;
   }
   
@@ -520,10 +521,10 @@
   }
   
   .adventure-card-image {
-    width: 100%;
+    width: calc(100% + 40px); /* Explicit width covering padding and negative margins */
     height: 160px;
     margin: -20px -20px 0 -20px;
-    border-radius: 8px 8px 0 0;
+    border-radius: 12px 12px 0 0; /* Align with card border radius */
   }
   
   .adventure-card-info {

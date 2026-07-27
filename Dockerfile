@@ -1,6 +1,9 @@
 # Use official Nginx Alpine image
 FROM nginx:alpine
 
+# Replace the ENTIRE default nginx config (not just conf.d)
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Set working directory to Nginx HTML root
 WORKDIR /usr/share/nginx/html
 

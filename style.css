@@ -2,10 +2,7 @@
    Warwick University Climbing Club - Custom Stylesheet
    ========================================================================== */
 
-/* === 1. Imports === */
-@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700");
-@import url("css/bootstrap.min.css");
-@import url("css/font-awesome.min.css");
+/* === 1. Dependencies are loaded via <link> tags in HTML for parallel downloads ===\n   Google Fonts (Poppins), Bootstrap, FontAwesome */
 
 /* === 2. Reboot & Base Styles === */
 :root {

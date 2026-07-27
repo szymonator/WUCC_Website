@@ -3,6 +3,8 @@ node_modules
 .gitignore
 .dockerignore
 Dockerfile
+docker-compose.yml
+policy.yaml
 README.md
 .env
 .env.local
