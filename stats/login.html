@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Warwick University Climbing Club Page Visit Statistics Login">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Login | Warwick University Climbing Club Stats</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/wucc_logo_white.png">
+
+    <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700&display=swap">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/main_layout.css">
+    <link rel="stylesheet" href="/css/navigation.css?v=4">
+    <link rel="stylesheet" href="/css/page_decorations.css?v=3">
+    <link rel="stylesheet" href="/css/analytics.css?v=1">
+
+    <style>
+        body.login-body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/img/more-banners/privacy_banner.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            background-color: rgba(13, 13, 13, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 90, 75, 0.25);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 90, 75, 0.05);
+            color: #ffffff;
+            animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .login-logo {
+            display: block;
+            width: 100px;
+            height: auto;
+            margin: 0 auto 20px auto;
+        }
+
+        .login-card h2 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .login-card p {
+            text-align: center;
+            font-size: 13px;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        .login-form .form-group {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .login-form label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+        }
+
+        .login-form input[type="password"],
+        .login-form input[type="text"] {
+            width: 100%;
+            padding: 12px 42px 12px 16px;
+            background-color: #050505;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+            outline: none;
+        }
+
+        .login-form input:focus {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 8px rgba(255, 90, 75, 0.2);
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s;
+            font-size: 16px;
+        }
+
+        .password-toggle-icon:hover {
+            color: #ffffff;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .login-error {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            font-size: 13px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .login-back-link {
+            display: block;
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #a0a0a0 !important;
+            transition: var(--transition-smooth);
+        }
+
+        .login-back-link:hover {
+            color: var(--color-accent) !important;
+        }
+    </style>
+</head>
+
+<body class="login-body">
+
+    <div class="login-card">
+        <!-- Logo -->
+        <img src="/img/core-img/wucc_logo_white.png" alt="WUCC Logo" class="login-logo">
+        
+        <h2>Dashboard Access</h2>
+        <p>Enter the administrator password to view metrics.</p>
+
+        <!-- Error Alert -->
+        <div class="login-error" id="loginError">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <span id="errorText">Incorrect password. Please try again.</span>
+        </div>
+
+        <!-- Form -->
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" placeholder="••••••••••••" required autofocus>
+                    <i class="fa fa-eye-slash password-toggle-icon" id="passwordToggle" aria-hidden="true"></i>
+                </div>
+            </div>
+            <button type="submit" class="wucc-cookie-btn wucc-cookie-btn-accept login-btn" id="submitBtn">
+                Verify Credentials
+            </button>
+        </form>
+
+        <a href="/" class="login-back-link"><i class="fa fa-arrow-left" aria-hidden="true" style="margin-right: 6px;"></i> Return to Website</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.getElementById('passwordToggle');
+            const loginForm = document.getElementById('loginForm');
+            const loginError = document.getElementById('loginError');
+            const errorText = document.getElementById('errorText');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Password Visbility Toggle
+            passwordToggle.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    passwordToggle.className = 'fa fa-eye password-toggle-icon';
+                } else {
+                    passwordInput.type = 'password';
+                    passwordToggle.className = 'fa fa-eye-slash password-toggle-icon';
+                }
+            });
+
+            // Login submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Reset error state
+                loginError.style.display = 'none';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Verifying...';
+
+                const password = passwordInput.value;
+
+                fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password })
+                })
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    } else {
+                        return res.json().then(errData => {
+                            throw new Error(errData.error || 'Authentication failed');
+                        });
+                    }
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Redirect to stats dashboard
+                        window.location.href = '/stats/';
+                    }
+                })
+                .catch(err => {
+                    console.error('Login error:', err);
+                    errorText.textContent = err.message || 'Verification failed. Try again.';
+                    loginError.style.display = 'flex';
+                    passwordInput.focus();
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Verify Credentials';
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -212,8 +212,29 @@
     });
   }
 
+  // Cookieless GDPR-compliant page tracking
+  function trackPageView() {
+    let pagePath = window.location.pathname;
+    // Normalize pagePath (strip trailing slashes except for root /)
+    if (pagePath.length > 1 && pagePath.endsWith('/')) {
+      pagePath = pagePath.slice(0, -1);
+    }
+    fetch('/api/track', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ path: pagePath })
+    }).catch(err => {
+      console.warn('Analytics tracking failed:', err);
+    });
+  }
+
   // 5. Main Execution Flow
   function initialize() {
+    // Unconditionally trigger cookieless page view tracking
+    trackPageView();
+
     const consent = storageGet(CONSENT_KEY);
 
     if (consent === 'accepted') {
