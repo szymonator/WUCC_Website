@@ -380,6 +380,8 @@
   .exec-card-image {
     width: 150px;
     height: auto;
+    align-self: center;
+    margin-bottom: 15px;
   }
   
   .exec-card-info p {

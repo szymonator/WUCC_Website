@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  climbing-soc:
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+  analytics-api:
+    volumes:
+      - ./analytics_data:/app/data

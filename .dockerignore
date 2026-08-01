@@ -3,7 +3,7 @@ node_modules
 .gitignore
 .dockerignore
 Dockerfile
-docker-compose.yml
+docker-compose*.yml
 policy.yaml
 README.md
 .env
@@ -13,3 +13,7 @@ README.md
 gulpfile.js
 package.json
 package-lock.json
+analytics
+analytics_data
+analytics-backend
+GEMINI.md

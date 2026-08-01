@@ -6,15 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     platform: linux/amd64
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     environment:
       - VIRTUAL_HOST=wucc.containers.uwcs.co.uk
     depends_on:
       - analytics-api
+    restart: always
 
   analytics-api:
     build:
@@ -22,8 +18,11 @@ services:
       dockerfile: Dockerfile
     platform: linux/amd64
     volumes:
-      - ./analytics_data:/app/data
+      - analytics_data:/app/data
     environment:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     restart: always
+
+volumes:
+  analytics_data:
 
