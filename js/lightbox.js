@@ -123,6 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
         font-size: 20px !important;
       }
     }
+    img[data-lightbox-clickable] {
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+    }
+    img[data-lightbox-clickable]:hover {
+      opacity: 0.85;
+    }
   `;
   document.head.appendChild(style);
 
@@ -151,13 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentGalleryIndex = 0;
   let isTransitioning = false;
 
-  const openLightbox = (imgSrc, isGallery = false) => {
+  const openLightbox = (imgSrc, isGallery = false, altText = '') => {
     // Clear and add initial slide
     lightboxContent.innerHTML = '';
     const initialSlide = document.createElement('img');
     initialSlide.className = 'lightbox-slide';
+    initialSlide.setAttribute('data-lightbox-internal', '');
     initialSlide.src = imgSrc;
-    initialSlide.alt = 'Gallery Image Expanded';
+    initialSlide.alt = altText || 'Expanded image';
     lightboxContent.appendChild(initialSlide);
 
     lightboxOverlay.classList.add('is-active');
@@ -191,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isTransitioning = false;
   };
 
-  const transitionSlide = (newSrc, direction) => {
+  const transitionSlide = (newSrc, direction, altText = '') => {
     if (isTransitioning) return;
     const currentSlide = lightboxContent.querySelector('.lightbox-slide');
     if (!currentSlide) return;
@@ -201,8 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create the new slide
     const newSlide = document.createElement('img');
     newSlide.className = 'lightbox-slide';
+    newSlide.setAttribute('data-lightbox-internal', '');
     newSlide.src = newSrc;
-    newSlide.alt = 'Gallery Image Expanded';
+    newSlide.alt = altText || 'Expanded image';
 
     // Position new slide and transition
     if (direction === 'next') {
@@ -237,14 +246,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isGalleryActive || activeGallery.length <= 1 || isTransitioning) return;
     const nextIdx = (currentGalleryIndex + 1) % activeGallery.length;
     currentGalleryIndex = nextIdx;
-    transitionSlide(activeGallery[currentGalleryIndex], 'next');
+    const item = activeGallery[currentGalleryIndex];
+    transitionSlide(item.src, 'next', item.alt);
   };
 
   const showPrevImage = () => {
     if (!isGalleryActive || activeGallery.length <= 1 || isTransitioning) return;
     const prevIdx = (currentGalleryIndex - 1 + activeGallery.length) % activeGallery.length;
     currentGalleryIndex = prevIdx;
-    transitionSlide(activeGallery[currentGalleryIndex], 'prev');
+    const item = activeGallery[currentGalleryIndex];
+    transitionSlide(item.src, 'prev', item.alt);
   };
 
   // Button Click Listeners
@@ -259,28 +270,40 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 1. Attach listeners to links explicitly designated as lightbox triggers
-  const zoomLinks = document.querySelectorAll('.gallery-zoom-btn, .portfolio-img, .exec-image-link');
+  const zoomLinks = document.querySelectorAll('.gallery-zoom-btn, .portfolio-img');
   
-  // Find all elements that form part of a gallery on the page
-  const galleryTriggers = Array.from(document.querySelectorAll('.gallery-zoom-btn, .portfolio-img'));
-  const galleryHrefs = galleryTriggers.map(trigger => trigger.getAttribute('href') || '');
+  // Find all elements that form part of a gallery on the page (only gallery-zoom-btn links)
+  const galleryTriggers = Array.from(document.querySelectorAll('.gallery-zoom-btn'));
+  const galleryItems = galleryTriggers.map(trigger => {
+    const href = trigger.getAttribute('href') || '';
+    // Resolve alt text from the sibling <img> in the same card container
+    const card = trigger.closest('.gallery-card, .portfolio-item, .single_gallery_item');
+    const siblingImg = card ? card.querySelector('img') : null;
+    const alt = siblingImg ? (siblingImg.getAttribute('alt') || '') : '';
+    return { src: href, alt };
+  });
 
   zoomLinks.forEach(link => {
     const href = link.getAttribute('href') || '';
     link.addEventListener('click', (e) => {
       e.preventDefault();
       
-      const isGalleryItem = link.classList.contains('gallery-zoom-btn') || link.classList.contains('portfolio-img');
-      if (isGalleryItem && galleryHrefs.length > 1) {
+      // Resolve alt from sibling img for this specific link
+      const card = link.closest('.gallery-card, .portfolio-item, .single_gallery_item');
+      const siblingImg = card ? card.querySelector('img') : null;
+      const linkAlt = siblingImg ? (siblingImg.getAttribute('alt') || '') : '';
+
+      const isGalleryItem = link.classList.contains('gallery-zoom-btn');
+      if (isGalleryItem && galleryItems.length > 1) {
         isGalleryActive = true;
-        activeGallery = galleryHrefs;
-        currentGalleryIndex = galleryHrefs.indexOf(href);
-        openLightbox(href, true);
+        activeGallery = galleryItems;
+        currentGalleryIndex = galleryItems.findIndex(item => item.src === href);
+        openLightbox(href, true, linkAlt);
       } else {
         isGalleryActive = false;
         activeGallery = [];
         currentGalleryIndex = 0;
-        openLightbox(href, false);
+        openLightbox(href, false, linkAlt);
       }
     });
     link.style.cursor = 'pointer';
@@ -290,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const allImages = document.querySelectorAll('img');
   allImages.forEach(img => {
     // Skip header, footer, navigation, adventure cards, hero images, and the lightbox image itself
-    if (img.closest('header') || img.closest('footer') || img.closest('.site-footer') || img.closest('.circle-logo-container') || img.closest('.nav-brand') || img.closest('.footer-section') || img.closest('.adventure-card') || img.classList.contains('hero-slide-img') || img.classList.contains('lightbox-image') || img.closest('.lightbox-overlay')) {
+    if (img.closest('header') || img.closest('footer') || img.closest('.site-footer') || img.closest('.circle-logo-container') || img.closest('.nav-brand') || img.closest('.footer-section') || img.closest('.adventure-card') || img.classList.contains('hero-slide-img') || img.classList.contains('lightbox-image') || img.closest('.lightbox-overlay') || img.hasAttribute('data-lightbox-internal')) {
       return;
     }
     
@@ -306,12 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Static content image! Make it clickable to open itself in lightbox
-    img.style.cursor = 'pointer';
+    img.setAttribute('data-lightbox-clickable', '');
     img.addEventListener('click', () => {
       isGalleryActive = false;
       activeGallery = [];
       currentGalleryIndex = 0;
-      openLightbox(src, false);
+      openLightbox(src, false, img.getAttribute('alt') || '');
     });
   });
 
@@ -350,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   const handleSwipeGesture = () => {
-    if (isTransitioning) return;
+    if (!isGalleryActive || activeGallery.length <= 1 || isTransitioning) return;
     const swipeDistance = touchEndX - touchStartX;
     const minSwipeDistance = 50; // pixels
     

@@ -2,7 +2,7 @@
    Warwick University Climbing Club - Custom Stylesheet
    ========================================================================== */
 
-/* === 1. Dependencies are loaded via <link> tags in HTML for parallel downloads ===\n   Google Fonts (Poppins), Bootstrap, FontAwesome */
+/* === 1. Dependencies are loaded via <link> tags in HTML for parallel downloads ===\n   Google Fonts (Poppins), Bootstrap, Font Awesome 6 (CDN) */
 
 /* === 2. Design Tokens === */
 :root {
@@ -103,14 +103,7 @@ ul {
     background-repeat: no-repeat !important;
 }
 
-/* === 3. Custom Icons Override === */
-/* Map old Elegant Icons house icon to FontAwesome */
-.icon_house_alt::before {
-    font-family: "FontAwesome";
-    content: "\f015";
-}
-
-/* === 4. Layout & Spacing Utilities === */
+/* === 3. Layout & Spacing Utilities === */
 .section-padding-80-0 {
     padding-top: 80px;
     padding-bottom: 0;
