@@ -230,6 +230,58 @@
   color: var(--color-accent);
 }
 
+/* Navigation Buttons for Lightbox Gallery */
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  display: none; /* Hidden by default, script will show for gallery */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10010;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  outline: none;
+}
+
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--color-accent);
+}
+
+@media (max-width: 767px) {
+  .lightbox-prev {
+    left: 10px;
+  }
+  .lightbox-next {
+    right: 10px;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
 /* Filter Buttons */
 .filter-menu {
   display: flex;
@@ -583,7 +635,7 @@
 }
 
 .faq-content {
-  padding: 0 25px 25px 25px;
+  padding: 20px 25px 25px 25px;
   background-color: transparent;
 }
 
