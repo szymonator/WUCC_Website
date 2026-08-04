@@ -369,3 +369,25 @@
     border-top: 35px solid #000000 !important;
   }
 }
+
+/* Custom background image with dimmed overlay for "What We Offer" section on homepage */
+.events-preview-section {
+  position: relative;
+  background-image: url('/img/trips/portland_17/14.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.events-preview-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dim overlay for contrast readability */
+  z-index: -1;
+}
+
