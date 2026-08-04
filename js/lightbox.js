@@ -334,7 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
       isGalleryActive = false;
       activeGallery = [];
       currentGalleryIndex = 0;
-      openLightbox(src, false, img.getAttribute('alt') || '');
+      // Read current src and alt dynamically at click time to handle dynamic updates
+      const currentSrc = img.getAttribute('src') || '';
+      openLightbox(currentSrc, false, img.getAttribute('alt') || '');
     });
   });
 
