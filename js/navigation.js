@@ -97,4 +97,77 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Handle WhatsApp Group link dynamic notification
+  const showToast = (message) => {
+    let container = document.getElementById('wucc-toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'wucc-toast-container';
+      container.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        pointer-events: none;
+      `;
+      if (window.innerWidth < 768) {
+        container.style.right = '20px';
+        container.style.left = '20px';
+        container.style.bottom = '20px';
+        container.style.alignItems = 'center';
+      }
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      background-color: #0d0d0d;
+      color: #ffffff;
+      border: 1px solid var(--color-accent, #FF5A4B);
+      border-radius: 8px;
+      padding: 16px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: auto;
+      max-width: 340px;
+      line-height: 1.4;
+      text-align: center;
+    `;
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+    });
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(-20px)';
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, 4000);
+  };
+
+  const whatsappLinks = document.querySelectorAll('.whatsapp-link');
+  whatsappLinks.forEach(link => {
+    link.removeAttribute('href');
+    link.removeAttribute('target');
+    link.style.cursor = 'pointer';
+
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast("Our 2026/27 groupchat hasn't been created yet, check again soon!");
+    });
+  });
 });
