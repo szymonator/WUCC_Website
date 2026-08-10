@@ -43,3 +43,6 @@ Disallow: /
 # Block Apple's AI training crawler
 User-agent: Applebot-Extended
 Disallow: /
+
+# Sitemap
+Sitemap: https://wucc.containers.uwcs.co.uk/sitemap.xml
