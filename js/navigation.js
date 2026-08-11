@@ -1,4 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  console.log(`
+                                                                                    
+               ▓▓▓▓                                                             
+              ▓░░░░▓                                                            
+             ▓░░░░░░▓                                                           
+           ▓▓░░░░░░▓                                                            
+    ▓▓▓▓▓▓▓░░░░░░▓▓                                                             
+   ▓░░░░░░░░░░░░▓                                                               
+   ▓░░░░░░░░░▓░░▓                                                               
+   █▓░░░░░░░▓░░░▓                                                               
+    █▓▓░░░░░▓░░░▓                                                               
+     ██▓░░░▓░░░░▓                                                               
+       █▓▓░░░░░░░▓▓                                                             
+        █▓░░░░░░░░░▓▓                                                           
+         ▓▓░░░░░░░░░▒▓                                                          
+         █▓░░░░░▓▓▓▒▒▓▓                                                         
+        █▓▓░░▒▓▓▓  ▓▓▓                                                          
+        █▓▒▒▓▓                                                                  
+       █▓▒▓▓                                                                    
+       █▓▓                                                                      
+                                                                                
+  ██   █  █  █ █  ███ ███ ███                                                   
+  ███  █  █  █ █  █   █   █                                                     
+  █ ██ █  █  █ █  ███ █   █                                                     
+  █  ███  █  █ █    █ █   █                                                     
+  █   ██   ██  ██ ███ ███ ███  
+  
+  The best climbing competition in the world!
+  - Tara F.
+`);
+
   const header = document.querySelector('.site-header');
 
   // Preloader fadeout
