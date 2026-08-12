@@ -2,25 +2,39 @@ version: '3.8'
 
 services:
   climbing-soc:
+    image:
+      ghcr.io/szymonator/wucc-website:latest
+
     build:
       context: .
       dockerfile: Dockerfile
+
     platform: linux/amd64
+
     environment:
       - VIRTUAL_HOST=wucc
+
     depends_on:
       - analytics-api
+
     restart: always
 
   analytics-api:
+    image:
+      ghcr.io/szymonator/wucc-analytics:latest
+
     build:
       context: ./analytics
       dockerfile: Dockerfile
+
     platform: linux/amd64
+
     volumes:
       - analytics_data:/app/data
+
     environment:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      
     restart: always
 
 volumes:
