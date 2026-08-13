@@ -1,39 +1,48 @@
 # Warwick University Climbing Club Website
 
-This is the repository for the Warwick University Climbing Club website. The website is built using custom HTML5, vanilla CSS3, and vanilla JavaScript, relying on standard open-source libraries for responsiveness and interactivity.
+This is the repository for the Warwick University Climbing Club (WUCC) website. The website is built using custom HTML5, vanilla CSS3, and modern vanilla JavaScript, optimized for fast performance, strong SEO, and high accessibility.
 
-## Technologies and Libraries Used
+The site is live in production at: **[wucc.containers.uwcs.co.uk](https://wucc.containers.uwcs.co.uk)**
 
-For future maintainers, the following open-source third-party libraries are integrated into this project. Please retain their license headers and attribution when updating vendor files.
+---
 
-### Core Frameworks & Icons
-*   **Bootstrap v4.2.1**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) 2011-2018 The Bootstrap Authors / Twitter, Inc.
-    *   *Usage*: Grid system, utility classes, and standard responsive components.
-*   **FontAwesome v4.7.0**
-    *   *License*: SIL OFL 1.1 (Fonts) / MIT License (CSS)
-    *   *Attribution*: Copyright (c) Dave Gandy
-    *   *Usage*: Vector icons.
+## Technical Architecture
 
-### JavaScript Libraries & Plugins
-*   **jQuery v3.x**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright JS Foundation and other contributors
-    *   *Usage*: DOM utilities and plugin support.
-*   **Popper.js**
-    *   *License*: MIT License
-    *   *Attribution*: Copyright (c) 2016-present Federico Zivolo and contributors
-    *   *Usage*: Tooltip and dropdown positioning.
+For future maintainers, the codebase has been modernized to eliminate legacy weight and dependency libraries. The architecture relies on vanilla elements for maximum loading speeds and search engine optimization.
+
+### 1. Styles & Frameworks
+*   **Bootstrap v4.2.1 (CSS only)**: Integrated for grid layout, spacing, and flex utility classes. Heavy JavaScript components have been replaced by custom vanilla elements.
+*   **FontAwesome v6.4.2 (via CDN)**: Configured with version 4 shims for backward compatibility. Used for all vector iconography site-wide.
+*   **Custom Global & Page Styles**: Maintained inside `css/main_layout.css`, `css/global.css`, and specific styling sheets (`css/page_decorations.css`, `css/hero.css`).
+
+### 2. Modern Vanilla JS Components (No jQuery / Popper.js)
+All interactive elements use lightweight Vanilla JavaScript:
+*   **Navigation & Header Control** ([`js/navigation.js`](/js/navigation.js)): Sticky header toggling on scroll, path-segment matching active highlights, click-outside closures for mobile dropdown menus, and global action overrides (like custom toast modals for the WhatsApp link).
+*   **Collapsible Step Accordions** ([`js/collapse.js`](/js/collapse.js)): Custom transitions for instructions blocks.
+*   **LCP Banner Slideshow** ([`js/hero.js`](/js/hero.js)): Progressive hero images with fetch priorities.
+*   **Recent Activity Card** ([`js/recent_activity.js`](/js/recent_activity.js)): Dynamically fetches and parses the latest Adventures or Competitions page, crops text cleanly on word boundaries with trailing `...`, and renders a skeleton loading card until dynamic images are verified.
+*   **Responsive Media Lightbox** ([`js/lightbox.js`](/js/lightbox.js)): Native dynamic image zoom with keyboard esc/arrow support, automatically preserving alternate text (alt attributes) for visual accessibility.
+
+### 3. SEO & Nginx Hardening
+*   **Robots.txt & Sitemap.xml**: Configured with automatic indexing pathways mapping all 42 crawlable site sections under dynamic priorities.
+*   **Nginx Configuration** ([`nginx.conf`](/nginx.conf)): Hardened against server signature disclosure (`server_tokens off;`), forced to prevent overlay2 file corruption (`sendfile off;`), and configured to serve HTTP headers securely (`X-Frame-Options: SAMEORIGIN` and `X-Content-Type-Options: nosniff`).
+
+---
 
 ## Development and Deployment
 
-The local development environment runs inside a Docker container using Nginx.
+The website runs inside a containerized Docker environment utilizing Nginx.
 
-### Local Run
-1.  Ensure you have Docker and Docker Compose installed.
-2.  Start the Nginx development server:
+### Local Development Run
+1.  Ensure you have **Docker** and **Docker Compose** installed.
+2.  Start the container build and daemon:
     ```bash
-    docker-compose up -d --build
+    docker compose up -d --build
     ```
-3.  Access the website locally at: `http://localhost:8080`
+3.  Access the website locally at: **`http://localhost:8080`**
+
+### Deployment
+To push changes to the live site at `wucc.containers.uwcs.co.uk`, rebuild the production containers on the host environment:
+```bash
+docker compose up --build -d
+```
