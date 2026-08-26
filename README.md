@@ -42,7 +42,4 @@ The website runs inside a containerized Docker environment utilizing Nginx.
 3.  Access the website locally at: **`http://localhost:8080`**
 
 ### Deployment
-To push changes to the live site at `wucc.containers.uwcs.co.uk`, rebuild the production containers on the host environment:
-```bash
-docker compose up --build -d
-```
+To push changes to the live site at `wucc.containers.uwcs.co.uk`, push to main. Always test changes on your local branch first.
