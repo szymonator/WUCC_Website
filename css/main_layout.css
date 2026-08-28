@@ -263,31 +263,6 @@
   filter: drop-shadow(0 0 5px var(--color-accent)) !important; /* Red glow on hover */
 }
 
-/* Section 5: Crest wrapper (no circles) */
-.section-crest {
-  flex: 0 0 auto;
-}
-
-/* Enlarge Crest and add hover effect */
-.footer-ws-crest {
-  height: 135px; /* Enlarged from 120px */
-  width: auto;
-  object-fit: contain;
-  transition: var(--transition-smooth);
-  /* filter: brightness(0) !important; */ /* Stays white on dark background */
-}
-
-.footer-ws-crest:hover {
-  transform: scale(1.05);
-}
-
-/* Desktop overrides to shift WUCC logo slightly right to balance visual margins */
-@media (min-width: 992px) {
-  .section-logo {
-    margin-left: 25px;
-  }
-}
-
 /* Responsive breakpoint styling */
 @media (max-width: 991px) {
   .footer-container {
@@ -314,10 +289,6 @@
   /* Scale down logos slightly on mobile when stacked */
   .footer-wucc-logo {
     width: 90px;
-    height: 90px;
-  }
-  
-  .footer-ws-crest {
     height: 90px;
   }
 }

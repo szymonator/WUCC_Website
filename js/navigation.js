@@ -190,16 +190,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     }, 4000);
   };
-
-  const whatsappLinks = document.querySelectorAll('.whatsapp-link');
-  whatsappLinks.forEach(link => {
-    link.removeAttribute('href');
-    link.removeAttribute('target');
-    link.style.cursor = 'pointer';
-
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      showToast("Our 2026/27 groupchat hasn't been created yet, check again soon!");
-    });
-  });
 });

@@ -134,20 +134,11 @@
   
   .navbar-toggler {
     order: 2;
-    margin-left: auto; /* Push toggler next to crest */
+    margin-left: auto; /* Push toggler to right */
   }
 
-  .header-crest {
-    order: 3;
-    margin-left: 15px;
-  }
-
-  .header-crest img {
-    height: 40px;
-  }
-
-  .site-header.is-sticky .header-crest img {
-    height: 35px;
+  .header-logos {
+    display: none !important; /* Hide header logos on mobile viewports */
   }
 
   /* Safe padding for mobile viewports to prevent touching screen edges */
@@ -213,39 +204,52 @@
   }
 }
 
-/* Desktop overrides to center navigation list between logo and crest for equal spacing */
+/* Desktop overrides to center navigation list between brand logo and header logos */
 @media (min-width: 992px) {
   .site-header .navbar-nav {
     margin-left: auto !important;
     margin-right: auto !important;
-    transform: translateX(-40px); /* Visual shift to the left to compensate for text width disparity */
+    transform: translateX(-40px);
   }
 }
 
-/* Crest Logo (Default/Desktop) */
-.header-crest {
+/* Header SU & Social Logos */
+.header-logos {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 20px;
   margin-left: 15px;
 }
 
-.header-crest a {
-  display: flex;
-  align-items: center;
-  transition: var(--transition-smooth);
-}
-
-.header-crest a:hover {
-  transform: scale(1.08); /* Grows in size slightly upon hover */
-}
-
-.header-crest img {
-  height: 50px;
+.header-su-logo {
+  height: 35px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
+  filter: brightness(0) invert(1) !important; /* Turns SU logo white */
 }
 
-.site-header.is-sticky .header-crest img {
-  height: 40px;
+.su-logo-link:hover .header-su-logo {
+  transform: scale(1.1);
+}
+
+.header-logos .social-logo-link img,
+.header-logos .social-logo-link svg {
+  height: 35px;
+  width: auto;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.header-logos .social-logo-link:hover img,
+.header-logos .social-logo-link:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px var(--color-accent)) !important;
+}
+
+.site-header.is-sticky .header-su-logo,
+.site-header.is-sticky .header-logos .social-logo-link img,
+.site-header.is-sticky .header-logos .social-logo-link svg {
+  height: 28px;
 }
