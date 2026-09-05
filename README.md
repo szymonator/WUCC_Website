@@ -11,9 +11,9 @@ The site is live in production at: **[wucc.containers.uwcs.co.uk](https://wucc.c
 For future maintainers, the codebase has been modernized to eliminate legacy weight and dependency libraries. The architecture relies on vanilla elements for maximum loading speeds and search engine optimization.
 
 ### 1. Styles & Frameworks
-*   **Bootstrap v4.2.1 (CSS only)**: Integrated for grid layout, spacing, and flex utility classes. Heavy JavaScript components have been replaced by custom vanilla elements.
+*   **No CSS Framework**: Bootstrap was fully removed and replaced by custom utility classes in `css/utilities.css`, which provides grid layout, spacing, flex utilities, and navbar structure.
 *   **FontAwesome v6.4.2 (via CDN)**: Configured with version 4 shims for backward compatibility. Used for all vector iconography site-wide.
-*   **Custom Global & Page Styles**: Maintained inside `css/main_layout.css`, `css/global.css`, and specific styling sheets (`css/page_decorations.css`, `css/hero.css`).
+*   **Custom Global & Page Styles**: Maintained across `css/main_layout.css`, `css/global.css`, `css/navigation.css`, `css/page_decorations.css`, `css/hero.css`, `css/utilities.css`, and `css/analytics.css`.
 
 ### 2. Modern Vanilla JS Components (No jQuery / Popper.js)
 All interactive elements use lightweight Vanilla JavaScript:
@@ -22,6 +22,8 @@ All interactive elements use lightweight Vanilla JavaScript:
 *   **LCP Banner Slideshow** ([`js/hero.js`](/js/hero.js)): Progressive hero images with fetch priorities.
 *   **Recent Activity Card** ([`js/recent_activity.js`](/js/recent_activity.js)): Dynamically fetches and parses the latest Adventures or Competitions page, crops text cleanly on word boundaries with trailing `...`, and renders a skeleton loading card until dynamic images are verified.
 *   **Responsive Media Lightbox** ([`js/lightbox.js`](/js/lightbox.js)): Native dynamic image zoom with keyboard esc/arrow support, automatically preserving alternate text (alt attributes) for visual accessibility.
+*   **Gallery Filtering** ([`js/gallery_filter.js`](/js/gallery_filter.js)): Client-side filtering for competition and trip gallery pages.
+*   **Analytics Dashboard** ([`js/analytics.js`](/js/analytics.js)): Interactive charts and data visualisation for the club analytics pages.
 
 ### 3. SEO & Nginx Hardening
 *   **Robots.txt & Sitemap.xml**: Configured with automatic indexing pathways mapping all 42 crawlable site sections under dynamic priorities.
