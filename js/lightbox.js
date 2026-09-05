@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   lightboxOverlay.innerHTML = `
     <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <button class="lightbox-prev" aria-label="Previous image">&lt;</button>
-    <button class="lightbox-next" aria-label="Next image">&gt;</button>
+    <button class="lightbox-prev" aria-label="Previous image"><i class="fa fa-chevron-left"></i></button>
+    <button class="lightbox-next" aria-label="Next image"><i class="fa fa-chevron-right"></i></button>
     <div class="lightbox-content"></div>
   `;
   
@@ -364,12 +364,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile Swipe Support
   let touchStartX = 0;
   let touchEndX = 0;
+  let isMultiTouch = false;
 
   lightboxOverlay.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+    if (e.touches.length > 1) {
+      isMultiTouch = true;
+    } else {
+      isMultiTouch = false;
+      touchStartX = e.changedTouches[0].screenX;
+    }
+  }, { passive: true });
+  
+  lightboxOverlay.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 1) {
+      isMultiTouch = true;
+    }
   }, { passive: true });
 
   lightboxOverlay.addEventListener('touchend', (e) => {
+    // Ignore swipe if we used multiple fingers OR if the browser is currently zoomed in
+    const isZoomedIn = window.visualViewport && window.visualViewport.scale > 1.05;
+    
+    if (isMultiTouch || isZoomedIn) {
+      if (e.touches.length === 0) {
+        isMultiTouch = false;
+      }
+      return;
+    }
     touchEndX = e.changedTouches[0].screenX;
     handleSwipeGesture();
   }, { passive: true });
