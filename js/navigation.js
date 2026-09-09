@@ -174,3 +174,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000);
   };
 });
+
+// Image Load Animation
+document.addEventListener("DOMContentLoaded", () => {
+  const animatedImages = document.querySelectorAll('.page-banner-img, .hero-slide-img, .header-logo, .footer-wucc-logo, .activity-img, .adventure-card-image img');
+  animatedImages.forEach(img => {
+    // Add base transition style
+    img.style.transition = 'opacity 0.6s ease-out, filter 0.6s ease-out';
+    
+    if (!img.complete) {
+      img.style.opacity = '0';
+      img.style.filter = 'blur(4px)';
+      img.addEventListener('load', () => {
+        img.style.opacity = '1';
+        img.style.filter = 'blur(0)';
+      });
+    } else {
+      img.style.opacity = '1';
+      img.style.filter = 'blur(0)';
+    }
+  });
+});
