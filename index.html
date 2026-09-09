@@ -17,31 +17,24 @@
     <!-- Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+    <link rel="preload" as="image" href="/img/bg-img/cover_home5_sm.webp" type="image/webp">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//apps.elfsight.com">
 
     <link rel="stylesheet" href="/css/utilities.css?v=5">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/v4-shims.min.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/v4-shims.min.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/v4-shims.min.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/v4-shims.min.css">
     </noscript>
-    </noscript>
-    </noscript>
 
     <link rel="stylesheet" href="/css/global.css?v=1">
     <link rel="stylesheet" href="/css/main_layout.css?v=4">
-    <link rel="stylesheet" href="/css/navigation.css?v=8">
+    <link rel="stylesheet" href="/css/navigation.css?v=9">
     <link rel="stylesheet" href="/css/hero.css?v=1">
 
     
@@ -50,11 +43,6 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
 
     
 
@@ -127,7 +115,10 @@
       <div class="hero-slides">
         <!-- Slide 1 -->
         <div class="hero-slide is-active">
-          <img width="1498" height="1000" src="/img/bg-img/cover_home5_sm.jpg" alt="WUCC members competing at a bouldering competition" class="hero-slide-img" fetchpriority="high">
+          <picture>
+            <source type="image/webp" srcset="/img/bg-img/cover_home5_sm.webp">
+            <img width="1498" height="1000" src="/img/bg-img/cover_home5_sm.jpg" alt="WUCC members competing at a bouldering competition" class="hero-slide-img" fetchpriority="high">
+          </picture>
           <div class="hero-overlay"></div>
           <div class="hero-container">
             <div class="hero-text">
@@ -139,7 +130,10 @@
 
         <!-- Slide 2 -->
         <div class="hero-slide">
-          <img width="1600" height="1066" src="/img/bg-img/cover_home4_sm.jpg" alt="The Warwick Sport climbing wall with lead and speed routes" class="hero-slide-img" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="/img/bg-img/cover_home4_sm.webp">
+            <img width="1600" height="1066" src="/img/bg-img/cover_home4_sm.jpg" alt="The Warwick Sport climbing wall with lead and speed routes" class="hero-slide-img" loading="lazy">
+          </picture>
           <div class="hero-overlay"></div>
           <div class="hero-container">
             <div class="hero-text">
@@ -151,7 +145,10 @@
 
         <!-- Slide 3 -->
         <div class="hero-slide">
-          <img width="1600" height="1059" src="/img/bg-img/cover_home3.jpg" alt="WUCC members outdoor climbing on a European tour" class="hero-slide-img" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="/img/bg-img/cover_home3.webp">
+            <img width="1600" height="1059" src="/img/bg-img/cover_home3.jpg" alt="WUCC members outdoor climbing on a European tour" class="hero-slide-img" loading="lazy">
+          </picture>
           <div class="hero-overlay"></div>
           <div class="hero-container">
             <div class="hero-text">
@@ -186,7 +183,7 @@
                 </div>
                 <div class="about-us-video">
                     <div class="video-wrapper">
-                        <img width="1000" height="532" src="/img/exec/exec_2026-27.jpg" alt="Exec Committee 2026-2027">
+                        <img width="1000" height="532" src="/img/exec/exec_2026-27.jpg" alt="Exec Committee 2026-2027" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -352,7 +349,7 @@
         <div class="footer-section section-logo">
           <div class="circle-logo-container">
             <a href="/">
-              <img width="160" height="160" src="/img/core-img/wucc_logo_white.png" alt="WUCC Logo" class="footer-wucc-logo">
+              <img width="160" height="160" src="/img/core-img/wucc_logo_white.png" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy">
             </a>
           </div>
         </div>
@@ -401,7 +398,6 @@
 <script defer src="/js/analytics.js?v=1"></script>
 <script defer src="/js/hero.js?v=1"></script>
 <script defer src="/js/recent_activity.js?v=1"></script>
-<script defer src="/js/lightbox.js?v=4"></script>
 
 
 </body>

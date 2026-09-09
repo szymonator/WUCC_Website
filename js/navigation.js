@@ -33,23 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const header = document.querySelector('.site-header');
 
-  // Preloader fadeout
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    const fadeOut = () => {
-      preloader.style.transition = 'opacity 0.5s ease';
-      preloader.style.opacity = '0';
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 500);
-    };
-
-    if (document.readyState === 'complete') {
-      fadeOut();
-    } else {
-      window.addEventListener('load', fadeOut);
-    }
-  }
 
   // Dynamic copyright year loader
   const yearSpan = document.getElementById('currentYear');

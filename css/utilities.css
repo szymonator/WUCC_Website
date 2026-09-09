@@ -88,7 +88,7 @@
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 /* Admin/Stats Components */
@@ -314,3 +314,7 @@ ul, ol, dl { margin-top: 0; margin-bottom: 1rem; }
 .p-3 { padding: 1rem !important; }
 .p-4 { padding: 1.5rem !important; }
 .p-5 { padding: 3rem !important; }
+
+.btn:hover {
+  transform: scale(1.04);
+}
