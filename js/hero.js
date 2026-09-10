@@ -31,8 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextSlide = () => showSlide(currentSlide + 1);
   const prevSlide = () => showSlide(currentSlide - 1);
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // Auto-rotation controls
   const startAutoSlide = () => {
+    if (prefersReducedMotion) return;
     stopAutoSlide();
     slideInterval = setInterval(nextSlide, slideDuration);
   };
@@ -66,11 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Pause slideshow on hover
+  // Pause slideshow on hover or focus
   const heroSection = document.querySelector('.hero-section');
   if (heroSection) {
     heroSection.addEventListener('mouseenter', stopAutoSlide);
     heroSection.addEventListener('mouseleave', startAutoSlide);
+    heroSection.addEventListener('focusin', stopAutoSlide);
+    heroSection.addEventListener('focusout', startAutoSlide);
   }
 
   // Pause slideshow when tab is not visible (saves CPU/battery)

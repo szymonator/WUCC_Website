@@ -24,15 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
     target.style.height = '0';
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
 
-    const onEnd = () => {
+    const fallback = setTimeout(() => {
+      onEnd({ target: target, propertyName: 'height' });
+    }, 400);
+
+    const onEnd = (e) => {
+      if (e.target !== target || e.propertyName !== 'height') return;
+      clearTimeout(fallback);
       target.classList.remove('collapsing');
       target.classList.add('collapse');
       target.style.height = '';
       target.removeEventListener('transitionend', onEnd);
     };
     target.addEventListener('transitionend', onEnd);
-    // Fallback in case transitionend doesn't fire
-    setTimeout(onEnd, 400);
   };
 
   /**
@@ -48,15 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
     target.style.height = target.scrollHeight + 'px';
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
 
-    const onEnd = () => {
+    const fallback = setTimeout(() => {
+      onEnd({ target: target, propertyName: 'height' });
+    }, 400);
+
+    const onEnd = (e) => {
+      if (e.target !== target || e.propertyName !== 'height') return;
+      clearTimeout(fallback);
       target.classList.remove('collapsing');
       target.classList.add('collapse', 'show');
       target.style.height = '';
       target.removeEventListener('transitionend', onEnd);
     };
     target.addEventListener('transitionend', onEnd);
-    // Fallback in case transitionend doesn't fire
-    setTimeout(onEnd, 400);
   };
 
   document.addEventListener('click', (e) => {
