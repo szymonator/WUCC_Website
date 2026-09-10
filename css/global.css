@@ -7,7 +7,9 @@
 /* === 2. Design Tokens === */
 :root {
     /* Brand */
-    --color-accent: #FF5A4B;        /* Team Warwick Red */
+    --color-accent: #FF5A4B;
+    --primary-color: var(--color-accent);
+    --primary-color: var(--color-accent);        /* Team Warwick Red */
 
     /* Backgrounds */
     --bg-base: #000000;             /* Main page background */
@@ -19,7 +21,6 @@
 
     /* Borders & Effects */
     --border-color: #222222;
-    --shadow: 0 2px 40px 8px rgba(255, 255, 255, 0.05);
     --shadow-light: 0 4px 15px rgba(255, 255, 255, 0.05);
     --shadow-dropdown: 0 8px 30px rgba(0, 0, 0, 0.3);
 
@@ -97,11 +98,6 @@ ul {
 }
 
 /* Background image helper class (Critical for banners & slides) */
-.bg-img {
-    background-position: center center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-}
 
 /* === 3. Layout & Spacing Utilities === */
 .section-padding-80-0 {
@@ -127,45 +123,9 @@ ul {
 .mt-30 { margin-top: 30px !important; }
 .mt-50 { margin-top: 50px !important; }
 .bg-gray { background-color: var(--bg-elevated) !important; }
-.bg-overlay {
-    position: relative;
-    z-index: 1;
-}
-.bg-overlay::after {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    content: '';
-    background-color: rgba(0, 0, 0, 0.45);
-    z-index: -1;
-}
 
-.line {
-    height: 3px;
-    width: 70px;
-    background-color: var(--color-accent);
-    margin-bottom: 30px;
-}
 
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 .btn {
     border-radius: 60px;
@@ -288,33 +248,9 @@ ul {
     display: block;
 }
 
-.a-collapsible {
-    display: block;
-    padding: 20px 25px;
-    color: #FF5A4B !important;
-    background-color: #000000;
-    border-radius: 10px;
-    transition: var(--transition);
-}
 
-.a-collapsible h1,
-.a-collapsible h2,
-.a-collapsible h3,
-.a-collapsible h4,
-.a-collapsible h5,
-.a-collapsible h6,
-.a-collapsible p {
-    color: #FF5A4B !important;
-}
 
-.a-collapsible:hover {
-    background-color: #000000;
-}
 
-.a-collapsible[aria-expanded="true"] {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
 
 /* Accordion text formatting */
 .collapse > .container-fluid {
@@ -333,74 +269,40 @@ ul {
 }
 
 /* Handle icon changes for expanded states */
-.a-collapsible[aria-expanded="true"] .fa-plus { display: none; }
-.a-collapsible[aria-expanded="false"] .fa-minus { display: none; }
 
-.pull-right {
-    float: right;
-    margin-top: 4px;
-}
 
 /* === 11. Gallery Grid & Hover overlay === */
-.single-portfolio-content {
+
+
+
+
+
+
+
+
+
+
+.line {
+    height: 3px;
+    width: 70px;
+    background-color: var(--color-accent);
+    margin-bottom: 30px;
+}
+
+.video-container {
     position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    background-color: #000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.single-portfolio-content img {
-    transition: var(--transition);
-    display: block;
-    width: 100%;
-}
-
-.single-portfolio-content:hover img {
-    transform: scale(1.08);
-    opacity: 0.7;
-}
-
-.single-portfolio-content .hover-content {
+.video-container iframe {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: var(--transition);
-    z-index: 10;
+    width: 100%;
+    height: 100%;
 }
-
-.single-portfolio-content:hover .hover-content {
-    opacity: 1;
-}
-
-.single-portfolio-content .hover-content a {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background-color: var(--color-accent);
-    color: var(--text-on-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 10px rgba(252, 96, 96, 0.4);
-    transform: scale(0.8);
-    transition: var(--transition);
-}
-
-.single-portfolio-content:hover .hover-content a {
-    transform: scale(1);
-}
-
-.single-portfolio-content .hover-content a:hover {
-    background-color: var(--bg-base);
-    color: var(--color-accent);
-}
-
-

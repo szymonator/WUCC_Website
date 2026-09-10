@@ -184,7 +184,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -201,25 +201,45 @@
 
 .lightbox-content {
   position: relative;
-  max-width: 90%;
-  max-height: 85%;
+  width: 100%;
+  height: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.lightbox-image {
-  max-width: 100%;
-  max-height: 100vh;
+.lightbox-slide {
+  position: absolute;
+  max-width: 90%;
+  max-height: 100%;
   object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  transform: scale(0.95);
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.35s ease;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  backface-visibility: hidden;
 }
 
-.lightbox-overlay.is-active .lightbox-image {
-  transform: scale(1);
+.slide-out-left {
+  transform: translateX(-100%) scale(0.9);
+  opacity: 0;
+}
+
+.slide-out-right {
+  transform: translateX(100%) scale(0.9);
+  opacity: 0;
+}
+
+.slide-in-left {
+  transform: translateX(-100%) scale(0.9);
+  opacity: 0;
+}
+
+.slide-in-right {
+  transform: translateX(100%) scale(0.9);
+  opacity: 0;
 }
 
 .lightbox-close {
@@ -228,11 +248,13 @@
   right: 30px;
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: #ffffff;
   font-size: 45px;
   font-weight: 300;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: color 0.2s ease;
+  z-index: 10020;
+  outline: none;
 }
 
 .lightbox-close:hover {
@@ -252,13 +274,15 @@
   height: 50px;
   border-radius: 50%;
   font-size: 24px;
-  display: none; /* Hidden by default, script will show for gallery */
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10010;
   transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   outline: none;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .lightbox-prev {
@@ -276,10 +300,29 @@
   color: var(--color-accent);
 }
 
-@media (max-width: 767px) {
+img[data-lightbox-clickable] {
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+img[data-lightbox-clickable]:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 767.98px) {
   .lightbox-prev {
     left: 10px;
   }
+  .lightbox-next {
+    right: 10px;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
   .lightbox-next {
     right: 10px;
   }
@@ -317,7 +360,7 @@
 .filter-menu .btn.active {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--text-primary) !important; /* Accessibility: Black text on Warwick Red */
+  color: var(--text-primary) !important; /* White text on red for dark theme */
 }
 
 /* Meet the Exec Grid & Card Layouts */
@@ -417,7 +460,7 @@
 }
 
 /* Tablet responsive height adjustment for Exec Card */
-@media (max-width: 991px) and (min-width: 577px) {
+@media (max-width: 991.98px) and (min-width: 577px) {
   .exec-card {
     min-height: 200px;
     height: auto;
@@ -465,6 +508,7 @@
 }
 
 .adventure-card {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -551,7 +595,7 @@
 }
 
 /* Tablet responsive card layout */
-@media (max-width: 991px) and (min-width: 481px) {
+@media (max-width: 991.98px) and (min-width: 481px) {
   .adventure-card {
     height: 160px;
     padding: 16px;
@@ -592,100 +636,37 @@
   }
 }
 
-/* FAQ Accordion Grid & Card Styling */
-.faq-cell {
-  background-color: #000000 !important; /* Black bg */
-  border: 1px solid var(--color-accent) !important; /* Warwick Red outline border */
+/* Consolidated Accordion Components (FAQ & Steps) */
+.faq-cell, .step-cell {
+  background-color: #000000 !important;
+  border: 1px solid var(--color-accent) !important;
   border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.faq-cell:hover {
+.faq-cell:hover, .step-cell:hover {
   box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
 }
 
-/* Trigger styling */
-.faq-trigger {
+.faq-trigger, .step-trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  color: #ffffff !important; /* White text */
+  color: #ffffff !important;
   text-decoration: none !important;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+}
+
+.faq-trigger:hover, .step-trigger:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.faq-trigger {
   font-weight: 600;
   font-size: 16px;
-  background-color: transparent;
-  transition: var(--transition-smooth);
-}
-
-.faq-trigger:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.faq-trigger .faq-question {
-  color: #ffffff !important; /* White question text */
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-.faq-trigger .faq-icons {
-  color: #ffffff !important; /* White icons */
-  font-size: 14px;
-}
-
-/* Toggle icons on expanded/collapsed state */
-.faq-trigger[aria-expanded="true"] .fa-plus { display: none; }
-.faq-trigger[aria-expanded="false"] .fa-minus { display: none; }
-
-/* Expanded text area styling */
-.faq-cell .collapse {
-  transition: height 0.35s ease;
-}
-
-.faq-content {
-  padding: 20px 25px 25px 25px;
-  background-color: transparent;
-}
-
-.faq-content p {
-  color: #ffffff !important; /* White answer text */
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.faq-content p:not(:last-child) {
-  margin-bottom: 12px;
-}
-
-/* Joining Steps Accordion Styling */
-.step-cell {
-  background-color: #000000 !important; /* Black bg */
-  border: 1px solid var(--color-accent) !important; /* Warwick Red outline border */
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.step-cell:hover {
-  box-shadow: 0 5px 15px rgba(255, 90, 75, 0.25);
-}
-
-/* Trigger styling */
-.step-trigger {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 25px;
-  color: #ffffff !important; /* White text */
-  text-decoration: none !important;
-  background-color: transparent;
-  transition: var(--transition-smooth);
-}
-
-.step-trigger:hover {
-  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .step-trigger-left {
@@ -694,10 +675,21 @@
   gap: 15px;
 }
 
+.faq-trigger .faq-question {
+  color: #ffffff !important;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.faq-trigger .faq-icons, .step-icons {
+  color: #ffffff !important;
+  font-size: 14px;
+}
+
 .step-number {
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff !important; /* White step number text */
+  color: #ffffff !important;
   margin: 0;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
@@ -706,29 +698,40 @@
 .step-title {
   font-size: 16px;
   font-weight: 600;
-  color: #ffffff !important; /* White step title text */
+  color: #ffffff !important;
   margin: 0;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
 }
 
-.step-icons {
-  color: #ffffff !important; /* White step icons */
-  font-size: 14px;
+.faq-trigger[aria-expanded="true"] .fa-plus, .step-trigger[aria-expanded="true"] .fa-plus { display: none; }
+.faq-trigger[aria-expanded="false"] .fa-minus, .step-trigger[aria-expanded="false"] .fa-minus { display: none; }
+
+.faq-cell .collapse, .step-cell .collapse {
+  transition: height 0.35s ease;
 }
 
-/* Toggle icons on expanded/collapsed state */
-.step-trigger[aria-expanded="true"] .fa-plus { display: none; }
-.step-trigger[aria-expanded="false"] .fa-minus { display: none; }
+.faq-content, .step-content {
+  background-color: transparent;
+}
 
-/* Expanded content area styling */
-.step-cell .collapse {
-  transition: height 0.35s ease;
+.faq-content {
+  padding: 20px 25px 25px 25px;
 }
 
 .step-content {
   padding: 0 25px 25px 25px;
-  background-color: transparent;
+}
+
+.faq-content p {
+  color: #ffffff !important;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.faq-content p:not(:last-child) {
+  margin-bottom: 12px;
 }
 
 /* Force all texts, links, headers, and lists to be white and inherit correctly */

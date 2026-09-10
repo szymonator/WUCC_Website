@@ -173,7 +173,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .hero-text .hero-title {
     font-size: 38px;
   }

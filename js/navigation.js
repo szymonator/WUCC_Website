@@ -1,35 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  console.log(`
-                                                                                    
-               ▓▓▓▓                                                             
-              ▓░░░░▓                                                            
-             ▓░░░░░░▓                                                           
-           ▓▓░░░░░░▓                                                            
-    ▓▓▓▓▓▓▓░░░░░░▓▓                                                             
-   ▓░░░░░░░░░░░░▓                                                               
-   ▓░░░░░░░░░▓░░▓                                                               
-   █▓░░░░░░░▓░░░▓                                                               
-    █▓▓░░░░░▓░░░▓                                                               
-     ██▓░░░▓░░░░▓                                                               
-       █▓▓░░░░░░░▓▓                                                             
-        █▓░░░░░░░░░▓▓                                                           
-         ▓▓░░░░░░░░░▒▓                                                          
-         █▓░░░░░▓▓▓▒▒▓▓                                                         
-        █▓▓░░▒▓▓▓  ▓▓▓                                                          
-        █▓▒▒▓▓                                                                  
-       █▓▒▓▓                                                                    
-       █▓▓                                                                      
-                                                                                
-  ██   █  █  █ █  ███ ███ ███                                                   
-  ███  █  █  █ █  █   █   █                                                     
-  █ ██ █  █  █ █  ███ █   █                                                     
-  █  ███  █  █ █    █ █   █                                                     
-  █   ██   ██  ██ ███ ███ ███  
-  
-  The best climbing competition in the world!
-  - Tara F.
-`);
+  console.log('WUCC: The best climbing competition in the world! - Tara F.');
 
   const header = document.querySelector('.site-header');
 
@@ -98,80 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Make the entire adventure card clickable
   const adventureCards = document.querySelectorAll('.adventure-card');
   adventureCards.forEach(card => {
-    card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
-      // Check if click was not on the link itself (to let the browser handle natural hrefs)
       if (e.target.tagName !== 'A' && !e.target.closest('a')) {
         const link = card.querySelector('a');
         if (link) {
-          const href = link.getAttribute('href');
-          if (href) {
-            window.location.href = href;
+          if (e.ctrlKey || e.metaKey) {
+            window.open(link.href, '_blank');
+          } else {
+            link.click();
           }
         }
       }
     });
   });
 
-  // Handle WhatsApp Group link dynamic notification
-  const showToast = (message) => {
-    let container = document.getElementById('wucc-toast-container');
-    if (!container) {
-      container = document.createElement('div');
-      container.id = 'wucc-toast-container';
-      container.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 99999;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        pointer-events: none;
-      `;
-      if (window.innerWidth < 768) {
-        container.style.right = '20px';
-        container.style.left = '20px';
-        container.style.bottom = '20px';
-        container.style.alignItems = 'center';
-      }
-      document.body.appendChild(container);
-    }
-
-    const toast = document.createElement('div');
-    toast.style.cssText = `
-      background-color: #0d0d0d;
-      color: #ffffff;
-      border: 1px solid var(--color-accent, #FF5A4B);
-      border-radius: 8px;
-      padding: 16px 24px;
-      font-size: 15px;
-      font-weight: 500;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      pointer-events: auto;
-      max-width: 340px;
-      line-height: 1.4;
-      text-align: center;
-    `;
-    toast.textContent = message;
-
-    container.appendChild(toast);
-
-    requestAnimationFrame(() => {
-      toast.style.opacity = '1';
-      toast.style.transform = 'translateY(0)';
-    });
-
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(-20px)';
-      setTimeout(() => {
-        toast.remove();
-      }, 300);
-    }, 4000);
-  };
 });
 

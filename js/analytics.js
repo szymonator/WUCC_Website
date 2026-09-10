@@ -215,9 +215,9 @@
   // Cookieless GDPR-compliant page tracking
   function trackPageView() {
     let pagePath = window.location.pathname;
-    // Normalize pagePath (strip trailing slashes except for root /)
-    if (pagePath.length > 1 && pagePath.endsWith('/')) {
-      pagePath = pagePath.slice(0, -1);
+    // Normalize pagePath (ensure trailing slash to match navigation.js canonical form)
+    if (!pagePath.endsWith('/')) {
+      pagePath = pagePath + '/';
     }
     fetch('/api/track', {
       method: 'POST',

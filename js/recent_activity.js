@@ -46,54 +46,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const CACHE_KEY = 'wucc_recent_activity';
+  const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+
   const updateCard = async () => {
-    // 1. Fetch both Trips/Tours and Comps listings
-    const [trips, comps] = await Promise.all([
-      fetchListing('/adventures/tripsandtours/'),
-      fetchListing('/adventures/comps/')
-    ]);
-
-    const allPosts = [...trips, ...comps];
-    if (allPosts.length === 0) return;
-
-    // 2. Sort by date descending
-    allPosts.sort((a, b) => b.dateObj - a.dateObj);
-    const latestPost = allPosts[0];
-
-    // 3. Fetch the full content page to extract the preview text
+    let latestPost = null;
     let previewText = '';
+
+    // Check cache first
     try {
-      const response = await fetch(latestPost.link);
-      if (response.ok) {
-        const htmlText = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, 'text/html');
-        const paragraphs = Array.from(doc.querySelectorAll('.about-us-content p, .about-us-text p'));
-        const bodyParagraph = paragraphs.find(p => {
-          const text = p.textContent.trim();
-          const html = p.innerHTML;
-          // Ignore Date/Author header
-          if (p.getAttribute('style') && p.getAttribute('style').includes('#A7A7A7')) return false;
-          // Ignore Dates/Location metadata lines
-          if (html.includes('<b>Dates:</b>') || html.includes('<b>Location:</b>') || html.includes('<strong>Dates:</strong>')) return false;
-          return text.length > 35;
-        });
-        if (bodyParagraph) {
-          previewText = bodyParagraph.textContent.trim();
-          // Truncate to a clean word boundary around 280 characters to avoid half-cut words
-          if (previewText.length > 280) {
-            const cutIndex = previewText.lastIndexOf(' ', 280);
-            previewText = previewText.substring(0, cutIndex > 0 ? cutIndex : 280);
-          }
-          // Always ensure the preview ends with three dots "..."
-          if (!previewText.endsWith('...')) {
-            // Strip any trailing spaces or punctuation before appending "..."
-            previewText = previewText.replace(/[\.\,\!\?\;\:\-\s]+$/, '') + '...';
-          }
+      const cached = sessionStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const parsedCache = JSON.parse(cached);
+        if (Date.now() - parsedCache.timestamp < CACHE_TTL_MS) {
+          latestPost = parsedCache.data.latestPost;
+          previewText = parsedCache.data.previewText;
         }
       }
-    } catch (err) {
-      console.warn('Failed to fetch post details for preview:', err);
+    } catch (e) {
+      console.warn('Failed to parse recent activity cache', e);
+    }
+
+    if (!latestPost) {
+      // 1. Fetch both Trips/Tours and Comps listings
+      const [trips, comps] = await Promise.all([
+        fetchListing('/adventures/tripsandtours/'),
+        fetchListing('/adventures/comps/')
+      ]);
+
+      const allPosts = [...trips, ...comps];
+      if (allPosts.length === 0) return;
+
+      // 2. Sort by date descending
+      allPosts.sort((a, b) => b.dateObj - a.dateObj);
+      latestPost = allPosts[0];
+
+      // 3. Fetch the full content page to extract the preview text
+      try {
+        const response = await fetch(latestPost.link);
+        if (response.ok) {
+          const htmlText = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlText, 'text/html');
+          const paragraphs = Array.from(doc.querySelectorAll('.about-us-content p, .about-us-text p'));
+          const bodyParagraph = paragraphs.find(p => {
+            const text = p.textContent.trim();
+            const html = p.innerHTML;
+            // Ignore Date/Author header
+            if (p.getAttribute('style') && p.getAttribute('style').includes('#A7A7A7')) return false;
+            // Ignore Dates/Location metadata lines
+            if (html.includes('<b>Dates:</b>') || html.includes('<b>Location:</b>') || html.includes('<strong>Dates:</strong>')) return false;
+            return text.length > 35;
+          });
+          if (bodyParagraph) {
+            previewText = bodyParagraph.textContent.trim();
+            // Truncate to a clean word boundary around 280 characters to avoid half-cut words
+            if (previewText.length > 280) {
+              const cutIndex = previewText.lastIndexOf(' ', 280);
+              previewText = previewText.substring(0, cutIndex > 0 ? cutIndex : 280);
+            }
+            // Always ensure the preview ends with three dots "..."
+            if (!previewText.endsWith('...')) {
+              // Strip any trailing spaces or punctuation before appending "..."
+              previewText = previewText.replace(/[\.\,\!\?\;\:\-\s]+$/, '') + '...';
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Failed to fetch post details for preview:', err);
+      }
+
+      // Store in cache
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+          data: { latestPost, previewText },
+          timestamp: Date.now()
+        }));
+      } catch (e) {}
     }
 
     // 4. Update the card on the DOM

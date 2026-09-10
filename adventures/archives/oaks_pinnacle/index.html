@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="WUCC archives - Oaks Pinnacle gallery.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Oaks Pinnacle | Warwick University Climbing Club</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/img/core-img/wucc_logo_white.webp">
+
+    <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+
+    <link rel="stylesheet" href="/css/utilities.css?v=23">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/v4-shims.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/v4-shims.min.css">
+    </noscript>
+
+    <link rel="stylesheet" href="/css/global.css?v=22">
+    <link rel="stylesheet" href="/css/main_layout.css?v=20">
+    <link rel="stylesheet" href="/css/navigation.css?v=20">
+    <link rel="stylesheet" href="/css/page_decorations.css?v=21">
+
+    <link rel="stylesheet" href="/css/analytics.css?v=20">
+</head>
+
+<body>
+    <!-- Smart Preloader -->
+    <div id="preloader" style="position: fixed; inset: 0; background: var(--bg-base, #121212); z-index: 9999999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease;">
+        <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--color-accent, #FF5A4B); border-radius: 50%; animation: preloader-spin 1s linear infinite;"></div>
+    </div>
+    <style>@keyframes preloader-spin { 100% { transform: rotate(360deg); } }</style>
+    <script>
+        (function() {
+            function dismissPreloader() {
+                var p = document.getElementById('preloader');
+                if (p && p.style.opacity !== '0') {
+                    p.style.opacity = '0';
+                    setTimeout(function() { p.style.display = 'none'; }, 500);
+                }
+            }
+            window.addEventListener('DOMContentLoaded', function() {
+                var lcpImage = document.querySelector('.hero-slide-img, .page-banner-img');
+                if (!lcpImage || lcpImage.complete) {
+                    dismissPreloader();
+                } else {
+                    lcpImage.addEventListener('load', dismissPreloader);
+                    lcpImage.addEventListener('error', dismissPreloader);
+                }
+                setTimeout(dismissPreloader, 3000); // 3s fallback
+            });
+            window.addEventListener('load', dismissPreloader); // Ultimate fallback
+        })();
+    </script>
+    <!-- /Smart Preloader -->
+
+    <header class="site-header navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+      <div class="container">
+        <!-- Branding logo -->
+        <a href="/" class="navbar-brand">
+          <img width="337" height="69" src="/img/core-img/header_logo.webp" alt="Warwick University Climbing Club Logo">
+        </a>
+
+        <!-- Mobile menu toggle button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Main Navigation Menu -->
+        <div class="collapse navbar-collapse" id="siteNavigation">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="discoverDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Discover</a>
+              <div class="dropdown-menu" aria-labelledby="discoverDropdown">
+                <a class="dropdown-item" href="/discover/abouttheclub/">About the Club</a>
+                <a class="dropdown-item" href="/discover/whyjoin/">Why Join?</a>
+                <a class="dropdown-item" href="/discover/howtojoin/">How to Join</a>
+                <a class="dropdown-item" href="/discover/exec/">Meet the Exec</a>
+                <a class="dropdown-item" href="/discover/faq/">FAQ</a>
+              </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="resourcesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Member Resources</a>
+              <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <a class="dropdown-item" href="/resources/welfare/">Welfare</a>
+                <a class="dropdown-item" href="/resources/clubhours/">Club Hours</a>
+                <a class="dropdown-item" href="/resources/howtobook/">How to Book</a>
+                <a class="dropdown-item" href="/resources/learning/">Learning</a>
+              </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="adventuresDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Adventures & Activities</a>
+              <div class="dropdown-menu" aria-labelledby="adventuresDropdown">
+                <a class="dropdown-item" href="/adventures/tripsandtours/">Trips and Tours</a>
+                <a class="dropdown-item" href="/adventures/comps/">Competitions</a>
+                <a class="dropdown-item" href="/adventures/climboftheweek/">Climb of the Week</a>
+                <a class="dropdown-item" href="/adventures/archives/">Archives</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- Header SU & Social Logos -->
+        <div class="header-logos">
+          <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
+            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
+          </a>
+          <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
+            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
+          </a>
+          <a href="https://www.instagram.com/w_u_c_c/?hl=en" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
+            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- Header Area End -->
+    <!-- Breadcrumb Area Start -->
+    <section class="page-banner">
+        <picture>
+            <source type="image/webp" srcset="/img/crags/oaks_pinnacle/cover.webp">
+            <img src="/img/crags/oaks_pinnacle/cover.jpg" alt="WUCC page banner" class="page-banner-img" fetchpriority="high">
+        </picture>
+      <div class="page-banner-overlay"></div>
+      <div class="container">
+        <div class="page-banner-content">
+          <h1 class="page-banner-title">Oaks Pinnacle</h1>
+          <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li>Adventures & Activities</li>
+            <li><a href="/adventures/archives/">Archives</a></li>
+            <li class="active">Oaks Pinnacle</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+    <!-- About Us Area Start -->
+    <div class="about-us-area section-padding-80-0 clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="about-us-content mb-30">
+                        <h3 class="wow fadeInUp" data-wow-delay="100ms">Oaks Pinnacle</h3>
+                        <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
+                        
+                    </div>
+                </div>
+
+                <!-- Gallery Items -->
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/1.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/1.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/2.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/2.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/3.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/3.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/4.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/4.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/5.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/5.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/6.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/6.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/7.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/7.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/8.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/8.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/9.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/9.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/10.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/10.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/11.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/11.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/12.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/12.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/13.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/13.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/14.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/14.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/15.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/15.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/16.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/16.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/17.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/17.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="gallery-card">
+                        <img loading="lazy" src="/img/crags/oaks_pinnacle/18.jpg" alt="WUCC climbing photo">
+                        <div class="gallery-overlay">
+                            <a href="/img/crags/oaks_pinnacle/18.jpg" class="gallery-zoom-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="height:100px;"></div>
+    <!-- About Us Area End -->
+
+                    <!-- Footer Area Start -->
+    <footer class="site-footer bg-black">
+      <div class="footer-container">
+        <!-- Section 1: Circular Club Logo -->
+        <div class="footer-section section-logo">
+          <div class="circle-logo-container">
+            <a href="/">
+              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy">
+            </a>
+          </div>
+        </div>
+
+        <!-- Section 2: Copyright & Links -->
+        <div class="footer-section section-links">
+          <p class="footer-copyright">&copy; <span id="currentYear"></span> Warwick University Climbing Club</p>
+          <div class="footer-links-grid">
+            <a href="/privacy/" class="footer-link">Privacy Policy</a>
+            <a href="/contributors/" class="footer-link">Contributors</a>
+            <a href="/resources/welfare/" class="footer-link">Welfare</a>
+            <a href="/stats/" class="footer-link">Admin Stats</a>
+          </div>
+        </div>
+
+        <!-- Section 3: Affiliation & Contact -->
+        <div class="footer-section section-info">
+          <p class="footer-disclaimer">
+            WUCC is a student-run society affiliated with Warwick SU and Warwick Sport, and operates independently of the University of Warwick.
+          </p>
+          <p class="footer-contact">
+            Contact us: <a href="mailto:mountaineering@warwicksu.com" class="footer-email">mountaineering@warwicksu.com</a>
+          </p>
+        </div>
+
+        <!-- Section 4: SU & Social Logos -->
+        <div class="footer-section section-logos">
+          <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
+            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
+          </a>
+          <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
+            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="footer-whatsapp-logo">
+          </a>
+          <a href="https://www.instagram.com/w_u_c_c/?hl=en" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
+            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="footer-instagram-logo">
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Area End -->
+
+<!-- **** Custom JS File ***** -->
+
+<script defer src="/js/collapse.js?v=20"></script>
+<script defer src="/js/navigation.js?v=20"></script>
+<script defer src="/js/analytics.js?v=20"></script>
+<script defer src="/js/lightbox.js?v=20"></script>
+<script defer src="/js/gallery_filter.js?v=20"></script>
+
+    <!-- Footer Area End -->
+
+</body>
+
+</html>
