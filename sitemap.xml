@@ -257,4 +257,8 @@
     <loc>https://wucc.containers.uwcs.co.uk/adventures/archives/woodloes/</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://wucc.containers.uwcs.co.uk/adventures/tripsandtours/elchorro26/</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
