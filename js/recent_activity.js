@@ -9,7 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const parseDate = (text) => {
     try {
-      const clean = cleanDateText(text);
+      let clean = cleanDateText(text);
+      // Fix for "Month Year" formats (like "March 2026") which fail in some browsers
+      if (/^[A-Za-z]+\s+\d{4}$/.test(clean.trim())) {
+        clean = clean.trim().replace(/^([A-Za-z]+)\s+(\d{4})$/, '$1 1, $2');
+      }
       const parsed = new Date(clean);
       return isNaN(parsed.getTime()) ? new Date(0) : parsed;
     } catch (e) {
@@ -46,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const CACHE_KEY = 'wucc_recent_activity';
+  const CACHE_KEY = 'wucc_recent_activity_v6';
   const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
   const updateCard = async () => {
@@ -70,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!latestPost) {
       // 1. Fetch both Trips/Tours and Comps listings
       const [trips, comps] = await Promise.all([
-        fetchListing('/adventures/tripsandtours/'),
-        fetchListing('/adventures/comps/')
+        fetchListing('/adventures/tripsandtours/index.html'),
+        fetchListing('/adventures/comps/index.html')
       ]);
 
       const allPosts = [...trips, ...comps];
@@ -83,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 3. Fetch the full content page to extract the preview text
       try {
-        const response = await fetch(latestPost.link);
+        const fetchUrl = latestPost.link.endsWith('/') ? latestPost.link + 'index.html' : latestPost.link;
+        const response = await fetch(fetchUrl);
         if (response.ok) {
           const htmlText = await response.text();
           const parser = new DOMParser();
@@ -148,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (metaEl) {
       metaEl.textContent = latestPost.authorText;
     }
-    if (previewEl && previewText) {
-      previewEl.textContent = previewText;
+    if (previewEl) {
+      previewEl.textContent = previewText || '';
     }
     if (imgEl && latestPost.imgSrc) {
       imgEl.setAttribute('src', latestPost.imgSrc);
