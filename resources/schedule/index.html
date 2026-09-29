@@ -55,6 +55,84 @@
     <link rel="stylesheet" href="/css/page_decorations.css?v=21">
 
     <link rel="stylesheet" href="/css/analytics.css?v=20">
+
+    <style>
+        /* Prevent page-level horizontal overflow on mobile */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        /* Schedule Calendar Responsive Layout */
+        .calendar-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .calendar-view-controls {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #1a1a1a;
+            border: 1.5px solid #333333;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .calendar-toggle-btn:hover {
+            border-color: var(--color-accent, #FF5A4B);
+            color: var(--color-accent, #FF5A4B);
+        }
+
+        .calendar-toggle-btn.active {
+            background-color: var(--color-accent, #FF5A4B);
+            border-color: var(--color-accent, #FF5A4B);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(255, 90, 75, 0.4);
+        }
+
+        .calendar-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            border: 1.5px solid var(--color-accent, #FF5A4B); /* Team Warwick Red border */
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
+        }
+
+        .calendar-wrapper iframe {
+            width: 100%;
+            max-width: 100%;
+            height: 650px;
+            border: 0;
+            display: block;
+        }
+
+        @media (max-width: 767.98px) {
+            .calendar-wrapper iframe {
+                height: 520px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -178,16 +256,31 @@
     <!-- Schedule Area Start -->
     <div class="about-us-area section-padding-80-0 clearfix">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="about-us-content mx-3">
-                    <h4 class="wow fadeInUp" data-wow-delay="100ms">Club Calendar</h4>
-                    <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
-                    <p class="wow fadeInUp" data-wow-delay="300ms">
-                        View our upcoming club hours sessions, trips, socials, and other events on the calendar below. For details on regular club hours times, visit our <a href="/resources/clubhours/">Club Hours page</a>.
-                    </p>
+            <div class="row">
+                <div class="col-12">
+                    <div class="about-us-content mb-30">
+                        <h4 class="wow fadeInUp" data-wow-delay="100ms">Club Calendar</h4>
+                        <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
+                        <p class="wow fadeInUp" data-wow-delay="300ms">
+                            View our upcoming club hours sessions, trips, socials, and other events on the calendar below. For details on regular club hours times, visit our <a href="/resources/clubhours/">Club Hours page</a>.
+                        </p>
+                    </div>
 
-                    <div class="wow fadeInUp" data-wow-delay="400ms" style="max-width: 100%; overflow-x: auto; margin-bottom: 40px;">
-                      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FLondon&showPrint=0&title=Warwick%20Climbing%20Club&src=YzIzOTc5YmQwZDY4YTFjZDc4ZDVkZmUyNDk1MDRjY2ExNDdjYTE4YjU3YjU2NmY4NzYwN2EzZjM4NmJlNjRjNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MzQ1OGYwODMzZDM1MTNiNWJlYzZiNTU1MDA5YmViZmNhNjU4MzhmNTNmMzY0NDVjNzAzZGIwNjQ1MGY5Zjk5OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23f4be40&color=%238e24aa" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>                </div>
+                    <div class="calendar-container wow fadeInUp" data-wow-delay="400ms">
+                        <div class="calendar-view-controls">
+                            <button type="button" class="calendar-toggle-btn active" id="btnMonthView">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> Month View
+                            </button>
+                            <button type="button" class="calendar-toggle-btn" id="btnAgendaView">
+                                <i class="fa fa-list-ul" aria-hidden="true"></i> Agenda / List View
+                            </button>
+                        </div>
+
+                        <div class="calendar-wrapper">
+                            <iframe id="googleCalendarIframe" title="Warwick University Climbing Club Calendar" src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FLondon&showPrint=0&showTabs=0&title=Warwick%20Climbing%20Club&src=YzIzOTc5YmQwZDY4YTFjZDc4ZDVkZmUyNDk1MDRjY2ExNDdjYTE4YjU3YjU2NmY4NzYwN2EzZjM4NmJlNjRjNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MzQ1OGYwODMzZDM1MTNiNWJlYzZiNTU1MDA5YmViZmNhNjU4MzhmNTNmMzY0NDVjNzAzZGIwNjQ1MGY5Zjk5OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23f4be40&color=%238e24aa" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -249,6 +342,42 @@
 <script defer src="/js/navigation.js?v=20"></script>
 <script defer src="/js/analytics.js?v=20"></script>
 <script defer src="/js/lightbox.js?v=20"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var iframe = document.getElementById('googleCalendarIframe');
+        var btnMonth = document.getElementById('btnMonthView');
+        var btnAgenda = document.getElementById('btnAgendaView');
+        if (!iframe || !btnMonth || !btnAgenda) return;
+
+        var baseSrc = "https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FLondon&showPrint=0&showTabs=0&title=Warwick%20Climbing%20Club&src=YzIzOTc5YmQwZDY4YTFjZDc4ZDVkZmUyNDk1MDRjY2ExNDdjYTE4YjU3YjU2NmY4NzYwN2EzZjM4NmJlNjRjNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MzQ1OGYwODMzZDM1MTNiNWJlYzZiNTU1MDA5YmViZmNhNjU4MzhmNTNmMzY0NDVjNzAzZGIwNjQ1MGY5Zjk5OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23f4be40&color=%238e24aa";
+
+        function setCalendarView(mode) {
+            if (mode === 'agenda') {
+                iframe.src = baseSrc + '&mode=AGENDA';
+                btnAgenda.classList.add('active');
+                btnMonth.classList.remove('active');
+            } else {
+                iframe.src = baseSrc + '&mode=MONTH';
+                btnMonth.classList.add('active');
+                btnAgenda.classList.remove('active');
+            }
+        }
+
+        // On mobile screens (< 768px), default to Agenda / List view for optimal readability without zooming
+        if (window.innerWidth < 768) {
+            setCalendarView('agenda');
+        }
+
+        btnMonth.addEventListener('click', function () {
+            setCalendarView('month');
+        });
+
+        btnAgenda.addEventListener('click', function () {
+            setCalendarView('agenda');
+        });
+    });
+</script>
 
     <!-- Footer Area End -->
 
