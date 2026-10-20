@@ -218,22 +218,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="elfsight-app-f433528f-39a1-4b41-b0ea-0ab2e5e3fdfc" id="elfsight-instagram-about" style="margin-top:50px; min-height:400px;"></div>
+                <div class="elfsight-app-0a1d0546-5136-499d-9f0b-dcd80d1a5eab" id="elfsight-instagram-about" style="margin-top:50px; min-height:400px;"></div>
                 <script>
                 (function() {
-                  var el = document.getElementById('elfsight-instagram-about');
-                  if (!el) return;
-                  var loaded = false;
-                  var observer = new IntersectionObserver(function(entries) {
-                    if (entries[0].isIntersecting && !loaded) {
-                      loaded = true;
-                      var s = document.createElement('script');
-                      s.src = 'https://apps.elfsight.com/p/platform.js';
-                      document.body.appendChild(s);
-                      observer.disconnect();
-                    }
-                  }, { rootMargin: '200px' });
-                  observer.observe(el);
+                  function loadElfsight() {
+                    var s = document.createElement('script');
+                    s.src = 'https://elfsightcdn.com/platform.js';
+                    s.async = true;
+                    document.body.appendChild(s);
+                  }
+                  if (document.readyState === 'complete') {
+                    loadElfsight();
+                  } else {
+                    window.addEventListener('load', loadElfsight);
+                  }
                 })();
                 </script>
             </div>
