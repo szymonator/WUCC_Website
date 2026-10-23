@@ -55,6 +55,23 @@
     <link rel="stylesheet" href="/css/page_decorations.css?v=21">
 
     <link rel="stylesheet" href="/css/analytics.css?v=20">
+    <!-- All interactive scripts deferred in head so browser downloads them immediately ahead of image requests -->
+    <link rel="preload" href="/js/lightbox.js?v=22" as="script">
+    <script defer src="/js/collapse.js?v=20"></script>
+    <script defer src="/js/navigation.js?v=20"></script>
+    <script defer src="/js/analytics.js?v=20"></script>
+    <script defer src="/js/lightbox.js?v=22"></script>
+
+    <!-- Fail-safe click interceptor: prevents raw image navigation if tapped before script evaluation -->
+    <script>
+        document.addEventListener('click', function(e) {
+            var trigger = e.target.closest('.gallery-zoom-btn, .portfolio-img');
+            if (trigger && !window.lightboxReady) {
+                e.preventDefault();
+                window.pendingLightboxTrigger = trigger;
+            }
+        }, true);
+    </script>
 </head>
 
 <body>
@@ -140,13 +157,13 @@
         <!-- Header SU & Social Logos -->
         <div class="header-logos">
           <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
-            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
+            <img width="200" height="200" loading="lazy" fetchpriority="low" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
           </a>
           <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
           </a>
           <a href="https://www.instagram.com/warwickclimbing" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
           </a>
         </div>
       </div>
@@ -192,7 +209,7 @@
                 <!-- Gallery Items -->
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/1.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/1.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/1.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -200,7 +217,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/2.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/2.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/2.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -208,7 +225,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/3.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/3.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/3.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -216,7 +233,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/4.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/4.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/4.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -224,7 +241,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/5.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/5.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/5.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -232,7 +249,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/6.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/6.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/6.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -240,7 +257,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/7.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/7.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/7.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -248,7 +265,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/8.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/8.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/8.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -256,7 +273,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/9.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/9.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/9.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -264,7 +281,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/10.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/10.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/10.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -272,7 +289,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/11.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/11.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/11.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -280,7 +297,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/12.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/12.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/12.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -288,7 +305,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/13.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/13.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/13.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -296,7 +313,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/14.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/14.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/14.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -304,7 +321,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/15.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/15.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/15.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -312,7 +329,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/16.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/16.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/16.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -320,7 +337,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/17.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/17.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/17.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -328,7 +345,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/18.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/18.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/18.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -336,7 +353,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/19.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/19.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/19.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -344,7 +361,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/20.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/20.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/20.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -352,7 +369,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/21.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/21.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/21.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -360,7 +377,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/22.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/22.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/22.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -368,7 +385,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/23.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/23.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/23.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -376,7 +393,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/24.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/24.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/24.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -384,7 +401,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/25.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/25.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/25.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -392,7 +409,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/26.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/26.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/26.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -400,7 +417,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/27.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/27.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/27.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -408,7 +425,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/28.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/28.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/28.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -416,7 +433,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -424,7 +441,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/30.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/30.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/30.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -432,7 +449,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/31.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/31.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/31.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -440,7 +457,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/32.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/32.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/32.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -448,7 +465,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/33.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/33.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/33.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -456,7 +473,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/34.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/34.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/34.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -464,7 +481,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/35.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/35.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/35.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -472,7 +489,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/36.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/36.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/36.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -480,7 +497,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/37.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/37.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/37.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -488,7 +505,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/38.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/38.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/38.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -496,7 +513,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29665467_1980108092019050_9009922766256764598_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29665467_1980108092019050_9009922766256764598_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29665467_1980108092019050_9009922766256764598_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -504,7 +521,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29665518_1980106402019219_2405440734478304722_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29665518_1980106402019219_2405440734478304722_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29665518_1980106402019219_2405440734478304722_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -512,7 +529,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29744366_1980106598685866_7306275028370789783_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29744366_1980106598685866_7306275028370789783_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29744366_1980106598685866_7306275028370789783_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -520,7 +537,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29744584_1980106235352569_2854647024883468829_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29744584_1980106235352569_2854647024883468829_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29744584_1980106235352569_2854647024883468829_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -528,7 +545,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29744736_1980106388685887_2148527801433227902_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29744736_1980106388685887_2148527801433227902_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29744736_1980106388685887_2148527801433227902_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -536,7 +553,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29744742_1980107348685791_1296653341696203935_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29744742_1980107348685791_1296653341696203935_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29744742_1980107348685791_1296653341696203935_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -544,7 +561,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29749412_1980108255352367_3757480422204521598_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29749412_1980108255352367_3757480422204521598_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29749412_1980108255352367_3757480422204521598_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -552,7 +569,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29749583_1980107138685812_1408434603951317779_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29749583_1980107138685812_1408434603951317779_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29749583_1980107138685812_1408434603951317779_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -560,7 +577,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29749680_1980107115352481_1069102948206601080_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29749680_1980107115352481_1069102948206601080_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29749680_1980107115352481_1069102948206601080_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -568,7 +585,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29749935_1980109145352278_8169453158265066127_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29749935_1980109145352278_8169453158265066127_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29749935_1980109145352278_8169453158265066127_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -576,7 +593,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29871966_1980107708685755_381918791404997279_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29871966_1980107708685755_381918791404997279_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29871966_1980107708685755_381918791404997279_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -584,7 +601,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29872041_1980108142019045_7402587510038290656_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29872041_1980108142019045_7402587510038290656_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29872041_1980108142019045_7402587510038290656_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -592,7 +609,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29872512_1980107062019153_3439926815580284682_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29872512_1980107062019153_3439926815580284682_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29872512_1980107062019153_3439926815580284682_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -600,7 +617,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29872693_1980107305352462_9017632724047068381_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29872693_1980107305352462_9017632724047068381_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29872693_1980107305352462_9017632724047068381_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -608,7 +625,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29873357_1980108598685666_2465212681897994209_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29873357_1980108598685666_2465212681897994209_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29873357_1980108598685666_2465212681897994209_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -616,7 +633,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/29983654_1980106535352539_6003045261159967439_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/29983654_1980106535352539_6003045261159967439_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/29983654_1980106535352539_6003045261159967439_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -624,7 +641,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/30052097_1980108658685660_7169376140858641803_o.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/30052097_1980108658685660_7169376140858641803_o.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/30052097_1980108658685660_7169376140858641803_o.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -632,7 +649,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/tour/2018/cover.webp" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/tour/2018/cover.webp" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/tour/2018/cover.webp" class="gallery-zoom-btn">+</a>
                         </div>
@@ -735,7 +752,7 @@
         <div class="footer-section section-logo">
           <div class="circle-logo-container">
             <a href="/">
-              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy">
+              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy" fetchpriority="low">
             </a>
           </div>
         </div>
@@ -764,13 +781,13 @@
         <!-- Section 4: SU & Social Logos -->
         <div class="footer-section section-logos">
           <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
-            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
+            <img width="200" height="200" loading="lazy" fetchpriority="low" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
           </a>
           <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="footer-whatsapp-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="footer-whatsapp-logo">
           </a>
           <a href="https://www.instagram.com/warwickclimbing" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="footer-instagram-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="footer-instagram-logo">
           </a>
         </div>
       </div>
@@ -778,11 +795,6 @@
     <!-- Footer Area End -->
 
 <!-- **** Custom JS File ***** -->
-
-<script defer src="/js/collapse.js?v=20"></script>
-<script defer src="/js/navigation.js?v=20"></script>
-<script defer src="/js/analytics.js?v=20"></script>
-<script defer src="/js/lightbox.js?v=20"></script>
 
     <!-- Footer Area End -->
 

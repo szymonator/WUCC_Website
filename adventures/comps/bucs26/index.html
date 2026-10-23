@@ -55,6 +55,23 @@
     <link rel="stylesheet" href="/css/page_decorations.css?v=21">
 
     <link rel="stylesheet" href="/css/analytics.css?v=20">
+    <!-- All interactive scripts deferred in head so browser downloads them immediately ahead of image requests -->
+    <link rel="preload" href="/js/lightbox.js?v=22" as="script">
+    <script defer src="/js/collapse.js?v=20"></script>
+    <script defer src="/js/navigation.js?v=20"></script>
+    <script defer src="/js/analytics.js?v=20"></script>
+    <script defer src="/js/lightbox.js?v=22"></script>
+
+    <!-- Fail-safe click interceptor: prevents raw image navigation if tapped before script evaluation -->
+    <script>
+        document.addEventListener('click', function(e) {
+            var trigger = e.target.closest('.gallery-zoom-btn, .portfolio-img');
+            if (trigger && !window.lightboxReady) {
+                e.preventDefault();
+                window.pendingLightboxTrigger = trigger;
+            }
+        }, true);
+    </script>
 </head>
 
 <body>
@@ -138,13 +155,13 @@
         <!-- Header SU & Social Logos -->
         <div class="header-logos">
           <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
-            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
+            <img width="200" height="200" loading="lazy" fetchpriority="low" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
           </a>
           <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
           </a>
           <a href="https://www.instagram.com/warwickclimbing" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
           </a>
         </div>
       </div>
@@ -190,7 +207,7 @@
           <!-- Gallery Items -->
           <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
             <div class="gallery-card">
-              <img loading="lazy" src="/img/competitions/BUCS_2026/1.webp" alt="WUCC climbing photo">
+              <img loading="lazy" fetchpriority="low" src="/img/competitions/BUCS_2026/1.webp" alt="WUCC climbing photo">
               <div class="gallery-overlay">
                 <a href="/img/competitions/BUCS_2026/1.webp" class="gallery-zoom-btn">+</a>
               </div>
@@ -198,7 +215,7 @@
           </div>
           <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
             <div class="gallery-card">
-              <img loading="lazy" src="/img/competitions/BUCS_2026/2.webp" alt="WUCC climbing photo">
+              <img loading="lazy" fetchpriority="low" src="/img/competitions/BUCS_2026/2.webp" alt="WUCC climbing photo">
               <div class="gallery-overlay">
                 <a href="/img/competitions/BUCS_2026/2.webp" class="gallery-zoom-btn">+</a>
               </div>
@@ -206,7 +223,7 @@
           </div>
           <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
             <div class="gallery-card">
-              <img loading="lazy" src="/img/competitions/BUCS_2026/cover.webp" alt="WUCC climbing photo">
+              <img loading="lazy" fetchpriority="low" src="/img/competitions/BUCS_2026/cover.webp" alt="WUCC climbing photo">
               <div class="gallery-overlay">
                 <a href="/img/competitions/BUCS_2026/cover.webp" class="gallery-zoom-btn">+</a>
               </div>
@@ -214,7 +231,7 @@
           </div>
           <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
             <div class="gallery-card">
-              <img loading="lazy" src="/img/competitions/BUCS_2026/preview.webp" alt="WUCC climbing photo">
+              <img loading="lazy" fetchpriority="low" src="/img/competitions/BUCS_2026/preview.webp" alt="WUCC climbing photo">
               <div class="gallery-overlay">
                 <a href="/img/competitions/BUCS_2026/preview.webp" class="gallery-zoom-btn">+</a>
               </div>
@@ -235,7 +252,7 @@
         <div class="footer-section section-logo">
           <div class="circle-logo-container">
             <a href="/">
-              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy">
+              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy" fetchpriority="low">
             </a>
           </div>
         </div>
@@ -264,13 +281,13 @@
         <!-- Section 4: SU & Social Logos -->
         <div class="footer-section section-logos">
           <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
-            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
+            <img width="200" height="200" loading="lazy" fetchpriority="low" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
           </a>
           <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
           </a>
           <a href="https://www.instagram.com/warwickclimbing" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
           </a>
         </div>
       </div>
@@ -278,10 +295,6 @@
     <!-- Footer Area End -->
 
     <!-- **** Custom JS File ***** -->
-    <script defer src="/js/collapse.js?v=20"></script>
-    <script defer src="/js/navigation.js?v=20"></script>
-    <script defer src="/js/analytics.js?v=20"></script>
-    <script defer src="/js/lightbox.js?v=20"></script>
 
 </body>
 

@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initLightbox() {
+  if (window.lightboxReady) return;
+  window.lightboxReady = true;
   // CSS has been extracted to page_decorations.css
 
   // Create lightbox overlay and append to body
@@ -205,46 +207,55 @@ document.addEventListener('DOMContentLoaded', () => {
     return { src: href, alt };
   });
 
-  zoomLinks.forEach(link => {
+  const handleTriggerClick = (link) => {
     const href = link.getAttribute('href') || '';
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Resolve alt from sibling img for this specific link
-      const card = link.closest('.gallery-card, .portfolio-item, .single_gallery_item');
-      const siblingImg = card ? card.querySelector('img') : null;
-      const linkAlt = siblingImg ? (siblingImg.getAttribute('alt') || '') : '';
+    const card = link.closest('.gallery-card, .portfolio-item, .single_gallery_item');
+    const siblingImg = card ? card.querySelector('img') : null;
+    const linkAlt = siblingImg ? (siblingImg.getAttribute('alt') || '') : '';
 
-      const isGalleryItem = link.classList.contains('gallery-zoom-btn');
-      if (isGalleryItem) {
-        // Rebuild playlist from only visible gallery items (respects gallery_filter.js)
-        const visibleItems = Array.from(document.querySelectorAll('.gallery-zoom-btn'))
-          .filter(el => el.offsetParent !== null)
-          .map(trigger => {
-            const c = trigger.closest('.gallery-card, .portfolio-item, .single_gallery_item');
-            const sImg = c ? c.querySelector('img') : null;
-            return { src: trigger.getAttribute('href') || '', alt: sImg ? (sImg.getAttribute('alt') || '') : '' };
-          });
-        if (visibleItems.length > 1) {
-          isGalleryActive = true;
-          activeGallery = visibleItems;
-          currentGalleryIndex = visibleItems.findIndex(item => item.src === href);
-          openLightbox(href, true, linkAlt);
-        } else {
-          isGalleryActive = false;
-          activeGallery = [];
-          currentGalleryIndex = 0;
-          openLightbox(href, false, linkAlt);
-        }
+    const isGalleryItem = link.classList.contains('gallery-zoom-btn');
+    if (isGalleryItem) {
+      const visibleItems = Array.from(document.querySelectorAll('.gallery-zoom-btn'))
+        .filter(el => el.offsetParent !== null)
+        .map(trigger => {
+          const c = trigger.closest('.gallery-card, .portfolio-item, .single_gallery_item');
+          const sImg = c ? c.querySelector('img') : null;
+          return { src: trigger.getAttribute('href') || '', alt: sImg ? (sImg.getAttribute('alt') || '') : '' };
+        });
+      if (visibleItems.length > 1) {
+        isGalleryActive = true;
+        activeGallery = visibleItems;
+        currentGalleryIndex = visibleItems.findIndex(item => item.src === href);
+        openLightbox(href, true, linkAlt);
       } else {
         isGalleryActive = false;
         activeGallery = [];
         currentGalleryIndex = 0;
         openLightbox(href, false, linkAlt);
       }
-    });
-    link.style.cursor = 'pointer';
+    } else {
+      isGalleryActive = false;
+      activeGallery = [];
+      currentGalleryIndex = 0;
+      openLightbox(href, false, linkAlt);
+    }
+  };
+
+  // Delegated click listener on document for instant interception
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('.gallery-zoom-btn, .portfolio-img');
+    if (link) {
+      e.preventDefault();
+      handleTriggerClick(link);
+    }
   });
+
+  // Handle any gallery click queued before lightbox.js finished loading
+  if (window.pendingLightboxTrigger) {
+    const pendingTrigger = window.pendingLightboxTrigger;
+    window.pendingLightboxTrigger = null;
+    handleTriggerClick(pendingTrigger);
+  }
 
   // 2. Find and make static content images clickable if they are not links
   const allImages = document.querySelectorAll('img');
@@ -334,4 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   };
-});
+}
+
+if (document.body) {
+  initLightbox();
+} else if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLightbox);
+} else {
+  initLightbox();
+}

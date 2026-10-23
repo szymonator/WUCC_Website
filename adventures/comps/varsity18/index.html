@@ -55,6 +55,23 @@
     <link rel="stylesheet" href="/css/page_decorations.css?v=21">
 
         <link rel="stylesheet" href="/css/analytics.css?v=20">
+    <!-- All interactive scripts deferred in head so browser downloads them immediately ahead of image requests -->
+    <link rel="preload" href="/js/lightbox.js?v=22" as="script">
+    <script defer src="/js/collapse.js?v=20"></script>
+    <script defer src="/js/navigation.js?v=20"></script>
+    <script defer src="/js/analytics.js?v=20"></script>
+    <script defer src="/js/lightbox.js?v=22"></script>
+
+    <!-- Fail-safe click interceptor: prevents raw image navigation if tapped before script evaluation -->
+    <script>
+        document.addEventListener('click', function(e) {
+            var trigger = e.target.closest('.gallery-zoom-btn, .portfolio-img');
+            if (trigger && !window.lightboxReady) {
+                e.preventDefault();
+                window.pendingLightboxTrigger = trigger;
+            }
+        }, true);
+    </script>
 </head>
 
     <body>
@@ -114,13 +131,13 @@
         <!-- Header SU & Social Logos -->
         <div class="header-logos">
           <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
-            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
+            <img width="200" height="200" loading="lazy" fetchpriority="low" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="header-su-logo">
           </a>
           <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="header-whatsapp-logo">
           </a>
           <a href="https://www.instagram.com/warwickclimbing" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="header-instagram-logo">
           </a>
         </div>
       </div>
@@ -166,7 +183,7 @@
                 <!-- Gallery Items -->
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/1.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/1.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/1.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -174,7 +191,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/2.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/2.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/2.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -182,7 +199,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/3.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/3.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/3.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -190,7 +207,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/4.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/4.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/4.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -198,7 +215,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/5.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/5.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/5.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -206,7 +223,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/6.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/6.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/6.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -214,7 +231,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/7.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/7.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/7.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -222,7 +239,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/8.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/8.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/8.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -230,7 +247,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/9.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/9.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/9.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -238,7 +255,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/10.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/10.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/10.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -246,7 +263,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/11.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/11.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/11.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -254,7 +271,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/12.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/12.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/12.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -262,7 +279,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/13.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/13.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/13.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -270,7 +287,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/14.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/14.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/14.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -278,7 +295,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/15.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/15.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/15.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -286,7 +303,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/16.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/16.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/16.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -294,7 +311,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/17.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/17.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/17.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -302,7 +319,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/18.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/18.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/18.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -310,7 +327,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/19.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/19.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/19.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -318,7 +335,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/20.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/20.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/20.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -326,7 +343,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/21.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/21.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/21.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -334,7 +351,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/22.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/22.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/22.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -342,7 +359,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/23.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/23.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/23.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -350,7 +367,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/24.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/24.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/24.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -358,7 +375,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/25.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/25.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/25.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -366,7 +383,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/26.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/26.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/26.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -374,7 +391,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/27.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/27.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/27.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -382,7 +399,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/28.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/28.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/28.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -390,7 +407,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/29.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/29.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/29.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -398,7 +415,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/30.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/30.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/30.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -406,7 +423,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/31.jpg" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/31.jpg" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/31.jpg" class="gallery-zoom-btn">+</a>
                         </div>
@@ -414,7 +431,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item mb-30 wow fadeInUp" data-wow-delay="300ms">
                     <div class="gallery-card">
-                        <img loading="lazy" src="/img/competitions/varsity_18/preview.webp" alt="WUCC climbing photo">
+                        <img loading="lazy" fetchpriority="low" src="/img/competitions/varsity_18/preview.webp" alt="WUCC climbing photo">
                         <div class="gallery-overlay">
                             <a href="/img/competitions/varsity_18/preview.webp" class="gallery-zoom-btn">+</a>
                         </div>
@@ -436,7 +453,7 @@
         <div class="footer-section section-logo">
           <div class="circle-logo-container">
             <a href="/">
-              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy">
+              <img width="160" height="160" src="/img/core-img/wucc_logo_white.webp" alt="WUCC Logo" class="footer-wucc-logo" loading="lazy" fetchpriority="low">
             </a>
           </div>
         </div>
@@ -465,13 +482,13 @@
         <!-- Section 4: SU & Social Logos -->
         <div class="footer-section section-logos">
           <a href="https://www.warwicksu.com/societies-sports/sports-clubs/climbing/" target="_blank" rel="noopener noreferrer" class="su-logo-link">
-            <img width="200" height="200" loading="lazy" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
+            <img width="200" height="200" loading="lazy" fetchpriority="low" src="/img/core-img/su_logo.png" alt="Warwick SU Logo" class="footer-su-logo">
           </a>
           <a href="https://chat.whatsapp.com/DFsbrbZdE6WI6WoOaI8tET" target="_blank" rel="noopener noreferrer" class="social-logo-link whatsapp-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="footer-whatsapp-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/whatsapp_white.svg" alt="WhatsApp" class="footer-whatsapp-logo">
           </a>
           <a href="https://www.instagram.com/warwickclimbing" target="_blank" rel="noopener noreferrer" class="social-logo-link instagram-link">
-            <img width="24" height="24" loading="lazy" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="footer-instagram-logo">
+            <img width="24" height="24" loading="lazy" fetchpriority="low" src="/img/core-img/Instagram_Glyph_White.svg" alt="Instagram" class="footer-instagram-logo">
           </a>
         </div>
       </div>
@@ -479,11 +496,6 @@
     <!-- Footer Area End -->
 
 <!-- **** Custom JS File ***** -->
-
-<script defer src="/js/collapse.js?v=20"></script>
-<script defer src="/js/navigation.js?v=20"></script>
-<script defer src="/js/analytics.js?v=20"></script>
-<script defer src="/js/lightbox.js?v=20"></script>
 
         <!-- Footer Area End -->
 

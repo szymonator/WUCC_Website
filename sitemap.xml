@@ -261,4 +261,8 @@
     <loc>https://wucc.containers.uwcs.co.uk/adventures/tripsandtours/elchorro26/</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://wucc.containers.uwcs.co.uk/adventures/tripsandtours/northwales26/</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
