@@ -53,6 +53,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wucc.containers.uwcs.co.uk/adventures/comps/bucs26/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wucc.containers.uwcs.co.uk/adventures/comps/mucc_r3_26/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wucc.containers.uwcs.co.uk/adventures/comps/lube_r1_26/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wucc.containers.uwcs.co.uk/adventures/socials/</loc>
     <priority>0.6</priority>
   </url>
