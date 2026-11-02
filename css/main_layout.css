@@ -507,4 +507,25 @@
   }
 }
 
+/* Schedule & Events Tandem Embed Wrapper */
+.calendar-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1.5px solid var(--color-accent, #FF5A4B); /* Team Warwick Red border */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.calendar-wrapper iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 650px;
+  border: 0;
+  display: block;
+}
+
 
