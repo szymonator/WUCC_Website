@@ -2,6 +2,7 @@ const http = require('http');
 const path = require('path');
 const crypto = require('crypto');
 const Database = require('better-sqlite3');
+const { initInstagram } = require('./instagram');
 
 const PORT = 3000;
 const DB_DIR = '/app/data';
@@ -39,6 +40,8 @@ db.prepare(`
     created_at INTEGER NOT NULL
   )
 `).run();
+
+const instagram = initInstagram(db);
 
 // State for daily in-memory deduplication (GDPR compliant)
 let currentDay = new Date().toISOString().split('T')[0];
@@ -342,6 +345,54 @@ const server = http.createServer((req, res) => {
       res.writeHead(500, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Server error' }));
     }
+    return;
+  }
+
+  // 6. PUBLIC ENDPOINT: Fetch cached Instagram feed
+  if (url.pathname === '/instagram' && req.method === 'GET') {
+    const feed = instagram.getCachedPosts();
+    if (feed.posts.length === 0) {
+      instagram.syncFeed();
+    }
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=300'
+    });
+    res.end(JSON.stringify({ success: true, ...feed }));
+    return;
+  }
+
+  // 7. PUBLIC ENDPOINT: Serve cached Instagram media thumbnails
+  if (url.pathname.startsWith('/instagram/media/') && req.method === 'GET') {
+    const filename = url.pathname.slice('/instagram/media/'.length);
+    const filePath = instagram.getMediaFilePath(filename);
+    if (!filePath) {
+      res.writeHead(404, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Media not found' }));
+      return;
+    }
+    res.writeHead(200, {
+      'Content-Type': 'image/jpeg',
+      'Cache-Control': 'public, max-age=86400'
+    });
+    fs.createReadStream(filePath).pipe(res);
+    return;
+  }
+
+  // 8. SECURED ENDPOINT: Force Instagram feed refresh
+  if (url.pathname === '/instagram/refresh' && req.method === 'POST') {
+    if (!isSessionValid(req)) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Unauthorized' }));
+      return;
+    }
+    instagram.syncFeed().then(result => {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(result));
+    }).catch(err => {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: err.message }));
+    });
     return;
   }
 

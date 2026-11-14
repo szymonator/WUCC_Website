@@ -41,7 +41,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
     <link rel="preload" as="image" href="/img/bg-img/cover_home5_sm.webp" type="image/webp">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//elfsightcdn.com">
 
     <link rel="stylesheet" href="/css/utilities.css?v=23">
 
@@ -56,6 +55,7 @@
     <link rel="stylesheet" href="/css/main_layout.css?v=21">
     <link rel="stylesheet" href="/css/navigation.css?v=20">
     <link rel="stylesheet" href="/css/hero.css?v=20">
+    <link rel="stylesheet" href="/css/instagram-feed.css?v=2">
 
     
 
@@ -375,23 +375,8 @@
     <!-- Instagram Start -->
     <section class="why-choose-us-area section-padding-80-0 clearfix">
         <div class="container">
-            <!-- Instagram Embed -->
-            <div class="elfsight-app-0a1d0546-5136-499d-9f0b-dcd80d1a5eab" id="elfsight-instagram" style="min-height:400px;"></div>
-            <script>
-            (function() {
-              function loadElfsight() {
-                var s = document.createElement('script');
-                s.src = 'https://elfsightcdn.com/platform.js';
-                s.async = true;
-                document.body.appendChild(s);
-              }
-              if (document.readyState === 'complete') {
-                loadElfsight();
-              } else {
-                window.addEventListener('load', loadElfsight);
-              }
-            })();
-            </script>
+            <!-- Instagram Feed -->
+            <div class="wucc-instagram-feed" id="wucc-instagram-home"></div>
         </div>
         <div class="footer-spacer"></div>
     </section>
@@ -453,6 +438,7 @@
 <script defer src="/js/analytics.js?v=20"></script>
 <script defer src="/js/hero.js?v=20"></script>
 <script defer src="/js/recent_activity.js?v=25"></script>
+<script defer src="/js/instagram-feed.js?v=2"></script>
 
 
 </body>
