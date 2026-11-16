@@ -34,6 +34,10 @@ services:
 
     environment:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - IG_ACCESS_TOKEN=${IG_ACCESS_TOKEN:-}
+      - IG_USER_ID=${IG_USER_ID:-}
+      - IG_APP_ID=${IG_APP_ID:-}
+      - IG_APP_SECRET=${IG_APP_SECRET:-}
       
     restart: always
 
