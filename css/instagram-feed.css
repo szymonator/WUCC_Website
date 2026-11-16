@@ -32,7 +32,7 @@
 
 .ig-feed-brand i {
     font-size: 1.65rem;
-    color: var(--color-accent, #FF5A4B);
+    color: var(--text-primary, #ffffff);
 }
 
 .ig-feed-handle {
