@@ -117,6 +117,20 @@
   padding-left: 24px;
 }
 
+/* NULSCC Highlighted Dropdown Item (Default: NULSCC Crimson bg + White text; Hover: Flipped) */
+.site-header .dropdown-item.nulscc-nav-item {
+  background-color: #9B0F14 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.site-header .dropdown-item.nulscc-nav-item:hover,
+.site-header .dropdown-item.nulscc-nav-item:focus {
+  background-color: #ffffff !important;
+  color: #9B0F14 !important;
+  padding-left: 24px;
+}
+
 /* Mobile Toggler */
 .site-header .navbar-toggler {
   border: none;

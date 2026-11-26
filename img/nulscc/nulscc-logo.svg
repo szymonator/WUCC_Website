@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150" role="img" aria-label="NULSCC Climber Logo">
+  <title>NULSCC Logo</title>
+  <!-- Placeholder vector approximating the NULSCC climber mark. Replace this file with the official high-res SVG when ready. -->
+  <circle cx="48" cy="24" r="13.5" fill="#9B0F14"/>
+  <path d="M26 48 C44 50, 62 38, 72 18 C80 30, 82 48, 74 68 C80 86, 94 102, 108 112 C90 108, 72 108, 56 122 C50 128, 46 135, 43 142 C41 132, 46 116, 48 98 C49 82, 44 64, 26 48 Z" fill="#181214"/>
+  <path d="M48 64 L70 46 L68 78 L54 88 Z" fill="#9B0F14"/>
+  <path d="M54 88 L68 78 L88 104 L52 114 Z" fill="#C4191F"/>
+  <circle cx="42" cy="143" r="3" fill="#181214"/>
+</svg>

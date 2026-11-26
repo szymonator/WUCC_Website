@@ -3,7 +3,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const CACHE_DIR = '/app/data/ig_cache';
-const SYNC_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
+const SYNC_INTERVAL_MS = 12 * 60 * 60 * 1000; // 12 hours
 const TOKEN_REFRESH_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 const TOKEN_CHECK_INTERVAL_MS = 24 * 60 * 60 * 1000; // 1 day
 const MAX_POSTS = 16;
@@ -293,9 +293,17 @@ function initInstagram(db) {
     };
   }
 
-  // Schedule initial sync and periodic intervals
+  // Schedule initial sync (only if cache is empty or stale) and periodic intervals
   setTimeout(() => {
-    refreshTokenIfNeeded().then(() => syncFeed());
+    refreshTokenIfNeeded().then(() => {
+      const countRow = db.prepare('SELECT COUNT(*) AS cnt FROM ig_posts').get();
+      const lastSync = getConfig('last_sync_at');
+      const isStale = !lastSync || (Date.now() - Number(lastSync.value) >= SYNC_INTERVAL_MS);
+      if (!countRow || countRow.cnt === 0 || isStale) {
+        return syncFeed();
+      }
+      console.log('Instagram: Using fresh SQLite cache on startup.');
+    });
   }, 2000);
 
   const syncTimer = setInterval(syncFeed, SYNC_INTERVAL_MS);

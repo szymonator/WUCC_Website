@@ -13,6 +13,10 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wucc.containers.uwcs.co.uk/adventures/nulscc/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://wucc.containers.uwcs.co.uk/adventures/comps/LUBE17/</loc>
     <priority>0.6</priority>
   </url>
